@@ -8,15 +8,18 @@
 
 **目标**：为来北京的外国游客提供一个免注册、点开即用的 H5 网页应用——游客走进某个景点（圆形地理围栏）后，自动播放该景点的英文语音讲解，并同步显示英文文字对照；讲解以**方位引导句开场**，结合游客实时朝向播报景点参照地标的相对方位（如 *"On your right stands the Tiananmen Rostrum…"*），再接正文。
 
+应用提供两种使用模式：**自动导游模式**（上述围栏自动触发）与**浏览模式**（景点列表 → 景点详情：实景照片 + 英文解说词全文 + 「▶ 播放讲解」按钮手动播放，播放仅含正文、不含方位句）。
+
 **核心假设（MVP 需验证）**：外国游客会打开、会听完、会分享这个导览页面。
 
 **成功标准（MVP 阶段）**：
 - 完整体验链路真机可用：iOS Safari 与 Android Chrome 均能授权定位 → 走入围栏自动播放 → 方位句按朝向正确播报 → 文字对照正常显示
 - 首批内容：61 个点位的英文讲解上线（59 个景点 + 2 个机场欢迎点；每点位 = 8 方位引导句变体 + 1 段正文；讲解词草稿见 `content/narrations-draft.md` 与 `content/narrations-draft-2.md`，分批上线顺序实施阶段可调）
+- 浏览模式可用：61 个点位列表（英文名 + 摘要 + 缩略图）→ 详情页实景图片、英文解说词全文、手动播放均正常
 - 免注册、免费、无服务器运维负担（纯静态托管，月成本约 0）
 - 托管平台自带分析可观测访问量与独立访客
 
-**非目标（明确不做）**：账号体系、付费、中文界面、地图视图、进度列表、手动点播、分享按钮（均留待后续版本，见 §11）。
+**非目标（明确不做）**：账号体系、付费、中文内容（浏览模式为英文解说词 + 实景图片，中文留待后续）、地图视图、进度列表、分享按钮（均留待后续版本，见 §11）。
 
 ## 2. 目标用户与分发渠道
 
@@ -48,14 +51,17 @@ TravelTrips/
 │   ├── direction.ts        # bearing 计算、朝向+方位角 → 8 方位映射
 │   ├── player.ts           # 音频播放管理（方位句→正文顺序播放、互斥、结束回调）
 │   ├── ui.ts               # 状态卡、方位徽标、文字对照、错误提示渲染
+│   ├── browse.ts           # 浏览模式：景点列表/详情（图片、解说词、手动播放）
 │   └── testmode.ts         # 模拟定位+模拟朝向测试面板（URL ?test=1 激活）
 ├── content/
 │   ├── spots.json          # 景点数据（见 §5 schema）
+│   ├── images/spot-*.jpg       # 景点实景照片（Wikimedia Commons，本地化存储）
 │   └── audio/
 │       ├── spot-*.mp3          # 每景点主讲解正文
 │       └── dir/spot-*-*.mp3    # 每景点 8 个方位引导句变体（-n/-ne/-e/-se/-s/-sw/-w/-nw）
 ├── scripts/
 │   ├── tts_generate.py     # spots.json → TTS API → 正文 + 8 方位句音频
+│   ├── fetch_images.py     # Wikipedia REST API → 抓取景点实景图 + 许可信息
 │   └── validate_content.py # 内容完整性校验（含方位句齐全性、landmark 合法性）
 ├── tests/
 │   ├── geo.test.ts         # 距离/围栏/精度过滤
@@ -86,6 +92,12 @@ TravelTrips/
       "radiusMeters": 250,
       "audio": "audio/spot-forbidden-city.mp3",
       "transcript": "Full English narration text, shown as synchronized transcript",
+      "images": [
+        {
+          "url": "images/spot-forbidden-city-1.jpg",
+          "credit": "Photo by <author> / CC BY-SA 4.0"
+        }
+      ],
       "landmark": {
         "name": "the Hall of Supreme Harmony",
         "lat": 39.9185,
@@ -99,6 +111,7 @@ TravelTrips/
 - 坐标系：**WGS-84**（与浏览器 Geolocation API 返回值同系，零转换）
 - 坐标来源：Wikipedia/Wikidata 公开坐标或 Google Maps 取点；实施阶段逐一核定，半径按景点实际占地给出建议值（默认 200 米，可每景点单独调整）
 - `landmark` 为**方位参照地标**：方位引导句描述的对象（如故宫→太和殿、天坛→祈年殿、天安门广场→天安门城楼），取景点内最具辨识度的建筑精确坐标；`name` 为讲解句中使用的英文名称
+- `images`：景点实景照片，来源 **Wikimedia Commons**（Wikipedia REST API 的 `page/summary` 已验证随条目返回实拍图），抓取后本地化存储至 `content/images/`；CC 协议要求署名，`credit` 字段保存作者与许可信息并在浏览模式详情页展示
 - 音频文件命名约定：正文 `audio/spot-{id}.mp3`；方位句 `audio/dir/spot-{id}-{dir}.mp3`，`dir ∈ {n, ne, e, se, s, sw, w, nw}`，每景点 8 个（约 3-5 秒/段）
 - 景点清单（59 个，几乎全部有 Wikipedia 英文条目支撑；例外：红桥市场无英文条目，事实源用官网+通用资料）：
   - 城区核心 14：天安门广场、故宫、景山、北海、什刹海、南锣鼓巷、雍和宫、国子监+孔庙（合并 1 点）、天坛、前门大栅栏、颐和园、圆明园、798、王府井
@@ -122,10 +135,17 @@ TravelTrips/
 **应用欢迎词**（app-welcome，落地后的"第一声"）：授权成功后立即自动播放一次（约 60-75 秒），内容介绍软件服务功能（围栏自动触发、方位句、文字对照、61 点位覆盖、免注册免费、隐私口径"定位仅本机使用不存储"）与使用规则（保持页面前台亮屏）。与位置无关，无方位句变体。游客在机场落地时，欢迎词之后紧接机场欢迎点围栏触发，形成自然的 onboarding 序列。
 
 **界面元素**（单屏，全英文）：
-1. 落地页：应用名 + 一句话价值说明 + 大按钮「Start Audio Tour」+ 定位与朝向用途说明（点击时同一手势内请求定位权限与 iOS 朝向权限）
-2. 监听态：状态卡 *“Listening — walk near a spot to hear its story”* + 最近景点名称与实时距离（如 *“Nearest: Temple of Heaven · 400m”*）。此距离反馈是自动触发的必要引导，非进度列表功能
+1. 落地页：应用名 + 一句话价值说明 + 大按钮「Start Audio Tour」+ 次级入口「Browse all spots」+ 定位与朝向用途说明（点击时同一手势内请求定位权限与 iOS 朝向权限）
+2. 监听态：状态卡 *“Listening — walk near a spot to hear its story”* + 最近景点名称与实时距离（如 *“Nearest: Temple of Heaven · 400m”*）。此距离反馈是自动触发的必要引导，非进度列表功能；页头有「Browse」入口可随时切换到浏览模式
 3. 播放态：景点名 + 方位徽标（如 *“→ Hall of Supreme Harmony is on your RIGHT”*，与方位句同步显示）+ 音频控件（暂停/重播/进度条）+ 可折叠英文文字对照
 4. 错误态：权限被拒/定位不可用的专用提示（§9）
+5. 浏览模式视图：景点列表（英文名 + 摘要 + 缩略图）→ 详情页（实景图片轮播 + 英文解说词全文 + 「▶ Play this story」按钮 + 图片署名），返回键回到之前模式
+
+**浏览模式**（browse，独立视图，不改变自动导游模式的状态机与监听）：
+- 入口：落地页「Browse all spots」与监听态页头「Browse」按钮
+- 列表：全部 61 个点位（英文名 + summary 摘要 + 缩略图）
+- 详情：实景图片轮播 + 英文解说词全文（即 transcript，无需新增内容）+ 「▶ Play this story」按钮——**仅播正文**（`spot-{id}.mp3`），不播方位句（浏览时游客不在现场，方位无意义）
+- 返回后，自动导游模式的定位监听、冷却计时、播放状态全部不受影响
 
 ## 7. 围栏触发规则（geo.ts 核心）
 
@@ -165,8 +185,9 @@ TravelTrips/
      3. **Kokoro TTS（离线备选）**：Apache 2.0 本地开源（82M 参数，CPU 可跑）；音色为社区音色（非 Andrew），中文插入支持弱
      4. **gpt-4o-mini-tts（付费可选）**：约 $3/全量，独特优势是支持语气指令（做戏剧化讲述风格时的升级项）；⚠ OpenAI 已于 2026-10 废弃 tts-1/tts-1-hd（2027-01 下线），不得基于旧模型开发
    - 全量音频成本：**$0**（Azure 免费额度内）
-3. `scripts/validate_content.py` 校验：坐标与 landmark 坐标在北京市界内、半径合理（普通景点 50-1000 米；机场欢迎围栏 2000-3000 米）、transcript 非空、正文音频存在且时长 30 秒-10 分钟、8 个方位句音频齐全且时长 1-15 秒、landmark 位于对应景点围栏内
-4. 内容更新流程：改 JSON → 重跑脚本 → `git push` 自动部署，全程约 5 分钟
+3. `scripts/fetch_images.py`：从 Wikipedia REST API（`page/summary` 返回 thumbnail/originalimage，已验证）抓取各景点实拍图 → 本地化存储到 `content/images/`，作者与许可信息写入 spots.json 的 `images[].credit`；个别无图景点跳过并在日志中列出（预计极少）
+4. `scripts/validate_content.py` 校验：坐标与 landmark 坐标在北京市界内、半径合理（普通景点 50-1000 米；机场欢迎围栏 2000-3000 米）、transcript 非空、正文音频存在且时长 30 秒-10 分钟、8 个方位句音频齐全且时长 1-15 秒、landmark 位于对应景点围栏内、images 文件存在且 credit 非空
+5. 内容更新流程：改 JSON → 重跑脚本 → `git push` 自动部署，全程约 5 分钟
 
 ## 9. 错误处理
 
@@ -199,7 +220,7 @@ TravelTrips/
 **部署**：`git push` → Cloudflare Pages 自动构建上线；MVP 使用平台免费域名（`*.pages.dev`），后续可换自定义短域名。外国游客经国际漫游访问海外托管无障碍。
 
 **演进路线**（均不在 MVP 范围）：
-- V1.1：地图视图（Leaflet + OpenStreetMap 瓦片，WGS-84 零转换）、手动点播列表、一键分享（WhatsApp/X/复制链接）、PWA 离线缓存
+- V1.1：地图视图（Leaflet + OpenStreetMap 瓦片，WGS-84 零转换）、一键分享（WhatsApp/X/复制链接）、PWA 离线缓存、中文内容（浏览模式中文介绍与中文音频）
 - V2（验证成功后）：轻后端（FastAPI）支撑内容热更新与服务端完播率统计
 - 远期：真人配音重点景点升级、更多城市复制
 
@@ -212,3 +233,4 @@ TravelTrips/
 | 浏览器自动播放限制 | 首播必须经「Start Audio Tour」点击手势，之后同会话内自动连播合法 |
 | 城区定位精度退化为 WiFi/基站级 | 精度过滤确保不基于劣质坐标触发；漏触发由游客走动持续监听自然补上 |
 | 磁干扰（地铁口/汽车/钢筋建筑）导致指南针偏差 | 8 方位每格 45° 容错 + 滑动窗口中值滤波；GPS 轨迹方向互补；方位句误差仅影响开场句不影响正文 |
+| 图片版权与署名遗漏 | 仅使用 Wikimedia Commons 开源许可图；抓取时同步保存 credit 并在详情页展示；validate 强制 credit 非空方可通过 |
