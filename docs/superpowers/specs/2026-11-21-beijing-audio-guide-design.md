@@ -138,7 +138,7 @@ TravelTrips/
 - 自动模式触发序列：`audio/chime.mp3`（约 3 秒柔和提示音，全站统一）→ 方位句（干声）→ 正文（**制作期已混入 BGM**）
 - 浏览模式手动播放序列：chime → 正文
 - BGM 配置：3 首轻音乐**随机选一**混入每段正文（Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02，Kevin MacLeod 演奏，incompetech，CC-BY 4.0 需署名——署名展示在浏览模式详情页/页脚）；音量 **-8dB**（volume≈0.398）+ 2 秒淡入；混音在**制作期**由 ffmpeg 完成（运行时仍是单个 MP3，零额外改动）
-- TTS 语速：**0.8x**（Azure SSML `rate="-20%"` / edge-tts `--rate=-20%`，用户定稿）
+- TTS 语速：**0.9x**（Azure SSML `rate="-10%"` / edge-tts `--rate=-10%`，用户定稿）
 
 **界面元素**（单屏，全英文）：
 1. 落地页：应用名 + 一句话价值说明 + 大按钮「Start Audio Tour」+ 次级入口「Browse all spots」+ 定位与朝向用途说明（点击时同一手势内请求定位权限与 iOS 朝向权限）
@@ -185,8 +185,8 @@ TravelTrips/
    - **应用欢迎词**：`audio/welcome.mp3`（1 段，无方位句变体）
    - **正文**：`audio/spot-{id}.mp3`（1 段/景点）
    - **方位引导句**：按 8 方位模板（*"Ahead of you…" / “On your right…” / “Behind you…” 等）+ 景点 `landmark.name` 生成 8 个变体 → `audio/dir/spot-{id}-{dir}.mp3`（3-5 秒/段）
-   - **TTS 语速 0.8x**（Azure SSML `rate="-20%"` / edge-tts `--rate=-20%`，音色 `en-US-AndrewMultilingualNeural`）
-3. `scripts/mix_audio.py`：BGM 制作期混音——TTS 正文生成后，ffmpeg 将 `audio/bgm/` 下 3 首轻音乐**随机选一**以 -8dB（volume≈0.398）+ 2 秒淡入混入每段正文（覆盖输出），`audio/chime.mp3` 由 ffmpeg 合成（双音铃声 + 淡出 + 轻回声，约 3 秒，零版权顾虑）；方位句保持干声；BGM 素材 `content/audio/bgm/*.mp3`（Kevin MacLeod / incompetech，CC-BY 4.0，署名文案存 `content/audio/bgm/CREDITS.md` 并在浏览模式详情页展示）
+   - **TTS 语速 0.9x**（Azure SSML `rate="-10%"` / edge-tts `--rate=-10%`，音色 `en-US-AndrewMultilingualNeural`）
+3. `scripts/mix_audio.py`：BGM 制作期混音——TTS 正文生成后，ffmpeg 将 `audio/bgm/` 下 3 首轻音乐**随机选一**以 -8dB（volume≈0.398）+ 2 秒淡入混入每段正文（覆盖输出），`audio/chime.mp3` 由 ffmpeg 合成（**三音上行音阶** C6→E6→G6，错峰 0/600/1200ms，各音淡出 + 轻回声，约 3 秒，零版权顾虑）；方位句保持干声；BGM 素材 `content/audio/bgm/*.mp3`（Kevin MacLeod / incompetech，CC-BY 4.0，署名文案存 `content/audio/bgm/CREDITS.md` 并在浏览模式详情页展示）
 4. TTS 供应商（tts_generate.py 脚本可切换，按优先级）：
    1. **Azure Speech F0 免费层（默认）**：每月 50 万神经 TTS 字符免费、按月刷新（本项目全量约 10 万字符仅占 20%）；音色与试听样本完全同款（`en-US-AndrewMultilingualNeural` 男声，Azure 官方接口，合法合规）；F0 层并发上限 1，批量生成顺序执行即可；需注册 Azure 账号（F0 层免费不扣费），密钥走环境变量 `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION`，不进代码库
    2. **edge-tts（无账号备胎）**：免费且无需任何账号，Azure 同款音色走免费通道；⚠ 非官方接口（逆向 Edge 朗读功能），量产存在封禁风险，仅在 Azure 未配置时使用

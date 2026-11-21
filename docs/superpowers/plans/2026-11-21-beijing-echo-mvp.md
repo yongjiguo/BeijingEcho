@@ -17,7 +17,7 @@
 - Python 3.11 only (project venv `.venv`); frontend Node ≥ 18, `npm` scripts: `dev`/`build`/`preview`/`test`
 - TypeScript `strict: true`; no UI framework; tests via vitest only
 - All geo coordinates WGS-84; accuracy filter threshold `100` m; cooldown `30 * 60 * 1000` ms; default spot radius `200` m (per-spot overrides allowed: 50-1000; airports `2000-3000`)
-- TTS voice `en-US-AndrewMultilingualNeural`, rate **0.8x** (edge `--rate=-20%`, Azure SSML `rate="-20%"`); keys only via env (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`), never in repo
+- TTS voice `en-US-AndrewMultilingualNeural`, rate **0.9x** (edge `--rate=-10%`, Azure SSML `rate="-10%"`); keys only via env (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`), never in repo
 - Audio decoration (user-final): every playback starts with ~3s chime `audio/chime.mp3` (synthesized, license-free); auto mode = chime → dir sentence (dry) → narration (main); browse mode = chime → narration
 - BGM: 3 tracks (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02, Kevin MacLeod, incompetech, **CC-BY 4.0 → attribution required**) **randomly assigned per narration**; build-time mix at **-8dB** (volume≈0.398, 2s fade-in) via `scripts/mix_audio.py`; shipped narration files are pre-mixed single MP3s
 - UI copy all English; content URLs: `/spots.json`, `/audio/...`, `/audio/dir/...`, `/images/...` (vite `publicDir: 'content'`)
@@ -297,7 +297,7 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
 **Interfaces:**
 - Consumes: spots.json (transcripts, landmark.name); BGM tracks already downloaded at `content/audio/bgm-candidates/` (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02)
 - Produces: `content/audio/welcome.mp3`; `content/audio/spot-{id}.mp3` ×61 (**pre-mixed with BGM**); dry dir sentences `content/audio/dir/spot-{id}-{octant}.mp3` ×488; `content/audio/chime.mp3`; `content/audio/bgm/*.mp3` + `CREDITS.md`
-- TTS: Azure default (SDK, SSML `rate="-20%"`) → edge-tts fallback (`--rate=-20%`); idempotent (skip existing >10KB); SSML-safe escaping
+- TTS: Azure default (SDK, SSML `rate="-10%"`) → edge-tts fallback (`--rate=-10%`); idempotent (skip existing >10KB); SSML-safe escaping
 - Templates (exact):
   - n: `Straight ahead rises {landmark}.`
   - ne: `{landmark} is just ahead on your right.`
@@ -307,7 +307,7 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
   - sw: `Just behind you on your left is {landmark}.`
   - w: `On your left stands {landmark}.`
   - nw: `{landmark} is just ahead on your left.`
-- Mixing (mix_audio.py): per narration file, pick 1 of the 3 BGM tracks **randomly** (seeded `random.Random(2026)` for reproducibility), ffmpeg: `[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0`; chime synthesis: dual sine 880Hz+1318.5Hz, volumes 0.35/0.18, fade-out from 1.0s/2.0s, `aecho=0.6:0.3:120:0.25`, 3s
+- Mixing (mix_audio.py): per narration file, pick 1 of the 3 BGM tracks **randomly** (seeded `random.Random(2026)` for reproducibility), ffmpeg: `[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0`; chime synthesis: three ascending notes C6/E6/G6 (1046.5/1318.5/1568 Hz sine), delays 0/600/1200 ms, volumes 0.30/0.30/0.32, per-note fade-out, `aecho=0.6:0.3:150:0.3`, total 3s
 - `CREDITS.md`: `Music: "Gymnopedie No 1", "Dreams Become Real", "Meditation Impromptu 02" by Kevin MacLeod (incompetech.com), Licensed under Creative Commons: By Attribution 4.0`
 
 - [ ] **Step 1: Copy BGM tracks** `content/audio/bgm-candidates/*.mp3` → `content/audio/bgm/` and write `CREDITS.md` (text above)
