@@ -115,9 +115,22 @@ Off the streets south of Tiananmen hides a perfect wooden opera house from imper
 
 ---
 
+## 机场欢迎点（2 篇）
+
+> 性质与景点讲解不同：落地实用指引 + 建筑奇观讲解 + 产品 onboarding 引导。围栏半径 2000-3000 米（远大于普通景点），游客落地连网后打开 H5 即首次触发，是产品的"第一声"。
+
+### 60. capital-airport-welcome — Beijing Capital Airport Welcome — landmark: "Terminal Three's sweeping dragon-form roof"
+Welcome to Beijing — you've just landed at Beijing Capital International Airport, one of the busiest airports on Earth and, for decades, China's front door. The great sweeping roof above you belongs to Terminal Three, designed by architect Norman Foster — nearly two kilometers long, its form meant to echo a red dragon taking flight. ⚠ T3由福斯特设计、长约2公里表述请核实。A few practical words as you land: have your passport ready for immigration; the Airport Express train runs from the terminal to the city in about twenty minutes and links to the subway ⚠ 机场快轨时长与换乘站表述请核实; licensed taxis wait in managed queues, and ride-hailing pickup zones are clearly signed; bank counters inside the halls exchange currency. And one more thing — if this voice is speaking, your audio guide is already working. It will greet you automatically at every landmark you walk to, in every corner of this city. 北京欢迎你 — welcome to Beijing. Your tour starts now.
+
+### 61. daxing-airport-welcome — Beijing Daxing Airport Welcome — landmark: "the starfish-shaped heart of the golden terminal"
+Welcome to Beijing — and welcome to one of the most spectacular buildings humans have ever boarded planes in. This is Beijing Daxing International Airport, opened in twenty nineteen: a single golden terminal spreading six wings like a starfish, designed by the late Zaha Hadid's studio and celebrated as the largest single-terminal airport building on Earth. ⚠ 扎哈事务所设计、"全球最大单体航站楼"（约70万平方米）表述请核实。Follow the wing you're in toward the center, and trains will carry you to the city — the express line makes the run in roughly twenty minutes ⚠ 大兴机场快线约20分钟到草桥、换乘表述请核实; taxis queue in managed ranks, and airport buses run deep into the night. And if this voice is speaking to you, one thing is already proven: your audio guide works. From here on, it will greet you automatically at every landmark you visit — palaces, temples, hutongs, and the wall itself. 北京欢迎你 — welcome to Beijing. Let's begin.
+
+---
+
 ## 审校说明（与第一批相同）
 
 1. 每篇词尾 ⚠ 项为史实/数据需核实点，逐条批注"保留/修改/删除"
 2. 红桥市场一篇事实源为官网+通用资料（无英文 Wikipedia 条目），日期类表述已从严
 3. 醇亲王府主体现为办公场所不开放，已并入宋庆龄故居一篇讲述其花园部分
-4. 审校通过后流程：坐标批量抓取 → spots.json 生成 → validate → TTS → 部署
+4. 机场欢迎两篇（60/61）为实用指引性质，交通信息（快轨时长/换乘站/票制）审校时请按最新运营信息核实
+5. 审校通过后流程：坐标批量抓取 → spots.json 生成 → validate → TTS → 部署
