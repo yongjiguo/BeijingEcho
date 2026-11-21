@@ -5,6 +5,7 @@ import { initialBearing, octantFor } from './direction';
 import { AudioPlayer, HtmlAudioGateway } from './player';
 import { TourStateMachine } from './state';
 import { openBrowse } from './browse';
+import { initTestMode } from './testmode';
 import { renderLanding, renderListening, renderDenied, renderPlaying, renderRequesting } from './ui';
 import type { DirOctant, SpotsData, Spot } from './types';
 
@@ -33,6 +34,11 @@ const machine = new TourStateMachine();
 const audioEl = new Audio();
 const player = new AudioPlayer(new HtmlAudioGateway(audioEl));
 
+// Reveal the direction badge when the voice actually starts (index 0 = chime).
+player.onTrackStart((index) => {
+  if (index === 1) playing?.revealBadge();
+});
+
 const geoWatcher = new GeoWatcher();
 const compassWatcher = new CompassWatcher();
 const trackHeading = new GpsTrackHeading();
@@ -41,6 +47,7 @@ const cooldowns = new Cooldowns();
 
 let spots: Spot[] = [];
 let spotsData: SpotsData | null = null;
+const testMode = initTestMode({ geo: geoWatcher, compass: compassWatcher });
 let listening: ReturnType<typeof renderListening> | null = null;
 let playing: ReturnType<typeof renderPlaying> | null = null;
 let playbackGen = 0;
@@ -54,6 +61,7 @@ async function loadSpots(): Promise<void> {
     const data: SpotsData = await res.json();
     spotsData = data;
     spots = data.spots ?? [];
+    testMode?.setSpots(spots);
   } catch (err) {
     console.warn('spots.json unavailable:', err);
     spots = [];
@@ -61,22 +69,19 @@ async function loadSpots(): Promise<void> {
 }
 
 // ---- nearest status line ----
-function updateNearestStatus(lat: number, lng: number): void {
-  if (!listening) return;
-  if (spots.length === 0) {
-    listening.setNearest(null);
-    return;
-  }
-  let best: Spot | null = null;
-  let bestDist = Infinity;
+function nearestSpot(lat: number, lng: number): { spot: Spot; dist: number } | null {
+  let best: { spot: Spot; dist: number } | null = null;
   for (const s of spots) {
     const d = haversineMeters(s.lat, s.lng, lat, lng);
-    if (d < bestDist) {
-      best = s;
-      bestDist = d;
-    }
+    if (!best || d < best.dist) best = { spot: s, dist: d };
   }
-  listening.setNearest(`Nearest: ${best!.name} · ${formatDistance(bestDist)}`);
+  return best;
+}
+
+function updateNearestStatus(lat: number, lng: number): void {
+  if (!listening) return;
+  const best = nearestSpot(lat, lng);
+  listening.setNearest(best ? `Nearest: ${best.spot.name} · ${formatDistance(best.dist)}` : null);
 }
 
 // ---- playback ----
@@ -89,11 +94,15 @@ function beginSpotPlayback(spot: Spot): void {
   if (fix == null || heading == null) {
     urls = [CHIME_URL, mainUrl];
     badge = 'Walk toward the landmark';
+    testMode?.log(`trigger ${spot.id}: heading unavailable → skip dir sentence`);
   } else {
     const bearing = initialBearing(fix.lat, fix.lng, spot.landmark.lat, spot.landmark.lng);
     const octant = octantFor(bearing, heading);
     urls = [CHIME_URL, asset(`audio/dir/spot-${spot.id}-${octant}.mp3`), mainUrl];
     badge = `→ ${spot.landmark.name} is ${OCTANT_PHRASE[octant]}`;
+    testMode?.log(
+      `trigger ${spot.id}: heading ${Math.round(heading)}° · bearing ${Math.round(bearing)}° → octant ${octant}`,
+    );
   }
 
   machine.transition({ type: 'FENCE_ENTER', spotId: spot.id });
@@ -154,8 +163,15 @@ function showListening(): void {
 }
 
 function startTour(): void {
+  machine.transition({ type: 'START_CLICKED' }); // landing → requesting
   // Unlock the audio element within the same user gesture (iOS Safari requirement).
   void audioEl.play().catch(() => {});
+  if (testMode) {
+    // Test mode: bypass the real GPS probe and permission prompts entirely.
+    renderRequestingScreen();
+    onAuthorized();
+    return;
+  }
   // iOS 13+ orientation permission — same gesture, failure ignored (heading falls back).
   const doe = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<unknown> };
   const orientReq = doe.requestPermission?.bind(DeviceOrientationEvent);
@@ -210,7 +226,9 @@ function onAuthorized(): void {
       geoWatcher.start(onFix);
     }, 10_000);
   });
-  compassWatcher.start(() => {}); // heading cached for HeadingResolver
+  compassWatcher.start((h) => {
+    testMode?.log(`heading = ${Math.round(h)}°`);
+  });
   geoWatcher.start(onFix);
 
   // Welcome playback; location listening already running (non-blocking).
@@ -231,9 +249,19 @@ function onFix(fix: { lat: number; lng: number; accuracy: number }): void {
   trackHeading.update(fix);
   updateNearestStatus(fix.lat, fix.lng);
 
+  const best = nearestSpot(fix.lat, fix.lng);
+  testMode?.log(
+    `fix (${fix.lat.toFixed(5)}, ${fix.lng.toFixed(5)}) ±${Math.round(fix.accuracy)}m` +
+      (best ? ` → nearest ${best.spot.name} ${Math.round(best.dist)}m` : ''),
+  );
+
   if (machine.current() !== 'listening') return; // welcome/playing: playback mutex
   const inside = pickNearestInside(spots, fix.lat, fix.lng);
-  if (!inside || cooldowns.isCooling(inside.id)) return;
+  if (!inside) return;
+  if (cooldowns.isCooling(inside.id)) {
+    testMode?.log(`trigger blocked: ${inside.id} cooling down`);
+    return;
+  }
   cooldowns.mark(inside.id);
   beginSpotPlayback(inside);
 }

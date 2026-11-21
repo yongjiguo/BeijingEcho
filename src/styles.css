@@ -271,3 +271,108 @@ body {
   line-height: 1.4;
   margin: 0 0 14px;
 }
+
+.testmode-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background: #141a21f2;
+  border-top: 2px solid #e8442e;
+  padding: 10px 12px;
+  max-height: 48vh;
+  overflow-y: auto;
+  font-size: 0.82rem;
+}
+
+.testmode-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.testmode-title {
+  font-weight: 700;
+  color: #e8442e;
+  letter-spacing: 1px;
+  margin-right: auto;
+}
+
+.testmode-btn {
+  background: #2a3440;
+  color: #e8eef2;
+  border: 0;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.testmode-input {
+  background: #1a2027;
+  border: 1px solid #2a3440;
+  border-radius: 6px;
+  color: #f2f5f7;
+  padding: 5px 8px;
+  font-size: 0.78rem;
+  width: 130px;
+  margin: 2px;
+}
+
+.testmode-section {
+  margin-bottom: 10px;
+}
+
+.testmode-section h4 {
+  margin: 4px 0;
+  color: #9aa7b0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.testmode-faces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.testmode-spots {
+  display: flex;
+  flex-direction: column;
+  max-height: 110px;
+  overflow-y: auto;
+}
+
+.testmode-spot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.testmode-spot-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.testmode-empty {
+  color: #6b7885;
+  margin: 0;
+}
+
+.testmode-log {
+  max-height: 110px;
+  overflow-y: auto;
+  background: #0d1116;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  color: #9ecbff;
+}
