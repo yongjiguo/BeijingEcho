@@ -159,8 +159,12 @@ TravelTrips/
    - **应用欢迎词**：`audio/welcome.mp3`（1 段，无方位句变体）
    - **正文**：`audio/spot-{id}.mp3`（1 段/景点）
    - **方位引导句**：按 8 方位模板（*"Ahead of you…" / “On your right…” / “Behind you…” 等）+ 景点 `landmark.name` 生成 8 个变体 → `audio/dir/spot-{id}-{dir}.mp3`（3-5 秒/段）
-   - TTS 供应商：默认 **OpenAI TTS**（`tts-1`，音色可配；61 点位正文 + 1 欢迎词 + 488 段方位句总成本约 3-5 美元）；脚本设计为供应商可切换（备选 Azure Speech / ElevenLabs）
-   - API key 通过环境变量注入（`OPENAI_API_KEY` 等），不进代码库
+   - TTS 供应商（脚本可切换，按优先级）：
+     1. **Azure Speech F0 免费层（默认）**：每月 50 万神经 TTS 字符免费、按月刷新（本项目全量约 10 万字符仅占 20%）；音色与试听样本完全同款（`en-US-AndrewMultilingualNeural` 男声，Azure 官方接口，合法合规）；F0 层并发上限 1，批量生成顺序执行即可；需注册 Azure 账号（F0 层免费不扣费），密钥走环境变量 `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION`，不进代码库
+     2. **edge-tts（无账号备胎）**：免费且无需任何账号，Azure 同款音色走免费通道；⚠ 非官方接口（逆向 Edge 朗读功能），量产存在封禁风险，仅在 Azure 未配置时使用
+     3. **Kokoro TTS（离线备选）**：Apache 2.0 本地开源（82M 参数，CPU 可跑）；音色为社区音色（非 Andrew），中文插入支持弱
+     4. **gpt-4o-mini-tts（付费可选）**：约 $3/全量，独特优势是支持语气指令（做戏剧化讲述风格时的升级项）；⚠ OpenAI 已于 2026-10 废弃 tts-1/tts-1-hd（2027-01 下线），不得基于旧模型开发
+   - 全量音频成本：**$0**（Azure 免费额度内）
 3. `scripts/validate_content.py` 校验：坐标与 landmark 坐标在北京市界内、半径合理（普通景点 50-1000 米；机场欢迎围栏 2000-3000 米）、transcript 非空、正文音频存在且时长 30 秒-10 分钟、8 个方位句音频齐全且时长 1-15 秒、landmark 位于对应景点围栏内
 4. 内容更新流程：改 JSON → 重跑脚本 → `git push` 自动部署，全程约 5 分钟
 
