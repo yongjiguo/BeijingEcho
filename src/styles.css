@@ -19,3 +19,160 @@ body {
   padding: 24px 16px 48px;
   min-height: 100vh;
 }
+
+.app-title {
+  font-size: 2rem;
+  margin: 24px 0 8px;
+  text-align: center;
+}
+
+.app-title-small {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.tagline {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 8px 16px;
+}
+
+.muted {
+  color: #9aa7b0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 8px 24px;
+}
+
+.error {
+  color: #ff8484;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 8px 24px;
+}
+
+.card {
+  background: #1a2027;
+  border: 1px solid #2a3440;
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #e8442e;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #2a3440;
+  color: #e8eef2;
+}
+
+.btn-small {
+  display: inline-block;
+  width: auto;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  margin: 0;
+  background: #2a3440;
+  color: #e8eef2;
+}
+
+.status-headline {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 4px 0 8px;
+}
+
+.status-nearest {
+  color: #b8c4cc;
+  font-size: 0.98rem;
+  margin: 0 0 6px;
+  min-height: 1.2em;
+}
+
+.status-hint {
+  color: #e6b455;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.spot-name {
+  font-size: 1.4rem;
+  margin: 4px 0 10px;
+}
+
+.direction-badge {
+  background: #26314090;
+  border-left: 3px solid #e8442e;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.98rem;
+  margin: 0 0 14px;
+}
+
+.progress {
+  background: #2a3440;
+  border-radius: 4px;
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.progress-fill {
+  background: #e8442e;
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s linear;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls .btn {
+  flex: 1;
+  margin: 0 0 14px;
+}
+
+.transcript summary {
+  cursor: pointer;
+  color: #9ecbff;
+  font-size: 0.95rem;
+}
+
+.transcript p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #c9d3da;
+  white-space: pre-wrap;
+}

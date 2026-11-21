@@ -1,8 +1,249 @@
 import './styles.css';
+import { Cooldowns, GeoWatcher, haversineMeters, isAccurate, pickNearestInside } from './geo';
+import { CompassWatcher, GpsTrackHeading, HeadingResolver } from './compass';
+import { initialBearing, octantFor } from './direction';
+import { AudioPlayer, HtmlAudioGateway } from './player';
+import { TourStateMachine } from './state';
+import { renderLanding, renderListening, renderDenied, renderPlaying, renderRequesting } from './ui';
+import type { DirOctant, SpotsData, Spot } from './types';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <main class="screen">
-    <h1>Beijing Echo</h1>
-    <p>Loading…</p>
-  </main>
-`;
+const BASE = import.meta.env.BASE_URL;
+const asset = (p: string) => `${BASE}${p}`;
+const CHIME_URL = asset('audio/chime.mp3');
+
+const OCTANT_PHRASE: Record<DirOctant, string> = {
+  n: 'directly ahead of you',
+  ne: 'ahead on your right',
+  e: 'on your right',
+  se: 'behind on your right',
+  s: 'right behind you',
+  sw: 'behind on your left',
+  w: 'on your left',
+  nw: 'ahead on your left',
+};
+
+function formatDistance(meters: number): string {
+  if (meters < 1000) return `${Math.round(meters)}m`;
+  return `${(meters / 1000).toFixed(1)}km`;
+}
+
+const app = document.querySelector<HTMLDivElement>('#app')!;
+const machine = new TourStateMachine();
+const audioEl = new Audio();
+const player = new AudioPlayer(new HtmlAudioGateway(audioEl));
+
+const geoWatcher = new GeoWatcher();
+const compassWatcher = new CompassWatcher();
+const trackHeading = new GpsTrackHeading();
+const resolver = new HeadingResolver(compassWatcher, trackHeading);
+const cooldowns = new Cooldowns();
+
+let spots: Spot[] = [];
+let listening: ReturnType<typeof renderListening> | null = null;
+let playing: ReturnType<typeof renderPlaying> | null = null;
+let playbackGen = 0;
+let fixForTrigger: { lat: number; lng: number } | null = null;
+
+// ---- data ----
+async function loadSpots(): Promise<void> {
+  try {
+    const res = await fetch(asset('spots.json'));
+    if (!res.ok) throw new Error(`spots.json HTTP ${res.status}`);
+    const data: SpotsData = await res.json();
+    spots = data.spots ?? [];
+  } catch (err) {
+    console.warn('spots.json unavailable:', err);
+    spots = [];
+  }
+}
+
+// ---- nearest status line ----
+function updateNearestStatus(lat: number, lng: number): void {
+  if (!listening) return;
+  if (spots.length === 0) {
+    listening.setNearest(null);
+    return;
+  }
+  let best: Spot | null = null;
+  let bestDist = Infinity;
+  for (const s of spots) {
+    const d = haversineMeters(s.lat, s.lng, lat, lng);
+    if (d < bestDist) {
+      best = s;
+      bestDist = d;
+    }
+  }
+  listening.setNearest(`Nearest: ${best!.name} · ${formatDistance(bestDist)}`);
+}
+
+// ---- playback ----
+function beginSpotPlayback(spot: Spot): void {
+  const fix = fixForTrigger;
+  const mainUrl = asset(`audio/spot-${spot.id}.mp3`);
+  let urls: string[];
+  let badge: string;
+  const heading = resolver.heading();
+  if (fix == null || heading == null) {
+    urls = [CHIME_URL, mainUrl];
+    badge = 'Walk toward the landmark';
+  } else {
+    const bearing = initialBearing(fix.lat, fix.lng, spot.landmark.lat, spot.landmark.lng);
+    const octant = octantFor(bearing, heading);
+    urls = [CHIME_URL, asset(`audio/dir/spot-${spot.id}-${octant}.mp3`), mainUrl];
+    badge = `→ ${spot.landmark.name} is ${OCTANT_PHRASE[octant]}`;
+  }
+
+  machine.transition({ type: 'FENCE_ENTER', spotId: spot.id });
+  playing = renderPlaying(app, {
+    spot,
+    badgeText: badge,
+    onPause: () => {
+      player.pause();
+      playing?.setPaused(true);
+    },
+    onResume: () => {
+      player.resume();
+      playing?.setPaused(false);
+    },
+    onReplay: () => {
+      playbackGen += 1;
+      player.stop();
+      void runSequence(urls, playbackGen);
+    },
+    onBrowse: () => {}, // wired in Task 7 (browse mode)
+  });
+  const gen = ++playbackGen;
+  void runSequence(urls, gen);
+}
+
+function runSequence(urls: string[], gen: number): Promise<void> {
+  audioEl.addEventListener('timeupdate', onTimeUpdate);
+  return player.playSequence(urls).then(() => {
+    if (gen !== playbackGen) return; // superseded by replay/stop
+    audioEl.removeEventListener('timeupdate', onTimeUpdate);
+    playing = null;
+    showListening();
+    machine.transition({ type: 'AUDIO_ENDED' });
+  });
+}
+
+function onTimeUpdate(): void {
+  const d = audioEl.duration;
+  if (Number.isFinite(d) && d > 0) playing?.setProgress(audioEl.currentTime / d);
+}
+
+// ---- states ----
+function showLanding(): void {
+  renderLanding(app, {
+    onStart: startTour,
+    onBrowse: () => {}, // wired in Task 7 (browse mode)
+    insecure: typeof window !== 'undefined' && window.isSecureContext === false,
+  });
+}
+
+function showListening(): void {
+  listening = renderListening(app, () => {}); // wired in Task 7 (browse mode)
+  if (fixForTrigger && spots.length > 0) updateNearestStatus(fixForTrigger.lat, fixForTrigger.lng);
+}
+
+function startTour(): void {
+  // Unlock the audio element within the same user gesture (iOS Safari requirement).
+  void audioEl.play().catch(() => {});
+  // iOS 13+ orientation permission — same gesture, failure ignored (heading falls back).
+  const doe = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<unknown> };
+  const orientReq = doe.requestPermission?.bind(DeviceOrientationEvent);
+  const orientPerm = orientReq
+    ? orientReq().catch(() => 'denied')
+    : Promise.resolve('granted');
+
+  renderRequestingScreen();
+  void orientPerm.then(() => probeLocation(0));
+}
+
+let requesting: ReturnType<typeof renderRequesting> | null = null;
+function renderRequestingScreen(): void {
+  requesting = renderRequesting(app);
+}
+
+function probeLocation(attempt: number): void {
+  if (typeof navigator === 'undefined' || !navigator.geolocation) {
+    machine.transition({ type: 'LOCATION_DENIED' });
+    renderDenied(app, { onRetry: () => window.location.reload() });
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    () => onAuthorized(),
+    (err) => {
+      if (err.code === err.PERMISSION_DENIED) {
+        machine.transition({ type: 'LOCATION_DENIED' });
+        renderDenied(app, { onRetry: () => window.location.reload() });
+        return;
+      }
+      // timeout / position unavailable → hint + auto-retry (max 3), then manual retry
+      if (attempt >= 2) {
+        machine.transition({ type: 'LOCATION_DENIED' });
+        renderDenied(app, { onRetry: () => window.location.reload() });
+        return;
+      }
+      requesting?.setHint(`Location unavailable (${err.message}) — retrying in 10s…`);
+      window.setTimeout(() => probeLocation(attempt + 1), 10_000);
+    },
+    { enableHighAccuracy: true, timeout: 15_000, maximumAge: 30_000 },
+  );
+}
+
+function onAuthorized(): void {
+  machine.transition({ type: 'AUTHORIZED' });
+  requesting = null;
+
+  geoWatcher.onError((msg) => {
+    listening?.setHint(`Location problem (${msg}) — retrying in 10s…`);
+    window.setTimeout(() => {
+      geoWatcher.stop();
+      geoWatcher.start(onFix);
+    }, 10_000);
+  });
+  compassWatcher.start(() => {}); // heading cached for HeadingResolver
+  geoWatcher.start(onFix);
+
+  // Welcome playback; location listening already running (non-blocking).
+  player.playSequence([asset('audio/welcome.mp3')]).then(() => {
+    machine.transition({ type: 'WELCOME_ENDED' });
+    if (machine.current() === 'listening') showListening();
+  });
+  showListening();
+}
+
+function onFix(fix: { lat: number; lng: number; accuracy: number }): void {
+  if (!isAccurate(fix)) {
+    listening?.setHint('Waiting for a clearer GPS signal…');
+    return;
+  }
+  listening?.setHint(null);
+  fixForTrigger = { lat: fix.lat, lng: fix.lng };
+  trackHeading.update(fix);
+  updateNearestStatus(fix.lat, fix.lng);
+
+  if (machine.current() !== 'listening') return; // welcome/playing: playback mutex
+  const inside = pickNearestInside(spots, fix.lat, fix.lng);
+  if (!inside || cooldowns.isCooling(inside.id)) return;
+  cooldowns.mark(inside.id);
+  beginSpotPlayback(inside);
+}
+
+// ---- boot ----
+void loadSpots();
+showLanding();
+
+// Debug handle for test mode (Task 8) and manual E2E.
+declare global {
+  interface Window {
+    __beijingEcho?: {
+      geoWatcher: GeoWatcher;
+      compassWatcher: CompassWatcher;
+      machine: TourStateMachine;
+      player: AudioPlayer;
+    };
+  }
+}
+window.__beijingEcho = { geoWatcher, compassWatcher, machine, player };

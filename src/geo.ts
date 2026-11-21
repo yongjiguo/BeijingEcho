@@ -62,12 +62,18 @@ export class Cooldowns {
 }
 
 export type FixCallback = (fix: Fix) => void;
+export type GeoErrorCallback = (message: string) => void;
 
 /** Wraps browser geolocation. `setMock` (test mode) replaces the real feed entirely. */
 export class GeoWatcher {
   private cb: FixCallback | null = null;
+  private errCb: GeoErrorCallback | null = null;
   private watchId: number | null = null;
   private mock: Fix | null = null;
+
+  onError(cb: GeoErrorCallback): void {
+    this.errCb = cb;
+  }
 
   start(cb: FixCallback): void {
     this.cb = cb;
@@ -77,6 +83,7 @@ export class GeoWatcher {
     }
     if (typeof navigator === 'undefined' || !navigator.geolocation) {
       console.warn('Geolocation unavailable in this environment');
+      this.errCb?.('Geolocation unavailable in this environment');
       return;
     }
     this.watchId = navigator.geolocation.watchPosition(
@@ -87,7 +94,10 @@ export class GeoWatcher {
           accuracy: pos.coords.accuracy,
         });
       },
-      (err) => console.warn('geolocation error:', err.message),
+      (err) => {
+        console.warn('geolocation error:', err.message);
+        this.errCb?.(err.message);
+      },
       { enableHighAccuracy: true, maximumAge: 5000, timeout: 15000 },
     );
   }
