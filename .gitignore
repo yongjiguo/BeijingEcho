@@ -1,5 +1,6 @@
 .venv/
-content/audio/*.mp3
-content/audio/samples/*.mp3
 node_modules/
 dist/
+content/audio/spot-*.mp3
+content/audio/dir/
+content/audio/welcome.mp3

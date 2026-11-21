@@ -15,8 +15,8 @@ from pathlib import Path
 import edge_tts
 
 ROOT = Path(__file__).resolve().parent.parent
-SAMPLES_FILE = ROOT / "content" / "samples.json"
-OUT_DIR = ROOT / "content" / "audio" / "samples"
+SAMPLES_FILE = ROOT / "content-src" / "samples.json"
+OUT_DIR = ROOT / "content-src" / "audio-samples"
 
 
 async def synth(item_id: str, text: str, voice: str, out_path: Path) -> None:
