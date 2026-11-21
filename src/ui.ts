@@ -11,6 +11,18 @@ export function el<K extends keyof HTMLElementTagNameMap>(
   return node;
 }
 
+/** Cinnabar seal stamp with the character 京. */
+function seal(size: 'lg' | 'sm'): HTMLDivElement {
+  return el('div', `seal seal-${size}`, '京');
+}
+
+/** Gilt diamond-and-line divider. */
+function ornament(): HTMLDivElement {
+  const node = el('div', 'ornament');
+  node.append(el('span', 'diamond'), el('span', 'line'), el('span', 'diamond'));
+  return node;
+}
+
 export interface LandingOptions {
   onStart: () => void;
   onBrowse: () => void;
@@ -19,24 +31,45 @@ export interface LandingOptions {
 
 export function renderLanding(root: HTMLElement, opts: LandingOptions): void {
   root.innerHTML = '';
-  const screen = el('main', 'screen');
-  screen.append(
-    el('h1', 'app-title', 'Beijing Echo'),
-    el('p', 'tagline', 'Walk near a Beijing landmark and its story plays automatically — in your ears, in English.'),
-    el('p', 'muted', 'Location is used only on this device to detect nearby spots. Nothing is stored or sent.'),
+  const screen = el('main', 'screen landing');
+
+  const emblem = el('div', 'landing-emblem rise d1');
+  emblem.append(seal('lg'), el('div', 'vertical-title', '北京回声'));
+
+  const title = el('h1', 'app-title rise d2', 'Beijing Echo');
+  const div = ornament();
+  div.classList.add('rise', 'd3');
+  const tagline = el(
+    'p',
+    'tagline rise d4',
+    'Walk near a Beijing landmark and its story plays automatically — in your ears, in English.',
   );
+  const privacy = el(
+    'p',
+    'muted rise d5',
+    'Location is used only on this device to detect nearby spots. Nothing is stored or sent.',
+  );
+  screen.append(emblem, title, div, tagline, privacy);
+
   if (opts.insecure) {
     screen.append(
-      el('p', 'error', 'This page needs HTTPS (or localhost) to access your location. Please open it over a secure connection.'),
+      el(
+        'p',
+        'error',
+        'This page needs HTTPS (or localhost) to access your location. Please open it over a secure connection.',
+      ),
     );
   }
-  const start = el('button', 'btn btn-primary', 'Start Audio Tour');
+
+  const start = el('button', 'btn btn-primary rise d5', 'Start Audio Tour');
   start.id = 'start-btn';
   start.disabled = opts.insecure;
   start.addEventListener('click', opts.onStart);
-  const browse = el('button', 'btn btn-secondary', 'Browse all spots');
+  const browse = el('button', 'btn btn-secondary rise d6', 'Browse all spots');
   browse.addEventListener('click', opts.onBrowse);
   screen.append(start, browse);
+
+  screen.append(el('p', 'landing-foot rise d6', '古都 · 回声 · 足下'));
   root.append(screen);
 }
 
@@ -47,10 +80,16 @@ export interface RequestingHandle {
 export function renderRequesting(root: HTMLElement): RequestingHandle {
   root.innerHTML = '';
   const screen = el('main', 'screen');
-  const hint = el('p', 'muted', 'Requesting location & direction permissions…');
-  screen.append(el('h1', 'app-title', 'Beijing Echo'), hint);
+  const head = el('header', 'app-header');
+  const brand = el('h1', 'app-title-small');
+  brand.append(seal('sm'), document.createTextNode('Beijing Echo'));
+  const hint = el('p', 'requesting-note', 'Requesting location & direction permissions…');
+  const card = el('div', 'card');
+  card.append(hint);
+  head.append(brand);
+  screen.append(head, card);
   root.append(screen);
-  return { setHint: (text: string) => void (hint.textContent = text) };
+  return { setHint: (text: string) => void (card.textContent = text) };
 }
 
 export interface ListeningHandle {
@@ -64,10 +103,13 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
   root.innerHTML = '';
   const screen = el('main', 'screen');
   const header = el('header', 'app-header');
+  const brand = el('h1', 'app-title-small');
+  brand.append(seal('sm'), document.createTextNode('Beijing Echo'));
   const browseBtn = el('button', 'btn btn-small', 'Browse');
   browseBtn.addEventListener('click', onBrowse);
-  header.append(el('h1', 'app-title-small', 'Beijing Echo'), browseBtn);
-  const card = el('section', 'card');
+  header.append(brand, browseBtn);
+
+  const card = el('section', 'card rise');
   const headline = el('p', 'status-headline', 'Listening — walk near a spot to hear its story');
   const nearest = el('p', 'status-nearest');
   const hint = el('p', 'status-hint');
@@ -77,8 +119,7 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
   root.append(screen);
   return {
     setNearest(line) {
-      if (line == null) nearest.textContent = '';
-      else nearest.textContent = line;
+      nearest.textContent = line ?? '';
     },
     setHint(line) {
       hint.textContent = line ?? '';
@@ -107,12 +148,17 @@ export function renderPlaying(root: HTMLElement, opts: PlayingOptions): PlayingH
   root.innerHTML = '';
   const screen = el('main', 'screen');
   const header = el('header', 'app-header');
+  const brand = el('h1', 'app-title-small');
+  brand.append(seal('sm'), document.createTextNode('Beijing Echo'));
   const browseBtn = el('button', 'btn btn-small', 'Browse');
   browseBtn.addEventListener('click', opts.onBrowse);
-  header.append(el('h1', 'app-title-small', 'Beijing Echo'), browseBtn);
+  header.append(brand, browseBtn);
 
-  const card = el('section', 'card');
-  card.append(el('h2', 'spot-name', opts.spot.name));
+  const card = el('section', 'card rise');
+  const kicker = el('p', 'spot-kicker', '正在讲述 · NOW NARRATING');
+  const name = el('h2', 'spot-name', opts.spot.name);
+  const div = ornament();
+  card.append(kicker, name, div);
 
   const badge = el('p', 'direction-badge', opts.badgeText);
   badge.hidden = true;
@@ -160,7 +206,12 @@ export interface DeniedOptions {
 export function renderDenied(root: HTMLElement, opts: DeniedOptions): void {
   root.innerHTML = '';
   const screen = el('main', 'screen');
-  const card = el('section', 'card');
+  const head = el('header', 'app-header');
+  const brand = el('h1', 'app-title-small');
+  brand.append(seal('sm'), document.createTextNode('Beijing Echo'));
+  head.append(brand);
+
+  const card = el('section', 'card denied-card');
   card.append(
     el('h2', 'spot-name', 'Location access needed'),
     el(
@@ -172,6 +223,6 @@ export function renderDenied(root: HTMLElement, opts: DeniedOptions): void {
   const retry = el('button', 'btn btn-primary', 'Try again');
   retry.addEventListener('click', opts.onRetry);
   card.append(retry);
-  screen.append(el('h1', 'app-title-small', 'Beijing Echo'), card);
+  screen.append(head, card);
   root.append(screen);
 }

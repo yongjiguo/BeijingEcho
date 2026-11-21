@@ -86,7 +86,7 @@ export function renderBrowseList(
       img.loading = 'lazy';
       row.append(img);
     } else {
-      row.append(el('div', 'browse-thumb browse-thumb-empty', 'BJ'));
+      row.append(el('div', 'browse-thumb browse-thumb-empty', '京'));
     }
     const text = el('div', 'browse-item-text');
     text.append(el('p', 'browse-item-name', item.name), el('p', 'browse-item-summary', item.summary));
@@ -139,6 +139,9 @@ export function renderSpotDetail(
   }
 
   screen.append(el('h2', 'spot-name', spot.name));
+  const div = el('div', 'ornament');
+  div.append(el('span', 'diamond'), el('span', 'line'), el('span', 'diamond'));
+  screen.append(div);
 
   const playBtn = el('button', 'btn btn-primary', '▶ Play this story');
   playBtn.addEventListener('click', () => {
