@@ -17,7 +17,9 @@
 - Python 3.11 only (project venv `.venv`); frontend Node ≥ 18, `npm` scripts: `dev`/`build`/`preview`/`test`
 - TypeScript `strict: true`; no UI framework; tests via vitest only
 - All geo coordinates WGS-84; accuracy filter threshold `100` m; cooldown `30 * 60 * 1000` ms; default spot radius `200` m (per-spot overrides allowed: 50-1000; airports `2000-3000`)
-- TTS voice `en-US-AndrewMultilingualNeural`; keys only via env (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`), never in repo
+- TTS voice `en-US-AndrewMultilingualNeural`, rate **0.8x** (edge `--rate=-20%`, Azure SSML `rate="-20%"`); keys only via env (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`), never in repo
+- Audio decoration (user-final): every playback starts with ~3s chime `audio/chime.mp3` (synthesized, license-free); auto mode = chime → dir sentence (dry) → narration (main); browse mode = chime → narration
+- BGM: 3 tracks (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02, Kevin MacLeod, incompetech, **CC-BY 4.0 → attribution required**) **randomly assigned per narration**; build-time mix at **-8dB** (volume≈0.398, 2s fade-in) via `scripts/mix_audio.py`; shipped narration files are pre-mixed single MP3s
 - UI copy all English; content URLs: `/spots.json`, `/audio/...`, `/audio/dir/...`, `/images/...` (vite `publicDir: 'content'`)
 - Dir octants fixed order: `n, ne, e, se, s, sw, w, nw`; boundaries at ±22.5° around each of the 8 centers
 - Spot ids and narration texts come verbatim from `content/narrations-draft.md` / `content/narrations-draft-2.md` headers (⚠/⚡ review notes stripped from all shipped text)
@@ -196,7 +198,7 @@ export class TourStateMachine {
 - Produces: `main.ts` wiring: Start button → same-gesture `DeviceOrientationEvent.requestPermission?.()` (ignore failure) + `geolocation.getCurrentPosition` probe → AUTHORIZED/LOCATION_DENIED; welcome playback (player.playSequence([welcome.audio])) → WELCOME_ENDED; GeoWatcher feed → TriggerEngine logic inline in main (nearest-spot status line update; on fence enter & not cooling & not playing → Cooldowns.mark + player.playSequence([dirUrl, mainUrl]) with onTrackStart[0] showing direction badge `→ {landmark.name} is on your {OCTANT}`); playing card shows transcript (collapsible), pause/resume/replay; header Browse button → `browse.open()` (Task 7); error view per spec §9
 
 - [ ] **Step 1: Implement index.html skeleton + styles.css** (mobile-first, single screen, all-English copy per spec §6 elements 1-4)
-- [ ] **Step 2: Implement ui.ts render helpers + main.ts wiring** per above; wiring specifics: every accurate fix → `pickNearestInside` updates the status line distance; if inside a fence & state listening & not cooling → `Cooldowns.mark`, resolve heading via HeadingResolver — heading null → `playSequence([mainUrl])` + badge *"Walk toward the landmark"*, else `playSequence([dirUrl(octant), mainUrl])` + badge `→ {landmark.name} is on your {OCTANT}` (octant computed at trigger moment only); geolocation error → status hint, auto-retry in 10s; browse open/close must not stop the watcher
+- [ ] **Step 2: Implement ui.ts render helpers + main.ts wiring** per above; wiring specifics: every accurate fix → `pickNearestInside` updates the status line distance; if inside a fence & state listening & not cooling → `Cooldowns.mark`, resolve heading via HeadingResolver — heading null → `playSequence([chimeUrl, mainUrl])` + badge *"Walk toward the landmark"*, else `playSequence([chimeUrl, dirUrl(octant), mainUrl])` + badge `→ {landmark.name} is on your {OCTANT}` (octant computed at trigger moment only); welcome playback = `playSequence([welcome.audio])` (no chime; the tap already acknowledged the user); geolocation error → status hint, auto-retry in 10s; browse open/close must not stop the watcher
 - [ ] **Step 3: `npm run dev`, open with `?test=1` stub absent — verify landing renders; manual check**: Expected: UI matches spec elements; console clean
 - [ ] **Step 4: `npm run build`** — Expected: PASS
 - [ ] **Step 5: Commit** `feat: ui shell and auto-tour wiring`
@@ -216,7 +218,7 @@ export function buildListItems(data: SpotsData): { id: string; name: string; sum
 // thumbnail = spot.images[0]?.url ?? null
 export function renderBrowseList(container: HTMLElement, data: SpotsData, onOpen: (id: string) => void): void;
 export function renderSpotDetail(container: HTMLElement, spot: Spot, player: AudioPlayer, onBack: () => void): void;
-// detail: image area (first image + thumbnail strip if more), full transcript, ▶ Play this story button → player.playSequence([spot.audio]), credit line under images, back button
+// detail: image area (first image + thumbnail strip if more), full transcript, ▶ Play this story button → player.playSequence([chimeUrl, spot.audio]), credit line under images (image credits + "Music: Kevin MacLeod, incompetech, CC-BY 4.0"), back button
 ```
 
 - [ ] **Step 1: Write failing test** for `buildListItems` (61 items, thumbnail mapping, null-safe)
@@ -286,16 +288,17 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
 - [ ] **Step 2: Run it** — Expected: images count logged; spots.json images[] patched; any skips listed
 - [ ] **Step 3: Commit** `feat: image fetch with credits`
 
-### Task 12: TTS generation script
+### Task 12: TTS generation (0.8x) + chime synthesis + BGM mixing
 
 **Files:**
-- Create: `scripts/tts_generate.py`
+- Create: `scripts/tts_generate.py`, `scripts/mix_audio.py`, `content/audio/bgm/CREDITS.md`
 - Modify: `content/audio/**` (generated, gitignored)
 
 **Interfaces:**
-- Consumes: spots.json (transcripts, landmark.name)
-- Produces: `content/audio/welcome.mp3`; `content/audio/spot-{id}.mp3` ×61; `content/audio/dir/spot-{id}-{octant}.mp3` ×488, octants in fixed order
-- Templates (exact, from spec):
+- Consumes: spots.json (transcripts, landmark.name); BGM tracks already downloaded at `content/audio/bgm-candidates/` (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02)
+- Produces: `content/audio/welcome.mp3`; `content/audio/spot-{id}.mp3` ×61 (**pre-mixed with BGM**); dry dir sentences `content/audio/dir/spot-{id}-{octant}.mp3` ×488; `content/audio/chime.mp3`; `content/audio/bgm/*.mp3` + `CREDITS.md`
+- TTS: Azure default (SDK, SSML `rate="-20%"`) → edge-tts fallback (`--rate=-20%`); idempotent (skip existing >10KB); SSML-safe escaping
+- Templates (exact):
   - n: `Straight ahead rises {landmark}.`
   - ne: `{landmark} is just ahead on your right.`
   - e: `On your right stands {landmark}.`
@@ -304,11 +307,16 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
   - sw: `Just behind you on your left is {landmark}.`
   - w: `On your left stands {landmark}.`
   - nw: `{landmark} is just ahead on your left.`
-- Provider chain: Azure (SDK `azure-cognitiveservices-speech`, voice `en-US-AndrewMultilingualNeural`, env keys) → edge-tts fallback; sequential (F0 concurrency 1); skip files that already exist with size >10KB (idempotent rerun); SSML-safe escaping of landmark text
+- Mixing (mix_audio.py): per narration file, pick 1 of the 3 BGM tracks **randomly** (seeded `random.Random(2026)` for reproducibility), ffmpeg: `[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0`; chime synthesis: dual sine 880Hz+1318.5Hz, volumes 0.35/0.18, fade-out from 1.0s/2.0s, `aecho=0.6:0.3:120:0.25`, 3s
+- `CREDITS.md`: `Music: "Gymnopedie No 1", "Dreams Become Real", "Meditation Impromptu 02" by Kevin MacLeod (incompetech.com), Licensed under Creative Commons: By Attribution 4.0`
 
-- [ ] **Step 1: Implement tts_generate.py** (provider abstraction + template table + idempotency)
-- [ ] **Step 2: Run with edge-tts (no Azure keys yet)** — Expected: 550 files (62 mains incl. welcome + 488 dir); spot-check `spot-forbidden-city.mp3`, one dir file plays correct sentence
-- [ ] **Step 3: Commit** `feat: tts generation script`
+- [ ] **Step 1: Copy BGM tracks** `content/audio/bgm-candidates/*.mp3` → `content/audio/bgm/` and write `CREDITS.md` (text above)
+- [ ] **Step 2: Implement tts_generate.py** (rate -20%, provider chain, idempotency, templates)
+- [ ] **Step 3: Run tts_generate.py** — Expected: 62 dry mains (61 + welcome) + 488 dir files; spot-check one
+- [ ] **Step 4: Implement mix_audio.py** (random-seeded mixing + chime synthesis)
+- [ ] **Step 5: Run mix_audio.py** — Expected: 61 mains overwritten with BGM mix (sizes differ from dry), chime.mp3 created; dir files untouched (dry)
+- [ ] **Step 6: Spot-check** `spot-temple-of-heaven.mp3` — Expected: 0.8x voice with audible BGM bed, matches approved sample
+- [ ] **Step 7: Commit** `feat: tts + chime + bgm mixing`
 
 ### Task 13: content validation script
 
@@ -318,7 +326,7 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
 
 **Interfaces:**
 - Consumes: content/spots.json, audio/, images/
-- Produces: stdout report + exit 0 (all pass) / 1 (list failures). Checks per spec §8.4: JSON schema fields non-empty; coords in Beijing bounds (lat 39.3-40.4, lng 115.3-117.6); radius: ids `capital-airport-welcome`/`daxing-airport-welcome` within 2000-3000, all others 50-1000; transcript non-empty and no `⚠`/`⚡`; audio files exist, mains 30s-10min via mutagen, dir files 1-15s, all 8 octants per spot present; landmark inside spot fence; images exist + credit non-empty (images [] allowed only with logged skip — enforce credit when images non-empty)
+- Produces: stdout report + exit 0 (all pass) / 1 (list failures). Checks per spec §8.6: JSON schema fields non-empty; coords in Beijing bounds (lat 39.3-40.4, lng 115.3-117.6); radius: ids `capital-airport-welcome`/`daxing-airport-welcome` within 2000-3000, all others 50-1000; transcript non-empty and no `⚠`/`⚡`; audio files exist, mains 30s-10min via mutagen, dir files 1-15s, all 8 octants per spot present; landmark inside spot fence; images exist + credit non-empty (images [] allowed only with logged skip — enforce credit when images non-empty); `chime.mp3` exists (2-4s), `bgm/` has exactly 3 tracks + non-empty `CREDITS.md`
 
 - [ ] **Step 1: Implement validate_content.py** (`.venv/bin/pip install mutagen` first)
 - [ ] **Step 2: Run it** — Expected: exit 0 with summary `61 spots + welcome OK`; fix any failures found in Tasks 9-12 outputs

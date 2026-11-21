@@ -134,6 +134,12 @@ TravelTrips/
 
 **应用欢迎词**（app-welcome，落地后的"第一声"）：授权成功后立即自动播放一次（约 60-75 秒），内容介绍软件服务功能（围栏自动触发、方位句、文字对照、61 点位覆盖、免注册免费、隐私口径"定位仅本机使用不存储"）与使用规则（保持页面前台亮屏）。与位置无关，无方位句变体。游客在机场落地时，欢迎词之后紧接机场欢迎点围栏触发，形成自然的 onboarding 序列。
 
+**播放序列与音频装饰**（用户定稿）：
+- 自动模式触发序列：`audio/chime.mp3`（约 3 秒柔和提示音，全站统一）→ 方位句（干声）→ 正文（**制作期已混入 BGM**）
+- 浏览模式手动播放序列：chime → 正文
+- BGM 配置：3 首轻音乐**随机选一**混入每段正文（Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02，Kevin MacLeod 演奏，incompetech，CC-BY 4.0 需署名——署名展示在浏览模式详情页/页脚）；音量 **-8dB**（volume≈0.398）+ 2 秒淡入；混音在**制作期**由 ffmpeg 完成（运行时仍是单个 MP3，零额外改动）
+- TTS 语速：**0.8x**（Azure SSML `rate="-20%"` / edge-tts `--rate=-20%`，用户定稿）
+
 **界面元素**（单屏，全英文）：
 1. 落地页：应用名 + 一句话价值说明 + 大按钮「Start Audio Tour」+ 次级入口「Browse all spots」+ 定位与朝向用途说明（点击时同一手势内请求定位权限与 iOS 朝向权限）
 2. 监听态：状态卡 *“Listening — walk near a spot to hear its story”* + 最近景点名称与实时距离（如 *“Nearest: Temple of Heaven · 400m”*）。此距离反馈是自动触发的必要引导，非进度列表功能；页头有「Browse」入口可随时切换到浏览模式
@@ -179,15 +185,17 @@ TravelTrips/
    - **应用欢迎词**：`audio/welcome.mp3`（1 段，无方位句变体）
    - **正文**：`audio/spot-{id}.mp3`（1 段/景点）
    - **方位引导句**：按 8 方位模板（*"Ahead of you…" / “On your right…” / “Behind you…” 等）+ 景点 `landmark.name` 生成 8 个变体 → `audio/dir/spot-{id}-{dir}.mp3`（3-5 秒/段）
-   - TTS 供应商（脚本可切换，按优先级）：
-     1. **Azure Speech F0 免费层（默认）**：每月 50 万神经 TTS 字符免费、按月刷新（本项目全量约 10 万字符仅占 20%）；音色与试听样本完全同款（`en-US-AndrewMultilingualNeural` 男声，Azure 官方接口，合法合规）；F0 层并发上限 1，批量生成顺序执行即可；需注册 Azure 账号（F0 层免费不扣费），密钥走环境变量 `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION`，不进代码库
-     2. **edge-tts（无账号备胎）**：免费且无需任何账号，Azure 同款音色走免费通道；⚠ 非官方接口（逆向 Edge 朗读功能），量产存在封禁风险，仅在 Azure 未配置时使用
-     3. **Kokoro TTS（离线备选）**：Apache 2.0 本地开源（82M 参数，CPU 可跑）；音色为社区音色（非 Andrew），中文插入支持弱
-     4. **gpt-4o-mini-tts（付费可选）**：约 $3/全量，独特优势是支持语气指令（做戏剧化讲述风格时的升级项）；⚠ OpenAI 已于 2026-10 废弃 tts-1/tts-1-hd（2027-01 下线），不得基于旧模型开发
+   - **TTS 语速 0.8x**（Azure SSML `rate="-20%"` / edge-tts `--rate=-20%`，音色 `en-US-AndrewMultilingualNeural`）
+3. `scripts/mix_audio.py`：BGM 制作期混音——TTS 正文生成后，ffmpeg 将 `audio/bgm/` 下 3 首轻音乐**随机选一**以 -8dB（volume≈0.398）+ 2 秒淡入混入每段正文（覆盖输出），`audio/chime.mp3` 由 ffmpeg 合成（双音铃声 + 淡出 + 轻回声，约 3 秒，零版权顾虑）；方位句保持干声；BGM 素材 `content/audio/bgm/*.mp3`（Kevin MacLeod / incompetech，CC-BY 4.0，署名文案存 `content/audio/bgm/CREDITS.md` 并在浏览模式详情页展示）
+4. TTS 供应商（tts_generate.py 脚本可切换，按优先级）：
+   1. **Azure Speech F0 免费层（默认）**：每月 50 万神经 TTS 字符免费、按月刷新（本项目全量约 10 万字符仅占 20%）；音色与试听样本完全同款（`en-US-AndrewMultilingualNeural` 男声，Azure 官方接口，合法合规）；F0 层并发上限 1，批量生成顺序执行即可；需注册 Azure 账号（F0 层免费不扣费），密钥走环境变量 `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION`，不进代码库
+   2. **edge-tts（无账号备胎）**：免费且无需任何账号，Azure 同款音色走免费通道；⚠ 非官方接口（逆向 Edge 朗读功能），量产存在封禁风险，仅在 Azure 未配置时使用
+   3. **Kokoro TTS（离线备选）**：Apache 2.0 本地开源（82M 参数，CPU 可跑）；音色为社区音色（非 Andrew），中文插入支持弱
+   4. **gpt-4o-mini-tts（付费可选）**：约 $3/全量，独特优势是支持语气指令（做戏剧化讲述风格时的升级项）；⚠ OpenAI 已于 2026-10 废弃 tts-1/tts-1-hd（2027-01 下线），不得基于旧模型开发
    - 全量音频成本：**$0**（Azure 免费额度内）
-3. `scripts/fetch_images.py`：从 Wikipedia REST API（`page/summary` 返回 thumbnail/originalimage，已验证）抓取各景点实拍图 → 本地化存储到 `content/images/`，作者与许可信息写入 spots.json 的 `images[].credit`；个别无图景点跳过并在日志中列出（预计极少）
-4. `scripts/validate_content.py` 校验：坐标与 landmark 坐标在北京市界内、半径合理（普通景点 50-1000 米；机场欢迎围栏 2000-3000 米）、transcript 非空、正文音频存在且时长 30 秒-10 分钟、8 个方位句音频齐全且时长 1-15 秒、landmark 位于对应景点围栏内、images 文件存在且 credit 非空
-5. 内容更新流程：改 JSON → 重跑脚本 → `git push` 自动部署，全程约 5 分钟
+5. `scripts/fetch_images.py`：从 Wikipedia REST API（`page/summary` 返回 thumbnail/originalimage，已验证）抓取各景点实拍图 → 本地化存储到 `content/images/`，作者与许可信息写入 spots.json 的 `images[].credit`；个别无图景点跳过并在日志中列出（预计极少）
+6. `scripts/validate_content.py` 校验：坐标与 landmark 坐标在北京市界内、半径合理（普通景点 50-1000 米；机场欢迎围栏 2000-3000 米）、transcript 非空、正文音频存在且时长 30 秒-10 分钟、8 个方位句音频齐全且时长 1-15 秒、landmark 位于对应景点围栏内、images 文件存在且 credit 非空、`chime.mp3` 与 `bgm/` 三曲及 `CREDITS.md` 存在
+7. 内容更新流程：改 JSON → 重跑脚本 → `git push` 自动部署，全程约 5 分钟
 
 ## 9. 错误处理
 
