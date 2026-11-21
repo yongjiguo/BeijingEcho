@@ -4,6 +4,7 @@ import { CompassWatcher, GpsTrackHeading, HeadingResolver } from './compass';
 import { initialBearing, octantFor } from './direction';
 import { AudioPlayer, HtmlAudioGateway } from './player';
 import { TourStateMachine } from './state';
+import { openBrowse } from './browse';
 import { renderLanding, renderListening, renderDenied, renderPlaying, renderRequesting } from './ui';
 import type { DirOctant, SpotsData, Spot } from './types';
 
@@ -39,6 +40,7 @@ const resolver = new HeadingResolver(compassWatcher, trackHeading);
 const cooldowns = new Cooldowns();
 
 let spots: Spot[] = [];
+let spotsData: SpotsData | null = null;
 let listening: ReturnType<typeof renderListening> | null = null;
 let playing: ReturnType<typeof renderPlaying> | null = null;
 let playbackGen = 0;
@@ -50,6 +52,7 @@ async function loadSpots(): Promise<void> {
     const res = await fetch(asset('spots.json'));
     if (!res.ok) throw new Error(`spots.json HTTP ${res.status}`);
     const data: SpotsData = await res.json();
+    spotsData = data;
     spots = data.spots ?? [];
   } catch (err) {
     console.warn('spots.json unavailable:', err);
@@ -110,7 +113,7 @@ function beginSpotPlayback(spot: Spot): void {
       player.stop();
       void runSequence(urls, playbackGen);
     },
-    onBrowse: () => {}, // wired in Task 7 (browse mode)
+    onBrowse: openBrowseView,
   });
   const gen = ++playbackGen;
   void runSequence(urls, gen);
@@ -132,17 +135,21 @@ function onTimeUpdate(): void {
   if (Number.isFinite(d) && d > 0) playing?.setProgress(audioEl.currentTime / d);
 }
 
+const openBrowseView = (): void => {
+  if (spotsData) openBrowse(spotsData, player);
+};
+
 // ---- states ----
 function showLanding(): void {
   renderLanding(app, {
     onStart: startTour,
-    onBrowse: () => {}, // wired in Task 7 (browse mode)
+    onBrowse: openBrowseView,
     insecure: typeof window !== 'undefined' && window.isSecureContext === false,
   });
 }
 
 function showListening(): void {
-  listening = renderListening(app, () => {}); // wired in Task 7 (browse mode)
+  listening = renderListening(app, openBrowseView);
   if (fixForTrigger && spots.length > 0) updateNearestStatus(fixForTrigger.lat, fixForTrigger.lng);
 }
 
