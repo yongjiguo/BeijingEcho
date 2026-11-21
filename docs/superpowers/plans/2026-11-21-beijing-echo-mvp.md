@@ -19,7 +19,7 @@
 - All geo coordinates WGS-84; accuracy filter threshold `100` m; cooldown `30 * 60 * 1000` ms; default spot radius `200` m (per-spot overrides allowed: 50-1000; airports `2000-3000`)
 - TTS voice `en-US-AndrewMultilingualNeural`, rate **0.9x** (edge `--rate=-10%`, Azure SSML `rate="-10%"`); keys only via env (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`), never in repo
 - Audio decoration (user-final): every playback starts with `audio/chime.mp3` — **~5s wind-chime real recording** (freesound #879798, CC0, first 5s + 1.2s fade-out); auto mode = chime → dir sentence (dry) → narration (main); browse mode = chime → narration
-- BGM: 3 tracks (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02, Kevin MacLeod, incompetech, **CC-BY 4.0 → attribution required**) **randomly assigned per narration**; build-time mix at **-8dB** (volume≈0.398, 2s fade-in) via `scripts/mix_audio.py`; shipped narration files are pre-mixed single MP3s
+- BGM: **5 tracks randomly assigned per narration** — 2 Chinese-style (guzheng loop / erhu, freesound.org **CC0**, no attribution required) + 3 Western light classical (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02, Kevin MacLeod incompetech, **CC-BY 4.0 → attribution displayed**); build-time mix at **-8dB** (volume≈0.398, 2s fade-in) via `scripts/mix_audio.py`; shipped narration files are pre-mixed single MP3s
 - UI copy all English; content URLs: `/spots.json`, `/audio/...`, `/audio/dir/...`, `/images/...` (vite `publicDir: 'content'`)
 - Dir octants fixed order: `n, ne, e, se, s, sw, w, nw`; boundaries at ±22.5° around each of the 8 centers
 - Spot ids and narration texts come verbatim from `content/narrations-draft.md` / `content/narrations-draft-2.md` headers (⚠/⚡ review notes stripped from all shipped text)
@@ -295,7 +295,7 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
 - Modify: `content/audio/**` (generated, gitignored)
 
 **Interfaces:**
-- Consumes: spots.json (transcripts, landmark.name); BGM tracks already downloaded at `content/audio/bgm-candidates/` (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02)
+- Consumes: spots.json (transcripts, landmark.name); BGM tracks already in place at `content/audio/bgm/` — bgm-1-guzheng-loop / bgm-2-erhu (freesound CC0) + bgm-3-gymnopedie / bgm-4-dreams / bgm-5-meditation (incompetech CC-BY 4.0) + `CREDITS.md`; chime already produced at `content/audio/chime.mp3`
 - Produces: `content/audio/welcome.mp3`; `content/audio/spot-{id}.mp3` ×61 (**pre-mixed with BGM**); dry dir sentences `content/audio/dir/spot-{id}-{octant}.mp3` ×488; `content/audio/chime.mp3`; `content/audio/bgm/*.mp3` + `CREDITS.md`
 - TTS: Azure default (SDK, SSML `rate="-10%"`) → edge-tts fallback (`--rate=-10%`); idempotent (skip existing >10KB); SSML-safe escaping
 - Templates (exact):
@@ -307,15 +307,15 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
   - sw: `Just behind you on your left is {landmark}.`
   - w: `On your left stands {landmark}.`
   - nw: `{landmark} is just ahead on your left.`
-- Mixing (mix_audio.py): per narration file, pick 1 of the 3 BGM tracks **randomly** (seeded `random.Random(2026)` for reproducibility), ffmpeg: `[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0` (loop BGM to voice length when shorter — `aloop`); chime: trim `content/audio/samples/chime-candidates/chime-cand2.mp3` (wind chime, freesound #879798 CC0) to first 5s with `afade=t=out:st=3.8:d=1.2` → `audio/chime.mp3`
-- `CREDITS.md`: `Music: "Gymnopedie No 1", "Dreams Become Real", "Meditation Impromptu 02" by Kevin MacLeod (incompetech.com), Licensed under Creative Commons: By Attribution 4.0`
+- Mixing (mix_audio.py): per narration file, pick 1 of the **5** BGM tracks **randomly** (seeded `random.Random(2026)` for reproducibility), ffmpeg: `[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0` (loop BGM to voice length when shorter — `aloop`); chime already produced at `content/audio/chime.mp3` (5.0s wind-chime recording) — mix_audio.py verifies it exists
+- `CREDITS.md` (already written): 2 freesound tracks under **CC0** (/s/472707, /s/569841 — attribution not required, credited as courtesy) + 3 incompetech tracks under **CC-BY 4.0** (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02, Kevin MacLeod — attribution displayed in UI) + chime /s/879798 (CC0)
 
-- [ ] **Step 1: Copy BGM tracks** `content/audio/bgm-candidates/*.mp3` → `content/audio/bgm/` and write `CREDITS.md` (text above)
-- [ ] **Step 2: Implement tts_generate.py** (rate -20%, provider chain, idempotency, templates)
+- [ ] **Step 1: Verify assets** — `content/audio/bgm/` has 5 tracks + `CREDITS.md`; chime present — Expected: PASS (assets pre-placed)
+- [ ] **Step 2: Implement tts_generate.py** (rate -10%, provider chain, idempotency, templates)
 - [ ] **Step 3: Run tts_generate.py** — Expected: 62 dry mains (61 + welcome) + 488 dir files; spot-check one
-- [ ] **Step 4: Implement mix_audio.py** (random-seeded mixing + chime synthesis)
-- [ ] **Step 5: Run mix_audio.py** — Expected: 61 mains overwritten with BGM mix (sizes differ from dry), chime.mp3 created; dir files untouched (dry)
-- [ ] **Step 6: Spot-check** `spot-temple-of-heaven.mp3` — Expected: 0.8x voice with audible BGM bed, matches approved sample
+- [ ] **Step 4: Implement mix_audio.py** (random-seeded 5-track mixing + chime verification)
+- [ ] **Step 5: Run mix_audio.py** — Expected: 61 mains overwritten with BGM mix (sizes differ from dry), chime.mp3 present; dir files untouched (dry)
+- [ ] **Step 6: Spot-check** `spot-temple-of-heaven.mp3` — Expected: 0.9x voice with audible BGM bed, matches approved sample
 - [ ] **Step 7: Commit** `feat: tts + chime + bgm mixing`
 
 ### Task 13: content validation script
@@ -326,7 +326,7 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
 
 **Interfaces:**
 - Consumes: content/spots.json, audio/, images/
-- Produces: stdout report + exit 0 (all pass) / 1 (list failures). Checks per spec §8.6: JSON schema fields non-empty; coords in Beijing bounds (lat 39.3-40.4, lng 115.3-117.6); radius: ids `capital-airport-welcome`/`daxing-airport-welcome` within 2000-3000, all others 50-1000; transcript non-empty and no `⚠`/`⚡`; audio files exist, mains 30s-10min via mutagen, dir files 1-15s, all 8 octants per spot present; landmark inside spot fence; images exist + credit non-empty (images [] allowed only with logged skip — enforce credit when images non-empty); `chime.mp3` exists (2-4s), `bgm/` has exactly 3 tracks + non-empty `CREDITS.md`
+- Produces: stdout report + exit 0 (all pass) / 1 (list failures). Checks per spec §8.6: JSON schema fields non-empty; coords in Beijing bounds (lat 39.3-40.4, lng 115.3-117.6); radius: ids `capital-airport-welcome`/`daxing-airport-welcome` within 2000-3000, all others 50-1000; transcript non-empty and no `⚠`/`⚡`; audio files exist, mains 30s-10min via mutagen, dir files 1-15s, all 8 octants per spot present; landmark inside spot fence; images exist + credit non-empty (images [] allowed only with logged skip — enforce credit when images non-empty); `chime.mp3` exists (4.5-5.5s), `bgm/` has exactly 5 tracks + non-empty `CREDITS.md`
 
 - [ ] **Step 1: Implement validate_content.py** (`.venv/bin/pip install mutagen` first)
 - [ ] **Step 2: Run it** — Expected: exit 0 with summary `61 spots + welcome OK`; fix any failures found in Tasks 9-12 outputs

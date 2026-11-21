@@ -137,7 +137,7 @@ TravelTrips/
 **播放序列与音频装饰**（用户定稿）：
 - 自动模式触发序列：`audio/chime.mp3`（**5 秒风铃真实录音**，前 5 秒截取 + 1.2 秒淡出；freesound #879798，CC0；全站统一）→ 方位句（干声）→ 正文（**制作期已混入 BGM**）
 - 浏览模式手动播放序列：chime → 正文
-- BGM 配置：3 首轻音乐**随机选一**混入每段正文（Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02，Kevin MacLeod 演奏，incompetech，CC-BY 4.0 需署名——署名展示在浏览模式详情页/页脚）；音量 **-8dB**（volume≈0.398）+ 2 秒淡入；混音在**制作期**由 ffmpeg 完成（运行时仍是单个 MP3，零额外改动）
+- BGM 配置：**5 首随机选一**混入每段正文（**2 中国风**：古筝循环 / 二胡曲，freesound.org **CC0** 无署名义务；**3 西方古典轻音乐**：Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02，Kevin MacLeod，incompetech，**CC-BY 4.0 需署名**——署名展示于浏览模式详情页/页脚）；音量 **-8dB**（volume≈0.398）+ 2 秒淡入；混音在**制作期**由 ffmpeg 完成（运行时仍是单个 MP3，零额外改动）
 - TTS 语速：**0.9x**（Azure SSML `rate="-10%"` / edge-tts `--rate=-10%`，用户定稿）
 
 **界面元素**（单屏，全英文）：
