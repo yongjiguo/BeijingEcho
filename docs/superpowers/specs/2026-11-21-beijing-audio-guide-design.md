@@ -135,7 +135,7 @@ TravelTrips/
 **应用欢迎词**（app-welcome，落地后的"第一声"）：授权成功后立即自动播放一次（约 60-75 秒），内容介绍软件服务功能（围栏自动触发、方位句、文字对照、61 点位覆盖、免注册免费、隐私口径"定位仅本机使用不存储"）与使用规则（保持页面前台亮屏）。与位置无关，无方位句变体。游客在机场落地时，欢迎词之后紧接机场欢迎点围栏触发，形成自然的 onboarding 序列。
 
 **播放序列与音频装饰**（用户定稿）：
-- 自动模式触发序列：`audio/chime.mp3`（约 3 秒柔和提示音，全站统一）→ 方位句（干声）→ 正文（**制作期已混入 BGM**）
+- 自动模式触发序列：`audio/chime.mp3`（**5 秒风铃真实录音**，前 5 秒截取 + 1.2 秒淡出；freesound #879798，CC0；全站统一）→ 方位句（干声）→ 正文（**制作期已混入 BGM**）
 - 浏览模式手动播放序列：chime → 正文
 - BGM 配置：3 首轻音乐**随机选一**混入每段正文（Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02，Kevin MacLeod 演奏，incompetech，CC-BY 4.0 需署名——署名展示在浏览模式详情页/页脚）；音量 **-8dB**（volume≈0.398）+ 2 秒淡入；混音在**制作期**由 ffmpeg 完成（运行时仍是单个 MP3，零额外改动）
 - TTS 语速：**0.9x**（Azure SSML `rate="-10%"` / edge-tts `--rate=-10%`，用户定稿）
@@ -186,7 +186,7 @@ TravelTrips/
    - **正文**：`audio/spot-{id}.mp3`（1 段/景点）
    - **方位引导句**：按 8 方位模板（*"Ahead of you…" / “On your right…” / “Behind you…” 等）+ 景点 `landmark.name` 生成 8 个变体 → `audio/dir/spot-{id}-{dir}.mp3`（3-5 秒/段）
    - **TTS 语速 0.9x**（Azure SSML `rate="-10%"` / edge-tts `--rate=-10%`，音色 `en-US-AndrewMultilingualNeural`）
-3. `scripts/mix_audio.py`：BGM 制作期混音——TTS 正文生成后，ffmpeg 将 `audio/bgm/` 下 3 首轻音乐**随机选一**以 -8dB（volume≈0.398）+ 2 秒淡入混入每段正文（覆盖输出），`audio/chime.mp3` 由 ffmpeg 合成（**三音上行音阶** C6→E6→G6，错峰 0/600/1200ms，各音淡出 + 轻回声，约 3 秒，零版权顾虑）；方位句保持干声；BGM 素材 `content/audio/bgm/*.mp3`（Kevin MacLeod / incompetech，CC-BY 4.0，署名文案存 `content/audio/bgm/CREDITS.md` 并在浏览模式详情页展示）
+3. `scripts/mix_audio.py`：BGM 制作期混音——TTS 正文生成后，ffmpeg 将 `audio/bgm/` 下 3 首轻音乐**随机选一**以 -8dB（volume≈0.398）+ 2 秒淡入混入每段正文（覆盖输出），`audio/chime.mp3` 由选定真实录音截取（**5 秒风铃**，freesound #879798，CC0，前 5 秒 + 1.2 秒淡出）；方位句保持干声；BGM 素材与署名见下方 BGM 配置与 `content/audio/bgm/CREDITS.md`（浏览模式详情页展示）
 4. TTS 供应商（tts_generate.py 脚本可切换，按优先级）：
    1. **Azure Speech F0 免费层（默认）**：每月 50 万神经 TTS 字符免费、按月刷新（本项目全量约 10 万字符仅占 20%）；音色与试听样本完全同款（`en-US-AndrewMultilingualNeural` 男声，Azure 官方接口，合法合规）；F0 层并发上限 1，批量生成顺序执行即可；需注册 Azure 账号（F0 层免费不扣费），密钥走环境变量 `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION`，不进代码库
    2. **edge-tts（无账号备胎）**：免费且无需任何账号，Azure 同款音色走免费通道；⚠ 非官方接口（逆向 Edge 朗读功能），量产存在封禁风险，仅在 Azure 未配置时使用

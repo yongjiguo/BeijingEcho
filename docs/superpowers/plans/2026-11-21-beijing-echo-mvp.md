@@ -18,7 +18,7 @@
 - TypeScript `strict: true`; no UI framework; tests via vitest only
 - All geo coordinates WGS-84; accuracy filter threshold `100` m; cooldown `30 * 60 * 1000` ms; default spot radius `200` m (per-spot overrides allowed: 50-1000; airports `2000-3000`)
 - TTS voice `en-US-AndrewMultilingualNeural`, rate **0.9x** (edge `--rate=-10%`, Azure SSML `rate="-10%"`); keys only via env (`AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`), never in repo
-- Audio decoration (user-final): every playback starts with ~3s chime `audio/chime.mp3` (synthesized, license-free); auto mode = chime → dir sentence (dry) → narration (main); browse mode = chime → narration
+- Audio decoration (user-final): every playback starts with `audio/chime.mp3` — **~5s wind-chime real recording** (freesound #879798, CC0, first 5s + 1.2s fade-out); auto mode = chime → dir sentence (dry) → narration (main); browse mode = chime → narration
 - BGM: 3 tracks (Gymnopedie No 1 / Dreams Become Real / Meditation Impromptu 02, Kevin MacLeod, incompetech, **CC-BY 4.0 → attribution required**) **randomly assigned per narration**; build-time mix at **-8dB** (volume≈0.398, 2s fade-in) via `scripts/mix_audio.py`; shipped narration files are pre-mixed single MP3s
 - UI copy all English; content URLs: `/spots.json`, `/audio/...`, `/audio/dir/...`, `/images/...` (vite `publicDir: 'content'`)
 - Dir octants fixed order: `n, ne, e, se, s, sw, w, nw`; boundaries at ±22.5° around each of the 8 centers
@@ -307,7 +307,7 @@ export function renderSpotDetail(container: HTMLElement, spot: Spot, player: Aud
   - sw: `Just behind you on your left is {landmark}.`
   - w: `On your left stands {landmark}.`
   - nw: `{landmark} is just ahead on your left.`
-- Mixing (mix_audio.py): per narration file, pick 1 of the 3 BGM tracks **randomly** (seeded `random.Random(2026)` for reproducibility), ffmpeg: `[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0`; chime synthesis: three ascending notes C6/E6/G6 (1046.5/1318.5/1568 Hz sine), delays 0/600/1200 ms, volumes 0.30/0.30/0.32, per-note fade-out, `aecho=0.6:0.3:150:0.3`, total 3s
+- Mixing (mix_audio.py): per narration file, pick 1 of the 3 BGM tracks **randomly** (seeded `random.Random(2026)` for reproducibility), ffmpeg: `[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0` (loop BGM to voice length when shorter — `aloop`); chime: trim `content/audio/samples/chime-candidates/chime-cand2.mp3` (wind chime, freesound #879798 CC0) to first 5s with `afade=t=out:st=3.8:d=1.2` → `audio/chime.mp3`
 - `CREDITS.md`: `Music: "Gymnopedie No 1", "Dreams Become Real", "Meditation Impromptu 02" by Kevin MacLeod (incompetech.com), Licensed under Creative Commons: By Attribution 4.0`
 
 - [ ] **Step 1: Copy BGM tracks** `content/audio/bgm-candidates/*.mp3` → `content/audio/bgm/` and write `CREDITS.md` (text above)
