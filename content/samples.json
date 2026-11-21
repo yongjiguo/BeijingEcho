@@ -1,0 +1,35 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "samples": [
+    {
+      "id": "app-welcome",
+      "group": "应用欢迎词",
+      "text": "Welcome — and thank you for opening Beijing Echo, your personal audio guide to China's capital. Here's how it works. This page is now listening for your location — on your phone only: nothing stored, nothing shared. As you explore, the moment you step near one of more than sixty landmarks — imperial palaces, ancient temples, hutong alleys, the Great Wall itself — a story begins to play all by itself, like a local friend walking beside you. And every story opens by telling you which way to look: straight ahead, on your right, behind you. Street too noisy to hear every word? The full English text scrolls along with the audio. No accounts, no fees, no sign-up — just walk. One small rule: keep this page open and your screen on as you wander, and it will keep talking. Now — head toward anything on your list. The city is listening for you. Enjoy Beijing."
+    },
+    {
+      "id": "temple-of-heaven",
+      "group": "城区核心",
+      "text": "You've just stepped into the Temple of Heaven — and for five hundred years, this is where China's emperors came to speak with the sky itself. Twice a year, the Ming and Qing emperors left the Forbidden City in solemn procession and traveled here to pray for good harvests — for the empire, this was the most important ritual of the year. At the heart of the complex rises the Hall of Prayer for Good Harvests: a circular masterpiece of wood, famous for being built without a single nail, standing on three tiers of marble. The circle stood for heaven; the square grounds below, for earth. When UNESCO listed it as a World Heritage Site in 1998, it called the temple \"a masterpiece of architecture and landscape design\" that shaped the Far East for centuries. But here's the secret locals know: this is also a park. On weekend mornings, thousands gather — dancing, singing opera, playing chess under ancient cypresses. Stay a while. Heaven can wait."
+    },
+    {
+      "id": "mutianyu-great-wall",
+      "group": "延伸与郊区",
+      "text": "You've chosen the connoisseur's Great Wall: Mutianyu. Same Ming-dynasty wall, same mountain-spine engineering — but wrapped in forest instead of the city crowds. This section guarded the northeast approach to Beijing for centuries, and its builders showed personality here: it boasts more watchtowers than most sections, including a rare pair of towers built as one triple-height giant, and the crenellations come in both rectangular and sawtooth patterns — a detail found almost nowhere else. For centuries this wall slept under vines and pines; restoration in the nineteen eighties reopened it, and today a cable car lifts you up, and — if your inner child insists — a toboggan slide brings you down. Walk east toward the higher towers and you'll feel what most visitors never do: silence, wind, and the wall stretching on beyond sight. Come in October, and the mountains burn red with maple and smoke-tree leaves. This is the Great Wall at its most beautiful."
+    },
+    {
+      "id": "beijing-zoo",
+      "group": "A级补充",
+      "text": "You've reached the Beijing Zoo — China's oldest zoo, opening in nineteen zero six as an imperial experiment garden, and home to its most beloved ambassadors: the giant pandas. The Panda House is the heart of any visit — watch the bears do what they do best: eating bamboo, up to twelve hours a day, or simply tumbling around like living plush toys. Come in the morning, when they're most active and the crowds are thinnest. But the zoo is more than pandas: over a century as a public zoo, it grew into one of the world's largest, with golden monkeys, red pandas, and a lakeside setting that makes it as much park as menagerie. Families could spend half a day here; panda-only pilgrims can be done in two hours. One rule applies everywhere: quiet voices, patient eyes — the stars perform on their own schedule."
+    },
+    {
+      "id": "lugou-bridge",
+      "group": "B级主题",
+      "text": "The bridge beneath your feet is eight hundred years old — built by the Jin dynasty, completed around eleven ninety-two — and famed twice over. First, beauty: Marco Polo described it in wonder, saying no bridge on earth matched it, and so the West named it after him. Its balustrades carry hundreds of stone lions, no two alike — a Chinese tradition says they are too many to count, and visitors have argued the exact number for centuries. Second, history: just beyond its western gate, shots fired on the night of July seventh, nineteen thirty-seven, began the full-scale war between China and Japan — the Marco Polo Bridge Incident, the opening of the Second World War in Asia. The Wanping fortress beside it preserves that night; the Museum of the War of Chinese People's Resistance inside its walls tells the eight years that followed, soberly and powerfully. Walk the bridge at dawn — the lions in morning light, the river valley quiet — and let one small bridge hold both the silk-road wonder and the war that changed the world."
+    },
+    {
+      "id": "daxing-airport-welcome",
+      "group": "机场欢迎点",
+      "text": "Welcome to Beijing — and welcome to one of the most spectacular buildings humans have ever boarded planes in. This is Beijing Daxing International Airport, opened in twenty nineteen: a single golden terminal spreading six wings like a starfish, designed by the late Zaha Hadid's studio and celebrated as the largest single-terminal airport building on Earth. Follow the wing you're in toward the center, and trains will carry you to the city — the express line makes the run in roughly twenty minutes; taxis queue in managed ranks, and airport buses run deep into the night. And if this voice is speaking to you, one thing is already proven: your audio guide works. From here on, it will greet you automatically at every landmark you visit — palaces, temples, hutongs, and the wall itself. 北京欢迎你 — welcome to Beijing. Let's begin."
+    }
+  ]
+}
