@@ -72,6 +72,10 @@ TravelTrips/
 ```json
 {
   "version": 1,
+  "welcome": {
+    "audio": "audio/welcome.mp3",
+    "transcript": "App welcome word text, shown during startup playback"
+  },
   "spots": [
     {
       "id": "forbidden-city",
@@ -108,12 +112,14 @@ TravelTrips/
 
 ```
 [landing 未开始] --点击 Start Audio Tour--> [requesting 请求授权（定位+朝向）]
-    --授权成功--> [listening 监听中]
+    --授权成功--> [welcome 播放应用欢迎词] --> [listening 监听中]（欢迎词播放期间即开始位置监听，不阻塞）
     --定位授权被拒--> [permission-denied 终态提示页]
     --朝向授权被拒/不可用--> [listening]（朝向降级链，见 §7，不阻塞）
 [listening] --入围栏--> [playing 播放中] --音频结束--> [listening]
 任何状态 --页面刷新--> [landing]
 ```
+
+**应用欢迎词**（app-welcome，落地后的"第一声"）：授权成功后立即自动播放一次（约 60-75 秒），内容介绍软件服务功能（围栏自动触发、方位句、文字对照、61 点位覆盖、免注册免费、隐私口径"定位仅本机使用不存储"）与使用规则（保持页面前台亮屏）。与位置无关，无方位句变体。游客在机场落地时，欢迎词之后紧接机场欢迎点围栏触发，形成自然的 onboarding 序列。
 
 **界面元素**（单屏，全英文）：
 1. 落地页：应用名 + 一句话价值说明 + 大按钮「Start Audio Tour」+ 定位与朝向用途说明（点击时同一手势内请求定位权限与 iOS 朝向权限）
@@ -149,10 +155,11 @@ TravelTrips/
 ## 8. 内容管线（Python 3.11）
 
 1. 维护 `content/spots.json`：景点元数据 + 英文讲解词 + 方位参照地标（AI 生成初稿 → 用户审校定稿）
-2. `scripts/tts_generate.py`：逐景点生成音频并输出到 `content/audio/`
+2. `scripts/tts_generate.py`：逐点位生成音频并输出到 `content/audio/`
+   - **应用欢迎词**：`audio/welcome.mp3`（1 段，无方位句变体）
    - **正文**：`audio/spot-{id}.mp3`（1 段/景点）
    - **方位引导句**：按 8 方位模板（*"Ahead of you…" / “On your right…” / “Behind you…” 等）+ 景点 `landmark.name` 生成 8 个变体 → `audio/dir/spot-{id}-{dir}.mp3`（3-5 秒/段）
-   - TTS 供应商：默认 **OpenAI TTS**（`tts-1`，音色可配；61 点位正文 + 488 段方位句总成本约 3-5 美元）；脚本设计为供应商可切换（备选 Azure Speech / ElevenLabs）
+   - TTS 供应商：默认 **OpenAI TTS**（`tts-1`，音色可配；61 点位正文 + 1 欢迎词 + 488 段方位句总成本约 3-5 美元）；脚本设计为供应商可切换（备选 Azure Speech / ElevenLabs）
    - API key 通过环境变量注入（`OPENAI_API_KEY` 等），不进代码库
 3. `scripts/validate_content.py` 校验：坐标与 landmark 坐标在北京市界内、半径合理（普通景点 50-1000 米；机场欢迎围栏 2000-3000 米）、transcript 非空、正文音频存在且时长 30 秒-10 分钟、8 个方位句音频齐全且时长 1-15 秒、landmark 位于对应景点围栏内
 4. 内容更新流程：改 JSON → 重跑脚本 → `git push` 自动部署，全程约 5 分钟
