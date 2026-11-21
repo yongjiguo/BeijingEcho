@@ -9,8 +9,8 @@
 
 > 性质：不依赖地理位置的开嗓词。游客点击「Start Audio Tour」完成授权后立即播放（同时满足浏览器首播需用户手势的要求），介绍软件服务功能与用法。无 8 方位句（与位置无关）。每次会话播放一次，刷新重播。
 
-### 00. app-welcome — App Welcome Word（应用名暂用 "Walk Beijing"，⚠ 名称待定稿）
-Welcome — and thank you for opening Walk Beijing, your personal audio guide to China's capital. Here's how it works. This page is now listening for your location — on your phone only: nothing stored, nothing shared. As you explore, the moment you step near one of more than sixty landmarks — imperial palaces, ancient temples, hutong alleys, the Great Wall itself — a story begins to play all by itself, like a local friend walking beside you. And every story opens by telling you which way to look: straight ahead, on your right, behind you. Street too noisy to hear every word? The full English text scrolls along with the audio. No accounts, no fees, no sign-up — just walk. One small rule: keep this page open and your screen on as you wander, and it will keep talking. Now — head toward anything on your list. The city is listening for you. Enjoy Beijing.
+### 00. app-welcome — App Welcome Word（应用名：Beijing Echo，已定稿）
+Welcome — and thank you for opening Beijing Echo, your personal audio guide to China's capital. Here's how it works. This page is now listening for your location — on your phone only: nothing stored, nothing shared. As you explore, the moment you step near one of more than sixty landmarks — imperial palaces, ancient temples, hutong alleys, the Great Wall itself — a story begins to play all by itself, like a local friend walking beside you. And every story opens by telling you which way to look: straight ahead, on your right, behind you. Street too noisy to hear every word? The full English text scrolls along with the audio. No accounts, no fees, no sign-up — just walk. One small rule: keep this page open and your screen on as you wander, and it will keep talking. Now — head toward anything on your list. The city is listening for you. Enjoy Beijing.
 
 ---
 

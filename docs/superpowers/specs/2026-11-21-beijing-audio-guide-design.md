@@ -1,8 +1,8 @@
-# 北京 H5 英文语音导览应用 — 设计文档（Spec）
+# Beijing Echo — 北京英文语音导览 H5 应用 · 设计文档（Spec）
 
 - 日期：2026-11-21
 - 状态：待用户审阅
-- 项目代号：TravelTrips（北京英文 Audio Guide MVP）
+- 应用名：**Beijing Echo**（已定稿）；代码仓库代号：TravelTrips
 
 ## 1. 目标与成功标准
 
