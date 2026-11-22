@@ -9,12 +9,12 @@
         "provider": "edge",
         "voice": "en-US-AndrewMultilingualNeural",
         "rate": "-10%",
-        "reviewStatus": "pending-review-development-only"
+        "reviewStatus": "approved"
       },
       "sha256": "5e4278457529b36fc5210e92f71e2eadae8ce0be38ff15330637827bf57cf10b",
       "duration": 60.12
     },
-    "reviewStatus": "pending-review-development-only",
+    "reviewStatus": "approved",
     "bgm": "bgm-5-meditation.mp3",
     "bgm_sha256": "4e7ead76cfdda0979ff7d771fbbc3dbb312ca80ce25b78f3cdcaef07fcc7c2da",
     "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",

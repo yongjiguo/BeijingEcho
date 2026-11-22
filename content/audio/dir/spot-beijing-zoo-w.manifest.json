@@ -9,12 +9,12 @@
         "provider": "edge",
         "voice": "en-US-AndrewMultilingualNeural",
         "rate": "-10%",
-        "reviewStatus": "pending-review-development-only"
+        "reviewStatus": "approved"
       },
       "sha256": "d0c65dfb00b1cee40a0766250f67c11a90e835b9282e150d184c26a7f74feab0",
       "duration": 2.472
     },
-    "reviewStatus": "pending-review-development-only"
+    "reviewStatus": "approved"
   },
   "sha256": "d0c65dfb00b1cee40a0766250f67c11a90e835b9282e150d184c26a7f74feab0",
   "duration": 2.472

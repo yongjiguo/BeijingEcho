@@ -9,12 +9,12 @@
         "provider": "edge",
         "voice": "en-US-AndrewMultilingualNeural",
         "rate": "-10%",
-        "reviewStatus": "pending-review-development-only"
+        "reviewStatus": "approved"
       },
       "sha256": "7cd12419a006a8eb0c6589757efb9cc73b8b1034f9927517c628c02cac94a9e6",
       "duration": 66.216
     },
-    "reviewStatus": "pending-review-development-only",
+    "reviewStatus": "approved",
     "bgm": "bgm-4-dreams.mp3",
     "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
     "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",

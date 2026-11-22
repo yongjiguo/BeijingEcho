@@ -9,12 +9,12 @@
         "provider": "edge",
         "voice": "en-US-AndrewMultilingualNeural",
         "rate": "-10%",
-        "reviewStatus": "pending-review-development-only"
+        "reviewStatus": "approved"
       },
       "sha256": "c400ca3b14c9173867a6dc4b1510d4098437f3a3f84bf25f3c57509d82dbe5f0",
       "duration": 62.304
     },
-    "reviewStatus": "pending-review-development-only",
+    "reviewStatus": "approved",
     "bgm": "bgm-3-gymnopedie.mp3",
     "bgm_sha256": "8cba6bb3da51066ad39520ec218a327bb6222d8fb32bc52f28a1e90b67756f70",
     "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",

@@ -102,7 +102,7 @@ def valid_coords(value):
     return isinstance(value, dict) and all(type(value.get(k)) in (int, float) and math.isfinite(value[k]) for k in ('lat', 'lng'))
 
 
-def merge_data(drafts, meta, titles, images_by_id=None):
+def merge_data(drafts, meta, titles, images_by_id=None, review_status='pending-review-development-only'):
     ids = set(drafts) - {'app-welcome'}
     if len(ids) != 60 or 'app-welcome' not in drafts or ids != set(meta) or ids != {r['id'] for r in titles} or len(titles) != 60:
         raise ValueError('expected matching 60 spot ids plus app-welcome')
@@ -126,11 +126,11 @@ def merge_data(drafts, meta, titles, images_by_id=None):
                       'audio': f'audio/spot-{sid}.mp3', 'transcript': draft['transcript'],
                       'images': (images_by_id or {}).get(sid, []),
                       'landmark': {'name': draft['landmark'], 'lat': landmark['lat'], 'lng': landmark['lng']}})
-    return {'version': 1, 'reviewStatus': 'pending-review-development-only',
+    return {'version': 1, 'reviewStatus': review_status,
             'welcome': {'audio': 'audio/welcome.mp3', 'transcript': drafts['app-welcome']['transcript']}, 'spots': spots}, warnings
 
 
-def build_data(root=ROOT):
+def build_data(root=ROOT, review_status='pending-review-development-only'):
     drafts = parse_drafts([root / 'content-src/narrations-draft.md', root / 'content-src/narrations-draft-2.md'])
     images_by_id = {}
     spots_path = root / 'content/spots.json'
@@ -141,18 +141,20 @@ def build_data(root=ROOT):
         except (ValueError, KeyError):
             pass  # unreadable previous file: rebuild without images (fetch_images can repopulate)
     return merge_data(drafts, json.loads((root / 'content/spot-meta.json').read_text()),
-                      json.loads((root / 'content/wikipedia-titles.json').read_text()), images_by_id)
+                      json.loads((root / 'content/wikipedia-titles.json').read_text()), images_by_id, review_status)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--allow-unreviewed', action='store_true', help='explicit development-only authorization; not publication approval')
+    gate = parser.add_mutually_exclusive_group(required=True)
+    gate.add_argument('--allow-unreviewed', action='store_true', help='explicit development-only authorization; not publication approval')
+    gate.add_argument('--approved', action='store_true', help='content review gate passed; sets reviewStatus=approved for publication')
     args = parser.parse_args()
-    if not args.allow_unreviewed:
-        parser.error('drafts remain unreviewed; development builds require --allow-unreviewed')
-    data, warnings = build_data()
+    status = 'approved' if args.approved else 'pending-review-development-only'
+    data, warnings = build_data(review_status=status)
     (ROOT / 'content/spots.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print('DEVELOPMENT ONLY: 60 spots + 1 welcome; review pending; images deferred')
+    print('PUBLICATION BUILD: 60 spots + 1 welcome; reviewStatus=approved' if args.approved
+          else 'DEVELOPMENT ONLY: 60 spots + 1 welcome; review pending; images deferred')
     print('\n'.join(warnings))
 
 

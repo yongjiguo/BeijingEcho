@@ -6,7 +6,7 @@
     "provider": "edge",
     "voice": "en-US-AndrewMultilingualNeural",
     "rate": "-10%",
-    "reviewStatus": "pending-review-development-only"
+    "reviewStatus": "approved"
   },
   "sha256": "1e146cfacf80094938bcbfa162757c92d479f296a61e791b6d91181e25028a50",
   "duration": 4.608
