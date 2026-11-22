@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Behind a Beijing street market hides a pagoda that shouldn't exist here: the Five Pagoda Temple, a fourteenth-century Indian temple design transplanted to China. In fourteen seventy-three, the Ming court built this Vajrasana-style shrine — a square throne carrying five small spires, after the design a visiting Indian monk presented to the court — echoing the great Mahabodhi temple of Bodh Gaya itself. The pagoda survived fire, war, and the temple's own disappearance: today it stands as the Beijing Stone Carving Museum, and the surrounding halls gather steles, sarcophagi, and carved stones from two thousand years of the capital's history. The autumn ginkgo beside the pagoda is a photographer's legend — golden leaves against five ancient spires. Find it in the zoo-adjacent backstreets; climb nothing, miss nothing — this is Beijing's most photogenic small museum, and almost nobody you know has been.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "db11e7cf93a78a184d525f9b0e720b34b1fb016909a0185ff8a7ec607b01ef55",
+      "duration": 66.672
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-3-gymnopedie.mp3",
+    "bgm_sha256": "8cba6bb3da51066ad39520ec218a327bb6222d8fb32bc52f28a1e90b67756f70",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "74c60ba469462cabb8774a26532d334c8172a696af0accc39e892d1f49bcf9da",
+  "duration": 66.72
+}

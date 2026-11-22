@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the Cloud Platform with marble carvings.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "088e5ecb770f0fffc2ab81a336dd444a74a325746dc8962c0f8df80e0de045e5",
+  "duration": 4.488
+}

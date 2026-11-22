@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the excavated cave mouth of Dragon Bone Hill.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "9b7947e3c6c2c97dd1a5a02765a1d0941adafac4a1b285448a3741ba76228c4c",
+  "duration": 4.848
+}

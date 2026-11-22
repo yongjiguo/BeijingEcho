@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the sun altar terrace under the cypresses.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "1a3aa58263dd6ac9dbf1b1e51dca9a3514909edb2a94af46a151df8ee4d123a3",
+  "duration": 4.776
+}

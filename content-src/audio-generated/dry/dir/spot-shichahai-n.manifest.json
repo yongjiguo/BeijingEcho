@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the Yinding Bridge, the Silver Ingot Bridge.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "fee385ef22742595b24843c98adbf3b7f6ab390387e89c7ea3dc2c2a41dbc81f",
+  "duration": 5.544
+}

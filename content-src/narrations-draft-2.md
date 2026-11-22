@@ -1,16 +1,19 @@
-# TravelTrips 讲解词草稿 v1 · 第二批（A 级 11 + B 级 23，共 34 篇）
+# TravelTrips 讲解词草稿 v1 · 第二批（A 级 11 + B 级 23 + 机场 2 + 应用欢迎词 1，共 37 篇）
 
 > 与 narrations-draft.md（第一批 25 篇）同一格式与风格。方位句仍按第一批文首的 8 方位模板程序化生成。
 > 每篇 110-170 词 ≈ 80-120 秒音频。红桥市场无 Wikipedia 条目，事实源为官网+通用资料，日期类表述已从严。⚠ 为审校重点核实项。
+> 两批合计62篇：61个点位讲解（含2个机场点位）+1篇应用欢迎词。本轮仅修复草稿及抽查样稿，未将全部篇目定稿。
 
 ---
 
 ## 应用级欢迎词（1 篇）
 
-> 性质：不依赖地理位置的开嗓词。游客点击「Start Audio Tour」完成授权后立即播放（同时满足浏览器首播需用户手势的要求），介绍软件服务功能与用法。无 8 方位句（与位置无关）。每次会话播放一次，刷新重播。
+> 性质：不依赖地理位置的开嗓词。游客点击「Start Audio Tour」并获得定位授权后尝试播放，介绍软件服务功能与用法。无8方位句（与位置无关）。实际播放受浏览器权限、资源加载及设备状态影响；不把用户手势写成必然播放成功的保证。
 
-### 00. app-welcome — App Welcome Word（应用名：Beijing Echo，已定稿）
-Welcome — and thank you for opening Beijing Echo, your personal audio guide to China's capital. Here's how it works. This page is now listening for your location — on your phone only: nothing stored, nothing shared. As you explore, the moment you step near one of more than sixty landmarks — imperial palaces, ancient temples, hutong alleys, the Great Wall itself — a story begins to play all by itself, like a local friend walking beside you. And every story opens by telling you which way to look: straight ahead, on your right, behind you. Street too noisy to hear every word? The full English text scrolls along with the audio. No accounts, no fees, no sign-up — just walk. One small rule: keep this page open and your screen on as you wander, and it will keep talking. Now — head toward anything on your list. The city is listening for you. Enjoy Beijing.
+### 00. app-welcome — App Welcome Word（应用名：Beijing Echo，待用户复审）
+Welcome — and thank you for opening Beijing Echo, your personal audio guide to China's capital. Here's how it works. With your permission, this page uses your location on your device to find nearby places in the guide. As you explore, stories can play automatically when you come within range of a listed stop — imperial palaces, ancient temples, hutong alleys, and the Great Wall itself — like a local friend walking beside you. When a usable heading is available, a story can begin by telling you which way to look. Without it, we skip that direction cue. Street too noisy to hear every word? Tap Show transcript to expand the English text and read at your own pace. No accounts, no fees, no sign-up — just walk. Keep this page open and your screen on, and allow location access; playback also depends on your signal and browser. Now — head toward anything that looks interesting. Enjoy Beijing.
+
+> 本轮核查（产品事实以本地实现为准，外部网页不能证明本应用行为）：src/ui.ts 的 renderPlaying 使用 details/summary「Show transcript」展开全文，仅进度条随音频更新；src/main.ts 的 beginSpotPlayback 在位置或heading缺失时跳过方向句，onFix 受定位精度、播放状态、围栏及冷却限制。故不再承诺同步滚动、每段必有方向或到任何地标必播。保留 anything that looks interesting。待核实：真机首播、权限拒绝与弱信号体验；不作超出应用边界的“任何数据都不存不传”承诺。
 
 ---
 
@@ -126,13 +129,15 @@ Off the streets south of Tiananmen hides a perfect wooden opera house from imper
 
 ## 机场欢迎点（2 篇）
 
-> 性质与景点讲解不同：落地实用指引 + 建筑奇观讲解 + 产品 onboarding 引导。围栏半径 2000-3000 米（远大于普通景点），游客落地连网后打开 H5 即首次触发，是产品的"第一声"。
+> 性质与景点讲解不同：落地实用指引 + 建筑奇观讲解 + 产品 onboarding 引导。拟设围栏半径2000-3000米，可能覆盖不同航站楼及机场周边，不代表游客已在航站楼内。仅在定位、播放状态等触发条件满足时播放，不保证打开H5即播；具体围栏仍待实施核实。
 
 ### 60. capital-airport-welcome — Beijing Capital Airport Welcome — landmark: "Terminal Three's sweeping dragon-form roof"
-Welcome to Beijing — you've just landed at Beijing Capital International Airport, one of the busiest airports on Earth and, for decades, China's front door. The great sweeping roof above you belongs to Terminal Three, designed by architect Norman Foster — nearly two kilometers long, its form meant to echo a red dragon taking flight. ⚠ T3由福斯特设计、长约2公里表述请核实。A few practical words as you land: have your passport ready for immigration; the Airport Express train runs from the terminal to the city in about twenty minutes and links to the subway ⚠ 机场快轨时长与换乘站表述请核实; licensed taxis wait in managed queues, and ride-hailing pickup zones are clearly signed; bank counters inside the halls exchange currency. And one more thing — if this voice is speaking, your audio guide is already working. It will greet you automatically at every landmark you walk to, in every corner of this city. 北京欢迎你 — welcome to Beijing. Your tour starts now.
+Welcome to Beijing Capital International Airport and the start of your visit to China's capital. One of the airport's architectural highlights is Terminal Three, designed by Foster + Partners. Its sweeping roof and dragon-like form draw on traditional Chinese colors and symbols — a memorable gateway to the city, whether or not your flight uses this terminal. A few practical words for your arrival: if you are arriving from abroad, have your passport and entry documents ready for immigration. Follow the signs in your terminal for rail connections, official taxi ranks, and other ground transport, and check the current routes and operating hours before choosing your journey. If you need currency exchange or help finding a pickup point, ask at an airport information desk. Beyond the airport, this guide can play stories near listed stops when location and playback conditions allow. Keep the page open and your screen on as you explore. 北京欢迎你 — welcome to Beijing. Your tour starts now.
+
+> 本轮核查：Foster + Partners项目页支持设计团队、2008年奥运门户、龙形与中国传统色彩意象：https://www.fosterandpartners.com/projects/beijing-capital-international-airport 。已撤去“屋顶就在你头上”、每个景点必自动播放及未经确认的拼音，恢复“北京欢迎你”。原批注“⚠ T3由福斯特设计、长约2公里表述请核实。”中的设计团队已查证，长度仍待核实：本次项目页未给出2/3公里数据，正文不采用任一数值。原“⚠ 机场快轨时长与换乘站表述请核实”继续有效；正文暂不报约20分钟，机场交通、换乘、营业时间及外币兑换服务仍须向机场/运营方核实。中文欢迎句的发音方案留待后续审校，本轮不生成音频。
 
 ### 61. daxing-airport-welcome — Beijing Daxing Airport Welcome — landmark: "the starfish-shaped heart of the golden terminal"
-Welcome to Beijing — and welcome to one of the most spectacular buildings humans have ever boarded planes in. This is Beijing Daxing International Airport, opened in twenty nineteen: a single golden terminal spreading six wings like a starfish, designed by the late Zaha Hadid's studio and celebrated as the largest single-terminal airport building on Earth. ⚠ 扎哈事务所设计、"全球最大单体航站楼"（约70万平方米）表述请核实。Follow the wing you're in toward the center, and trains will carry you to the city — the express line makes the run in roughly twenty minutes ⚠ 大兴机场快线约20分钟到草桥、换乘表述请核实; taxis queue in managed ranks, and airport buses run deep into the night. And if this voice is speaking to you, one thing is already proven: your audio guide works. From here on, it will greet you automatically at every landmark you visit — palaces, temples, hutongs, and the wall itself. 北京欢迎你 — welcome to Beijing. Let's begin.
+Welcome to Beijing — and welcome to one of the most spectacular buildings humans have ever boarded planes in. This is Beijing Daxing International Airport, opened in twenty nineteen: a single golden terminal spreading six wings like a starfish, designed by the late Zaha Hadid's studio and celebrated as the largest single-terminal airport building on Earth. ⚠ 扎哈事务所设计、"全球最大单体航站楼"（约70万平方米）表述请核实。Follow the signs in your terminal for trains, official taxi ranks, and airport buses, and check the current routes and operating hours before you travel. ⚠ 大兴机场快线约20分钟到草桥、换乘表述请核实；本轮不在正文承诺运行时长及深夜公交服务。And if this voice is speaking to you, your guide has begun. From here on, it can play stories near listed stops when location and playback conditions allow — palaces, temples, hutongs, and the wall itself. 北京欢迎你 — welcome to Beijing. Let's begin.
 
 ---
 
@@ -143,3 +148,4 @@ Welcome to Beijing — and welcome to one of the most spectacular buildings huma
 3. 醇亲王府主体现为办公场所不开放，已并入宋庆龄故居一篇讲述其花园部分
 4. 机场欢迎两篇（60/61）为实用指引性质，交通信息（快轨时长/换乘站/票制）审校时请按最新运营信息核实
 5. 审校通过后流程：坐标批量抓取 → spots.json 生成 → validate → TTS → 部署
+6. 本轮仅修改两份草稿，恢复未核实批注不等于事实通过；新增核查说明不应进入最终播音文本。无音频生成、提交或上线。

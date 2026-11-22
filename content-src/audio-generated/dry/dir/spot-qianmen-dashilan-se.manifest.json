@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your right is the Zhengyangmen Archery Tower.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "06ebc7812faef45e544d6aef5ae9fb1baa7e02eb46b746a3f87dd6f2e065746f",
+  "duration": 4.176
+}

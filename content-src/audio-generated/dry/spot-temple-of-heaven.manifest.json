@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You've just stepped into the Temple of Heaven — and for five hundred years, this is where China's emperors came to speak with the sky itself. Twice a year, the Ming and Qing emperors left the Forbidden City in solemn procession and traveled here to pray for good harvests — for the empire, this was the most important ritual of the year. At the heart of the complex rises the Hall of Prayer for Good Harvests: a circular masterpiece of wood, famous for being built without a single nail, standing on three tiers of marble. The circle stood for heaven; the square grounds below, for earth. When UNESCO listed it as a World Heritage Site in 1998, it called the temple \"a masterpiece of architecture and landscape design\" that shaped the Far East for centuries. But here's the secret locals know: this is also a park. On weekend mornings, thousands gather — dancing, singing opera, playing chess under ancient cypresses. Stay a while. Heaven can wait.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "8d312562b93d9ce31e56783f92bd7c1865daf9d43e860bd1578a8424ac1f9de9",
+  "duration": 67.464
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your right is the Sacred Way stone animal statues.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "97d6087e36fdc577a68906f7cfb231f0f446182cbecb2b39ea0d3b3abbb925ca",
+      "duration": 5.544
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "97d6087e36fdc577a68906f7cfb231f0f446182cbecb2b39ea0d3b3abbb925ca",
+  "duration": 5.544
+}

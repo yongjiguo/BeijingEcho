@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the bronze instruments atop the observatory platform.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "32176f4ac1652590bbf5ceed44ada9779a86e5ae0fd528ddd7f2788361966a60",
+  "duration": 5.328
+}

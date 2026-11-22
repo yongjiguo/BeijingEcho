@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "If the National Museum tells China's story, the Capital Museum tells Beijing's — and often, more comfortably. Founded in nineteen eighty-one and reborn in a striking new building in two thousand six — a hall of stone and a bronze-walled drum that nods to ancient Chinese forms — it gathers the city's own treasures: Shang and Zhou bronzes, imperial porcelain, folk crafts, and superb galleries walking you through how a little frontier town called Ji became Dadu, then Peking, then Beijing. The galleries are airy, the lighting kind, and the crowds a fraction of the big names — if the National Museum's queue defeated you, this is the dignified alternative. Look for the old Beijing street-life reconstruction downstairs: shopfronts, cricket cages, and courtyard sounds — old Peking rebuilt in a hallway. An hour and a half covers the highlights; the coin and porcelain rooms reward the slow.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "7cd12419a006a8eb0c6589757efb9cc73b8b1034f9927517c628c02cac94a9e6",
+      "duration": 66.216
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "728ea0af163602b2e3af2828c8b42e1674650a14e32d80b80d405d9ed58c6b44",
+  "duration": 66.264
+}

@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Zhihua Temple is a Ming dynasty time capsule with a soundtrack. It was built in fourteen forty-four by Wang Zhen, the most powerful court eunuch of his age — ostensibly a family temple, built, some said, in defiance of rules that eunuchs should build none. Its roofs wear black glazed tiles — a color rank reserved for special favor — and its halls survive almost untouched, one of the most complete Ming wooden temple complexes in the city. Its greater treasure is heard, not seen: Zhihua Temple's Music, the Beijing \"jing music\" performed by monk lineages for over five hundred years, passed mouth-to-ear across generations and now listed as national intangible heritage. Short recitals are still played here on selected days — sit in a fifteenth-century hall and hear Ming-dynasty sound. Hutong-quiet, crowd-free, and unforgettable: this is old Beijing's most scholarly secret.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "45396968b39e1258c0b6f7a9ccdffefdf33295ecf16b55274e0c0c07bf4f03dd",
+      "duration": 66.528
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-1-guzheng-loop.mp3",
+    "bgm_sha256": "7060ad7755b95afe5f7afa677667a5c7de393b938ccd3255a6c0a20296f5c5bd",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "b28613fe74cf8127dddf23a88f5014b948a26792efad73b6f5ce6394be447746",
+  "duration": 66.576
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Ninety kilometers west of Beijing, a whole Ming-and-Qing village sits intact in a mountain fold: Cuandixia, founded centuries ago by a single family — the Han clan — whose descendants still live in its stone courtyards today. The village's name begins with the rarest character in China: 爨, meaning \"cooking stove,\" twenty-nine strokes of homework nightmares and local pride. Built of mountain stone along a hillside shaped — say the feng shui minded — like a gourd or a tablet, its seventy-some courtyards step up the slope in gray stone and black tile, linked by alleys worn smooth by centuries of feet. Filmmakers discovered it long ago; slow travelers followed. Come for a day trip — walk the village spine, climb to the viewing platform for the whole panorama, eat a farmhouse lunch — or stay overnight in a courtyard guesthouse and hear actual silence. It is the Beijing countryside's best-preserved memory, hiding three mountain bends from the highway.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "19a46e85627582675fafd52392196ccb00dc6981135e8b122c7fa78cf0c57833",
+  "duration": 69.144
+}

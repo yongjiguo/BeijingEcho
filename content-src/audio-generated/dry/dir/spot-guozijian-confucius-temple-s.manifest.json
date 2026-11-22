@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Biyong Hall is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "e5e69730c64768135f7803648ff915665e1ef39945b4893f062de919a4669da9",
+  "duration": 2.688
+}

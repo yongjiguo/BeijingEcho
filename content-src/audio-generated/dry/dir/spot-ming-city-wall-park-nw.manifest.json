@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the southeast Corner Tower is just ahead on your left.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "f74b07f04d2d17f39ed45286f2239e512a720184f060d421e5a06e991d47ab0a",
+  "duration": 3.816
+}

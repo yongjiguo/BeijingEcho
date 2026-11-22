@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the former French post office building is just ahead on your right.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "32ee6492022324fda0507df969d36bee21b657a1b56ce7c5cc047ad2c565ffc9",
+  "duration": 4.032
+}

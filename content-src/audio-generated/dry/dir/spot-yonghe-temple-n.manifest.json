@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the Hall of Harmony and Peace.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "45471b43f7ce8a65eaa3ea5089a5c2dbe5b399bcf8ce9b56dd9df3ebeef435a2",
+  "duration": 4.608
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the starfish-shaped heart of the golden terminal.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d2e61f42d5aee7751310bfb9910995a1425b865f8cea26b00934c5972e651549",
+      "duration": 5.472
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d2e61f42d5aee7751310bfb9910995a1425b865f8cea26b00934c5972e651549",
+  "duration": 5.472
+}

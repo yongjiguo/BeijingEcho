@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the archway at the east entrance of Liulichang is just ahead on your right.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "9198975ff0d55088fb7fadb2efbd062e476a2b7699a9e94b6308a99651aeb873",
+      "duration": 4.752
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "9198975ff0d55088fb7fadb2efbd062e476a2b7699a9e94b6308a99651aeb873",
+  "duration": 4.752
+}

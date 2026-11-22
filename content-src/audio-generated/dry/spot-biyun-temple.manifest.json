@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Climb past Fragrant Hills' gates and you'll find Biyun Temple — the Azure Cloud Temple — cascading up the mountainside in six rising terraces, each courtyard promising the next one something better. Founded in the Yuan dynasty era, it grew sumptuous under Ming eunuchs and Qing emperors. Two treasures rule. First: the Hall of Five Hundred Arhats — life-sized clay monks, each with a different face and mood, arranged like a wooden crowd; tradition says your fortune matches the arhat you count to from where you enter. Second: the Diamond Throne Pagoda at the top, an Indian-style stone terrace of the eighteen hundreds with, inside, the memorial to Dr. Sun Yat-sen — his body lay in state here in nineteen twenty-five before burial in Nanjing, and the hall remembers him. Combine with Fragrant Hills for one full mountain day — temple, forest, summit, and history in one climb.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "cf15a1fa4295bb51c2e243dd19b0098a697132ec2e51f51ed7302ed4358a236f",
+  "duration": 65.568
+}

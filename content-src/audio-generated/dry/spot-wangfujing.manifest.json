@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You've stepped onto Wangfujing — Beijing's most famous shopping street, seven hundred years of commerce in motion. Its name means \"Wang Family Well\" — for the ten wells that once served this district when it was home to princes and their mansions in the Ming and Qing dynasties. When modern China opened up, this became the first great shopping boulevard of Beijing — and today it's a mile of department stores, century-old food brands, and neon, entirely pedestrianized in its southern stretch. This is the place to taste Beijing fast: the food halls nearby serve everything from roast duck to candied hawthorn skewers — tanghulu — and the brave queue for the snack street's more adventurous offerings. For a quieter contrast, slip into St. Joseph's Church at the street's east side — a baroque-style church from sixteen fifty-five, still holding mass amid the shopping crowds. Seven centuries in one street — go hungry, and go slow.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "2329beb9d281acc58b14141aa4568e2600ab185a117b7f52f1f37cae95f460d4",
+  "duration": 65.304
+}

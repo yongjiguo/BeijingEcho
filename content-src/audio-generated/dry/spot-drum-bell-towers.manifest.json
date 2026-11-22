@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "These two towering gray buildings — the Drum Tower and the Bell Tower — were once the clock of Beijing. For centuries, city life moved to their sound: at dusk the great drums beat, at dawn the great bell rang — twenty-five booming strikes marking the opening and closing of the city gates. Inside the Drum Tower you can still see the original timekeeping instruments: the water clock that measured the hours for centuries, and ranks of great drums — the largest, a single hide over two meters across. The towers date to the Yuan dynasty — the older you look, the more impressive that is — and both were rebuilt under Ming and Qing emperors. Climb the steep stairs — they were built for duty, not comfort — and you'll stand where the night watch once stood, holding the whole city in one glance: hutongs breaking like waves around lakes to the south. In this neighborhood, time still moves slowly. These towers are the reason.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d993918fa4a66d4586c6a32bba5aab6de532b0e722f2e2f18072178facd97c47",
+  "duration": 66.672
+}

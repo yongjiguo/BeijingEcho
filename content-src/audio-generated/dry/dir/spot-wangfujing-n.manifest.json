@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the Wangfujing pedestrian street clock tower.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "f045887b612e4dbda9afd718849d0ea2e238f43847f150a02f3557e12e91693f",
+  "duration": 5.184
+}

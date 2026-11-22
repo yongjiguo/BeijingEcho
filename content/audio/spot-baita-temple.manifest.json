@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Turn the corner of a hutong and meet a mountain of white: the Great White Stupa of Miaoying Temple, the tallest structure in old Beijing for centuries. It was commissioned by Kublai Khan in twelve seventy-one and designed by Araniko, a young Nepalese artist whose work bridged the Himalayas — this Tibetan-style dagoba announced the new Yuan dynasty's capital to the world. Fifty meters of white plaster over a temple you barely see — the stupa dwarfs everything, and the best views come from the hutong alleys around it, where café terraces are built precisely to stare at it. The temple museum inside tells its story; locals pray in its courtyard as they have for seven hundred and fifty years. After renovation it reopened brighter than ever. This neighborhood — Baitasi — is now one of Beijing's calmest design-and-coffee corners. Perfect half hour between the Financial Street towers and the hutongs.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "6ae8411a6048c67bfdf8a0eed49eaff73062d24be7e817f6977ac926ce8070aa",
+      "duration": 67.2
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-3-gymnopedie.mp3",
+    "bgm_sha256": "8cba6bb3da51066ad39520ec218a327bb6222d8fb32bc52f28a1e90b67756f70",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "f28ff95bef2aca7a08aea17a44f171467c02c9fbaf94e4f52d3958de18f185b8",
+  "duration": 67.248
+}

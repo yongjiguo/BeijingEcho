@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the great bronze reclining Buddha.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "e39f74c9aae022c84d5b026a663518ffed427cf3bce111d91e33f32a26631ab3",
+      "duration": 4.2
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "e39f74c9aae022c84d5b026a663518ffed427cf3bce111d91e33f32a26631ab3",
+  "duration": 4.2
+}

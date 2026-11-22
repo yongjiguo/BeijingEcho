@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the south entrance gate of Nanluoguxiang.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "9ec5c2e58920bcd96dde75ee22a5efb6b2187ebef5b58371379d8301260ebc5c",
+  "duration": 5.208
+}

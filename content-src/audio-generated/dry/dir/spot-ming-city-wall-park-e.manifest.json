@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the southeast Corner Tower.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "bb658c611d6ebf4da841e981c7a4f7abc21d1a698b7b8bebb9c7e3d110db1fae",
+  "duration": 3.192
+}

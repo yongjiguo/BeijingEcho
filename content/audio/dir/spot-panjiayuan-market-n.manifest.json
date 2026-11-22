@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the main gate arch of Panjiayuan Market.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "becde5de521eaa64714a783f4431fc6f1610b8c78fa99e17615dcb64a8dbae15",
+      "duration": 4.92
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "becde5de521eaa64714a783f4431fc6f1610b8c78fa99e17615dcb64a8dbae15",
+  "duration": 4.92
+}

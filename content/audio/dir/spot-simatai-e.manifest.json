@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the Fairy Maiden Tower on the Simatai ridge.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "4f63284623b77363e602cf48908cb4ef665c6ca542df4461afec8c30fb4a2044",
+      "duration": 4.608
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "4f63284623b77363e602cf48908cb4ef665c6ca542df4461afec8c30fb4a2044",
+  "duration": 4.608
+}

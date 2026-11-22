@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the temple's riverside gate on the Long River.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "6759c5ae09a605bcf476041b9b53824eea226355bfb11e13c38026117b0f9613",
+  "duration": 5.208
+}

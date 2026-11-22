@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your left is the Tower of Buddhist Incense on Longevity Hill.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "bac09cc9420fef769654b7ec65b3ea6299c60dff146d8382f15292747d6efe3c",
+      "duration": 5.544
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "bac09cc9420fef769654b7ec65b3ea6299c60dff146d8382f15292747d6efe3c",
+  "duration": 5.544
+}

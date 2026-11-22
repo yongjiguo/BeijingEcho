@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your left is the south entrance gate of Nanluoguxiang.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "72d02a67b1204f35ded7b091054aa8cdc64867ee3119b765d821efe2b95fbdda",
+      "duration": 5.232
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "72d02a67b1204f35ded7b091054aa8cdc64867ee3119b765d821efe2b95fbdda",
+  "duration": 5.232
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the Diamond Throne Pagoda on the hillside.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "c6ce2b7db8cb6b3e130fe8fb5d6f85ff10fbf1ec5ecf3be731fd658ecad9a8b5",
+      "duration": 4.008
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "c6ce2b7db8cb6b3e130fe8fb5d6f85ff10fbf1ec5ecf3be731fd658ecad9a8b5",
+  "duration": 4.008
+}

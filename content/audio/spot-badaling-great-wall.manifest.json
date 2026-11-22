@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "This is it — the Great Wall of China, at Badaling, its most famous gateway. The wall beneath your hands is not one wall but many, built and rebuilt across two thousand years; the brick wall you're standing on dates to the Ming dynasty, the fifteen to sixteen hundreds, when Beijing was the capital it guarded. The old saying goes: \"He who has never been to the Great Wall is not a true man\" — 不到长城非好汉 — and Badaling is where emperors, presidents, and millions of travelers have earned that title. Watch how it behaves like a living creature: it rides the spine of the mountains, its towers placed within sight of each other — smoke signals once leapt from tower to tower, carrying news of invasion to the capital at astonishing speed. Badaling was the first section opened to visitors, in the nineteen fifties, and it's fully restored and ramped for every age. Climb to the highest tower you can — the wall disappears into the mountains both ways. That view is the China postcard, and you're standing in it.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "2eb4cd3ab5b9e588f6c53b295ec362ae23f66eb74f2cda18309432681a019e0b",
+      "duration": 71.304
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "508c8acedf18a4c839cdd9aaaf77511f26f01e5f4b6d7f32a2d2976bd7f4b3d4",
+  "duration": 71.352
+}

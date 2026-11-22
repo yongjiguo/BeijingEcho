@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Temple of the God of Mount Tai's entrance screen wall is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "5e2ef78031f7fdbadfa1ca821fdf7c7580a51ce617bd4e3852dca57618630503",
+      "duration": 5.184
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5e2ef78031f7fdbadfa1ca821fdf7c7580a51ce617bd4e3852dca57618630503",
+  "duration": 5.184
+}

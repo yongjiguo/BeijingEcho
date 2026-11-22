@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the starfish-shaped heart of the golden terminal.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "178ab439b00be651614378e48a8e2be6b5860dc216da19b9d805bbaa9495d1e0",
+  "duration": 5.448
+}

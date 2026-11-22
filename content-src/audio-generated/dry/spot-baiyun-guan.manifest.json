@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "White Cloud Temple is the Vatican of Chinese Taoism — the headquarters of the Complete Perfection school, and a working monastery since the thirteen hundreds. Its story centers on Qiu Chuji, the Taoist master who crossed deserts and mountains at age seventy-three to counsel Genghis Khan — the khan, impressed, granted him this temple and exemption from taxes. The temple's origins reach back to the Tang dynasty, though fire and rebuilds keep rewriting its fabric. Inside: halls of the Taoist immortals, the grave shrine of Qiu Chuji, and one beloved ritual — hunt the three stone monkeys carved around the courtyard; locals rub them for luck, and finding all three is said to take a lifetime of visits. At Spring Festival, the temple fair here is Beijing's oldest Taoist celebration. Under the pines, incense smoke and quiet chanting — a completely different Beijing than the palaces next door.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5c60e972832e24e2edf1fa3c5fd1835792d27d1d1340a41fbe2abf0f0342e91b",
+  "duration": 65.976
+}

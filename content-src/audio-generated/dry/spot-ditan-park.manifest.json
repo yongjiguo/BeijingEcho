@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Where heaven got a circle, earth got a square. Ditan, the Temple of Earth, was built in the fifteen thirties as the counterpart to the Temple of Heaven — and for nearly five centuries, emperors came here each summer solstice to sacrifice to the Earth deity from this stark square stone terrace, the largest of its kind. Today it's a beloved park of old cypresses, and the city's most famous temple fair ground: every Spring Festival, Ditan hosts Beijing's biggest fair — lion dances, folk crafts, snack stalls in a happy crush of locals. The literary-minded know it from a beloved essay, \"I and Ditan\" by the writer Shi Tiesheng, who spent years in these alleys thinking about fate after illness — the park remembers him fondly. Quiet on ordinary days, roaring at New Year — Ditan is heaven's mirror and Beijing's living room.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5e4278457529b36fc5210e92f71e2eadae8ce0be38ff15330637827bf57cf10b",
+  "duration": 60.12
+}

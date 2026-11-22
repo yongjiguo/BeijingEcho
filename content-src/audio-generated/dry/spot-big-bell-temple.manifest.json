@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On Beijing's north side hangs the largest bronze bell in China — some say the king of all bells. The Yongle Great Bell, cast around fourteen twenty under the Ming emperor Yongle, weighs some forty-six tonnes, stands nearly six meters tall, and carries a hidden miracle: its inner and outer surfaces are engraved with Buddhist sutras — over two hundred twenty thousand characters, said to be flawless in calligraphy. Scientists still marvel at how fifteenth-century foundries cast it in one piece. Struck, it rings for minutes, a sound once heard across the old city; today it sounds only on New Year's Eve, one hundred and eight chimes to end the year. The temple around it, from the Yongzheng era, now serves as the Ancient Bell Museum — three floors of bells spanning four thousand years of Chinese bronze. Come for the big one; stay to realize bells were an empire's clock, alarm, and anthem at once.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "b03fc131611056f1592d572816d3ce0c900e099756d7369c6c10107f3354be9a",
+  "duration": 64.32
+}

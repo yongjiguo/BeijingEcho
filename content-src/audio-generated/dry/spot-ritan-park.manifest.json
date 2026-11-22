@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Ritan, the Temple of the Sun, is the smallest and calmest of Beijing's imperial altars — built in the fifteen thirties, when the Ming court institutionalized worship of sun, moon, earth, and heaven across the city. Each spring equinox, the emperor traveled here to greet the rising sun from the white stone altar that still sits under the cypresses today. Its imperial job long gone, Ritan became one of Beijing's favorite neighborhood parks: a rock garden, a lotus pond, pavilions gifted by sister cities, and at dawn, its legendary community — retirees practicing tai chi, sword dancing, and ballroom steps with total commitment. Business travelers from the nearby embassy district jog here at lunch. If you want to see daily Beijing life at its most graceful, come at seven in the morning: the altar of the sun is now, quite literally, a stage for the people.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "f0e6cfbb69cbb9f3473baa8d8b49c978c5e27012d998fb096e5c3025b8c12d25",
+  "duration": 63.528
+}

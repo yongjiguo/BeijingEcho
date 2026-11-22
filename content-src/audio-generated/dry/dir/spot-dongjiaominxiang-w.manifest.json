@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the former French post office building.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "ba962a0cad00bfa5e52a2c59df6a3679f887a43ac4fee06fd1196e0f73e63fe2",
+  "duration": 3.84
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the great White Dagoba.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "6f11f7273fdb6b577b72f6008332debb8844c59be76f7dcf5d3bfd3716b27d9e",
+      "duration": 3.168
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "6f11f7273fdb6b577b72f6008332debb8844c59be76f7dcf5d3bfd3716b27d9e",
+  "duration": 3.168
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Fifty kilometers southwest of the capital, a hill called Dragon Bone Hill changed how humanity sees itself. In the nineteen twenties, excavations here unearthed Peking Man — Homo erectus who lived in these caves hundreds of thousands of years ago, used fire, and left the fossil evidence that made one of the twentieth century's great scientific stories. The first complete skullcap was found in nineteen twenty-nine by Pei Wenzhong, after three days of delicate work in the cave mouth before you. Tragically, the original fossils vanished in nineteen forty-one amid wartime chaos — their loss remains one of science's great mysteries — but the site itself, a UNESCO World Heritage Site since nineteen eighty-seven, still yields finds, and the on-site museum rebuilds their world: fire pits, stone tools, and the famous reconstructions. Half a day from the city, best combined with Yunju Temple nearby. Stand at the cave mouth: this is where your morning commute connects to deep time.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "13360318440c3d56fa0e74f7ce6449255bffc96005e6ea8654c450e52223fc5a",
+  "duration": 70.56
+}

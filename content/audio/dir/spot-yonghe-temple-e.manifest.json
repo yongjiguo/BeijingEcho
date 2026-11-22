@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the Hall of Harmony and Peace.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "7dbda96cacab1fba57ec0a231f46de9dae257054e45474c2b2a0efa8f8d0436f",
+      "duration": 3.624
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "7dbda96cacab1fba57ec0a231f46de9dae257054e45474c2b2a0efa8f8d0436f",
+  "duration": 3.624
+}

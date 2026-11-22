@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Juyongguan is the Great Wall's front door to Beijing — the closest great mountain pass to the city, guarding the gorge through which every invader and every emperor once traveled. The pass today shows a grand Ming-dynasty fortress rebuilt in gleaming stone: twin gatehouses, looping walls hugging the valley, and the inscription that every visitor photographs — \"The First Magnificent Pass Under Heaven.\" The true treasure is older: inside the fortress stands the Cloud Platform, a white-marble archway from the Yuan dynasty, thirteen forty-five. Walk through its tunnel and look up — the walls and ceiling are covered in thousands of carved Buddhas and inscriptions of sacred texts in six scripts: Chinese, Sanskrit, Tibetan, and more — a fourteenth-century monument to one empire's many languages. It's steeper than Badaling, quieter than Badaling, and under ninety minutes from the city. For a wall trip without the crowds, this is the insider's choice.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d5f6980dcb100c95015401958143bff0f5a2bffca9d914fc8e4af786624323f3",
+      "duration": 70.512
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-5-meditation.mp3",
+    "bgm_sha256": "4e7ead76cfdda0979ff7d771fbbc3dbb312ca80ce25b78f3cdcaef07fcc7c2da",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "1717223f49b88bb3ab4b7e40d49170bea486ac9a9ec7e71a9c96ed465b1b2271",
+  "duration": 70.56
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your left is the sun altar terrace under the cypresses.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "10f615041246cdb136194a582e8572ff8800af6fd8db29ff959490a62eac0e44",
+      "duration": 5.664
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "10f615041246cdb136194a582e8572ff8800af6fd8db29ff959490a62eac0e44",
+  "duration": 5.664
+}

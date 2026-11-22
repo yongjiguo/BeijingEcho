@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "At the foot of the Western Hills, inside Beijing Botanical Garden's grounds, lies Wofo Temple — the Temple of the Reclining Buddha. Its treasure is exactly what the name promises: a bronze Buddha, more than five meters long, lying on one side in the posture of the historical Buddha's final rest — the Nirvana pose — one arm pillowing his head, serenity itself in cast metal. Cast in the Yuan dynasty around thirteen twenty-one, it is among the largest bronze reclining Buddhas in China, and the hall that holds it keeps a dim, hushed atmosphere that fits the subject. The temple began in the Tang dynasty and its gardens — magnolias in spring, wintersweet blooming in the cold of January — make it a four-seasons detour. Combine with the botanical garden's conservatory next door: garden morning, bronze afternoon, and the quietest famous Buddha in Beijing.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "5335997a9bf82b5b98f9010662ab8df355f8188e0ce90b3a8dbbfb1215a37f8f",
+      "duration": 64.776
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-5-meditation.mp3",
+    "bgm_sha256": "4e7ead76cfdda0979ff7d771fbbc3dbb312ca80ce25b78f3cdcaef07fcc7c2da",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "a810f102636a25da50ffb022c07b7d73bbfec583ecdebe1b61b8c84f93ef9891",
+  "duration": 64.824
+}

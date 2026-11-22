@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the opera house courtyard of Prince Gong Mansion.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "17652e6621cb23db93c78b732b9a52681dd7c8981e723b28d98bf298c7538df9",
+      "duration": 4.488
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "17652e6621cb23db93c78b732b9a52681dd7c8981e723b28d98bf298c7538df9",
+  "duration": 4.488
+}

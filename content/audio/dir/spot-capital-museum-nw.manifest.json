@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Capital Museum's bronze-ribbed main hall is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "eaf6a0a798a50754443a1cf8528fce80f317e1f3e0a9be969cf0e0f6654e1029",
+      "duration": 5.088
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "eaf6a0a798a50754443a1cf8528fce80f317e1f3e0a9be969cf0e0f6654e1029",
+  "duration": 5.088
+}

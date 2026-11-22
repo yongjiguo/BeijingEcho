@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "This is Houhai — \"the Back Sea\" — where old Beijing comes out to play at night. One of the Shichahai lakes, Houhai spent centuries as an aristocratic playground: princes built their gardens here, opera barges floated on summer nights. Today the tradition continues in modern costume: the south and east shores glow with lantern-lit bars and live music venues, while just one hutong back, families play chess under the willows as if the neon didn't exist. That contrast is the magic of Houhai — and your evening plan writes itself. At dusk, walk the shore from the Yinding Bridge: swans and pedal boats at golden hour, then music rising as the lights come on. In winter the lake freezes solid and becomes Beijing's great ice playground — sledges, skates, and sixty-year-old hockey games. Come for a drink, stay for the people-watching — Houhai is where Beijing's daytime shyness ends.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5c610f70a3af79f3b1a3057052184f17d8b0bb890538d092d8dc7811b78b00cb",
+  "duration": 64.32
+}

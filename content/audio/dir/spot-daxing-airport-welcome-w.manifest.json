@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your left stands the starfish-shaped heart of the golden terminal.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "bd98af9c757044f11cda50a422b124828b8781e0a7e78472077519605aedfa29",
+      "duration": 4.704
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "bd98af9c757044f11cda50a422b124828b8781e0a7e78472077519605aedfa29",
+  "duration": 4.704
+}

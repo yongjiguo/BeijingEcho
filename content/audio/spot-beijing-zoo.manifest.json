@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You've reached the Beijing Zoo — China's oldest zoo, opening in nineteen zero six as an imperial experiment garden, and home to its most beloved ambassadors: the giant pandas. The Panda House is the heart of any visit — watch the bears do what they do best: eating bamboo, up to twelve hours a day, or simply tumbling around like living plush toys. Come in the morning, when they're most active and the crowds are thinnest. But the zoo is more than pandas: over ninety years as a public zoo, it grew into one of the world's largest, with golden monkeys, red pandas, and a lakeside setting that makes it as much park as menagerie. Families could spend half a day here; panda-only pilgrims can be done in two hours. One rule applies everywhere: quiet voices, patient eyes — the stars perform on their own schedule.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "134dc7c755b4f22900820e7d592305759f62c0a4cb44b5d3ff49e61b00208cb7",
+      "duration": 60.096
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-3-gymnopedie.mp3",
+    "bgm_sha256": "8cba6bb3da51066ad39520ec218a327bb6222d8fb32bc52f28a1e90b67756f70",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "00f9663ee391f7580a79839a37e86296a3a1bfed6edd8eeaec8460a740a9392a",
+  "duration": 60.144
+}

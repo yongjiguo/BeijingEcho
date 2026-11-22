@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your right is the Biyong Hall.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "3a93a3a5fa84e6eedb10c0f4587b9874f98ff7762a3d54116ceadc90050a089f",
+      "duration": 3.168
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "3a93a3a5fa84e6eedb10c0f4587b9874f98ff7762a3d54116ceadc90050a089f",
+  "duration": 3.168
+}

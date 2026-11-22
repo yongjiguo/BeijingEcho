@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the great White Dagoba is just ahead on your right.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "137fa0e4aac568694ff06278bac4f501f5fe19c6bf0053f69b5b420281cf8e35",
+  "duration": 3.504
+}

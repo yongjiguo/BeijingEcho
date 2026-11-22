@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your left is the five spires of the Vajrasana pagoda.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "5ed4ace0dfbb6d01770a7869a6cc1e778a2c35018058a5c7337e3424c7a88875",
+      "duration": 5.112
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5ed4ace0dfbb6d01770a7869a6cc1e778a2c35018058a5c7337e3424c7a88875",
+  "duration": 5.112
+}

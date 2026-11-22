@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You're entering the Old Summer Palace — Yuanmingyuan, the \"Garden of Gardens\" — and its evocative ruins. In the eighteenth century this developed into a vast imperial garden complex: halls, pavilions, and libraries spread across three hundred and fifty hectares of hills and lakes, housing art and treasure. Emperor Qianlong even commissioned a section of European palaces — baroque fountains and marble facades designed by Jesuit court artists — whose remains can be seen in the Western Mansions area. Then, in October 1860, Anglo-French forces looted and burned the palace during the Second Opium War. The ruins are preserved as a reminder of that destruction, and the park is a place to reflect on this chapter of history. Walk slowly. This place is not about what stands — it's about what was lost, and what a garden once meant.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "60c6bf50fea6009ae4605217f6e2cd2ad3d4ccc2639bc8fa7760e7871fe6de67",
+  "duration": 60.456
+}

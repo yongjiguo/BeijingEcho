@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is Terminal Three's sweeping dragon-form roof.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d15b97aae5450935e716fb0d83ef7320d34f1622c4188c393fc5992ffd950afe",
+  "duration": 5.832
+}

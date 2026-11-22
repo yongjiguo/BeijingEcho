@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the Wangfujing pedestrian street clock tower.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "a9d6d17ce7c4070266e7113def98c34983d023559fd3c810510b9edaa47f2742",
+      "duration": 4.416
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "a9d6d17ce7c4070266e7113def98c34983d023559fd3c810510b9edaa47f2742",
+  "duration": 4.416
+}

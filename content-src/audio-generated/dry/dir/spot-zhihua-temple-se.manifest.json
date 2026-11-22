@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your right is the Zhihua Temple's black-glazed roof and main gate.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "6ae1ccd665c71d6b9d78bc41c544c571fa50612dbb5f1d576f1af623deab6ea6",
+  "duration": 6.024
+}

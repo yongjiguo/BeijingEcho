@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Silk Street is Beijing's most famous bargaining arena. It began in the nineteen eighties as an outdoor market of silk sellers along this street — foreigners discovered it, word spread, and the stall vendors eventually moved into a bright eight-floor mall you see today, keeping the old name and the old game. The rule of the house: the first price is an opening move, not a number. Start at a third of it, smile, walk away slowly, and watch the price fall with every step. Silk scarves and tailor-made shirts are the classics; tailors here can measure you and deliver a fitted coat in days. The upper floors drift into electronics and souvenirs — quality varies wildly, so buy what you can judge. No haggling skill needed to enter; it's the best free entertainment in Beijing anyway. Set a budget before you go in. Everyone says that. Everyone ignores it.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "70fd0847cf405f9fab1a4d26a76b43e696f3d5efd7770a7ee56fb074aaa334ed",
+  "duration": 60.624
+}

@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You've arrived at Fragrant Hills — the Beijing autumn that everyone talks about. This imperial park at the foot of the Western Mountains has been a retreat since the Jin dynasty, eight hundred years ago — emperors built temples here, and the Kangxi and Qianlong emperors made it a summer escape of palaces and pines. The park's name comes from the hill's twin peaks — said to smell of sweet incense, though what draws the crowds is color: every late October into November, the mountainsides of smoke trees turn crimson, and half of Beijing hikes up to walk inside that red. The climb to Incense Burner Peak — five hundred fifty meters, stairs most of the way — rewards you with the whole Beijing plain at your feet. On the way, visit the Temple of Azure Clouds at the park's edge, where the body of Dr. Sun Yat-sen, father of modern China, lay in state in nineteen twenty-five. Arrive early on autumn weekends — the red leaves deserve your sunrise, not your traffic jam.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "e31652287be1fc72855b6509bb92def54f5b7387f158075583fd12c5fa77811d",
+      "duration": 66.048
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "09432885a6757308dce4940f5fbd68e0e5f93f2101e64c052961673445fe9ae3",
+  "duration": 66.096
+}

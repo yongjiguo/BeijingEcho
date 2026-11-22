@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the Drum Tower's great timekeeping drums.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "2a7f6f868036f90c7d17e709375cc5a1c5b7f718d08a55133918758db70adc27",
+  "duration": 5.424
+}

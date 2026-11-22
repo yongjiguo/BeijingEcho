@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "The saying goes: \"First there was Tanzhe Temple; then came Beijing city.\" This temple in the Western Hills really is older than the capital — founded in the Jin dynasty, over one thousand seven hundred years ago by tradition — making it the oldest temple in the Beijing region, when this valley was wilderness and the city was yet to exist. Its courtyards climb a wooded hillside: the Hall of Dragons, a pond fed by the old dragon well, and its legends. The star is the Emperor Tree — a ginkgo about a thousand years old — which, tradition says, sprouted a new branch for each new emperor's accession. Empress Dowager Cixi came here; poets came here; now you come here — about an hour from the city, best in autumn when the valley turns gold and the temple smells of pine and incense. The mountain walk beyond is easy and lovely. Beijing's oldest resident has earned your half day.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d71ea13bbe925f30a6af0b5ed38ef42fb3cea1722b835fe9c636cee92bf8f210",
+      "duration": 64.392
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "d6413ce9d7215f791d4eb9e07de4f2f63f8ced9187058d3fb03d9fe0c57f8e2a",
+  "duration": 64.44
+}

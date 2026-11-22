@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Drum Tower's great timekeeping drums is just ahead on your right.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "a43b43197162fa74e9a8c0c6e30d0658e8175a66d31243260cf39d16f883b636",
+  "duration": 5.016
+}

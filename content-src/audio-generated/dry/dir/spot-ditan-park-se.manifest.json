@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your right is the square altar terrace of the Temple of Earth.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "156b515798456d5065e42fa8625aaa960677dc0ea7b2fb7e8a339ba8681e9566",
+  "duration": 5.736
+}

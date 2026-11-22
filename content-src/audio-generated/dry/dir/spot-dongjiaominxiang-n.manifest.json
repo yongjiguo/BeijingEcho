@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the former French post office building.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "a65c1f0e5054dcbd850d68b3108b5870b43f7e3aa0c4acfd8344ddd396ded82b",
+  "duration": 4.584
+}

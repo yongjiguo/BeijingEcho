@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You're entering Jingshan Park — and it holds the single best view in Beijing. This hill right in front of you is man-made: five peaks of soil dug out to create the moats of the Forbidden City directly to the south. Climb to the pavilion on top, turn around, and you'll see it — the entire Forbidden City, its golden roofs stretching to the horizon, laid out like a stage set. It also holds a tragic story. In 1644, as rebels stormed the city, the last Ming emperor, Chongzhen, fled into this park and hanged himself from a tree — and with him, the Ming dynasty ended. The tree standing today is a descendant of the original, marked with a plaque. Come at sunset if you can: first the panorama, then the drums of the city at dusk. Jingshan is where Beijing reveals its perfect geometry.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "134c7e72f8b79d1c32b78cf96c85242b262c618a03ca36767d41a21ddbaad79b",
+  "duration": 60.168
+}

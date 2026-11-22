@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You've arrived at Qianmen — \"the Front Gate\" — the grand southern gateway of old Beijing, and just beyond it, Dashilan, the city's oldest shopping street, six hundred years in the making. When the Qing court banned night life inside the imperial city, merchants, theaters, and teahouses all crowded here instead — and Dashilan became the entertainment capital of old Peking: the cradle of Peking opera, home to the city's first cinemas. The old brands are still trading: Tongrentang, the pharmacy of imperial physicians since the seventeen century; Zhangyiyuan tea; Neiliansheng, the cloth-shoe maker whose slippers once suited Qing officials. Look down as you walk — the street's name comes from the big wooden gates that once closed it at night. And look up at the Zhengyangmen archery tower behind you: part of the medieval city wall that once ringed all of Beijing. Duck into the side alleys — the old theater courtyards still echo.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "48671ddbdab44ab8c097fbc2a8e6d86ec503d5d431fd45d939594fa120131cb9",
+  "duration": 63.96
+}

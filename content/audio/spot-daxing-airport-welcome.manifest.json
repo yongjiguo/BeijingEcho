@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Welcome to Beijing — and welcome to one of the most spectacular buildings humans have ever boarded planes in. This is Beijing Daxing International Airport, opened in twenty nineteen: a single golden terminal spreading six wings like a starfish, designed by the late Zaha Hadid's studio and celebrated as the largest single-terminal airport building on Earth. Follow the signs in your terminal for trains, official taxi ranks, and airport buses, and check the current routes and operating hours before you travel. And if this voice is speaking to you, your guide has begun. From here on, it can play stories near listed stops when location and playback conditions allow — palaces, temples, hutongs, and the wall itself. 北京欢迎你 — welcome to Beijing. Let's begin.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "8d98717294a6c808ab6bbe5a29f83d09426638e9569ffd10cb50d2515674e9ae",
+      "duration": 56.208
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-5-meditation.mp3",
+    "bgm_sha256": "4e7ead76cfdda0979ff7d771fbbc3dbb312ca80ce25b78f3cdcaef07fcc7c2da",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "74dabd8abfdd1d9537236773e33eb5f7d8fcca73ebe2efb6146648dc903c0dd8",
+  "duration": 56.256
+}

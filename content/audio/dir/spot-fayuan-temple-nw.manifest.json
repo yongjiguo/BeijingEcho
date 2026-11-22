@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Fayuan Temple's main gate and bell tower is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "55dce2b3d8a75b754d7317c9cac27b6392e014eebcd68989f5e5900759a8ed12",
+      "duration": 4.968
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "55dce2b3d8a75b754d7317c9cac27b6392e014eebcd68989f5e5900759a8ed12",
+  "duration": 4.968
+}

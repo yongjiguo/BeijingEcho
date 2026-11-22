@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the Hongqiao Market building by the Temple of Heaven's east gate.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "62ed4902121e8c14fc5777da26fa68e2876cde8ffd70fa68dcefa8befca439fc",
+      "duration": 6.264
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "62ed4902121e8c14fc5777da26fa68e2876cde8ffd70fa68dcefa8befca439fc",
+  "duration": 6.264
+}

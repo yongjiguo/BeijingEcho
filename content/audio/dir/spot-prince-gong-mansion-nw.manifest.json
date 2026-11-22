@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the opera house courtyard of Prince Gong Mansion is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "021d10d3ca89a4234088ce06fb6a5eadabfcf7fa32857a69718e1c61c13daa11",
+      "duration": 4.872
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "021d10d3ca89a4234088ce06fb6a5eadabfcf7fa32857a69718e1c61c13daa11",
+  "duration": 4.872
+}

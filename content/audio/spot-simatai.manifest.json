@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "For the Great Wall's wilder soul, go to Simatai — the section where the wall stops being manicured and starts being myth. Built in the Ming dynasty and left largely as time made it, Simatai climbs steep ridges with crumbling bricks, sheer stairs, and watchtowers with names like the Fairy Maiden Tower perched on stone spires. It's the only section of the Great Wall allowed to open at night — lantern-lit towers glow above a valley of water. At its foot lies Gubei Water Town, a resort rebuilt in northern-village style: canals, stone lanes, hot-spring hotels, and the wall floating overhead in evening light. Come late afternoon: walk the wall as the light turns gold, descend into the water town for dinner, and watch the wall light up above you. It's two hours from the city — the farthest of your wall options, and the most unforgettable.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "006f188563515c35cb9c6e74b79442b42f76c8248a859112ff146a83fe65d13c",
+      "duration": 59.928
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "21ea21baa62306df9399297f8eacb70fca33ebb3340d83988cfd48d8bf68019e",
+  "duration": 59.976
+}

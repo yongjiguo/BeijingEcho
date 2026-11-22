@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the highest watchtower of the Badaling section.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d0bc10fedb3d5555df314f462b9ff0ce0a77874526a2412a8d05e40acec3b2a3",
+  "duration": 4.44
+}

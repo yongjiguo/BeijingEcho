@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Hall of Supreme Harmony is right behind you.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "69a8306defe130e6dcf1ff8e503d1d0c553d49588cd57bbf6df44f81eb0d6374",
+      "duration": 3.432
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "69a8306defe130e6dcf1ff8e503d1d0c553d49588cd57bbf6df44f81eb0d6374",
+  "duration": 3.432
+}

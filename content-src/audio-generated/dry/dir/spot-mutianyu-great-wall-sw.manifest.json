@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the watchtower cluster at Mutianyu ridge.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "0461b74aae50e0219e6d3a723a3231758041442a57739db261375ba65d512df5",
+  "duration": 4.896
+}

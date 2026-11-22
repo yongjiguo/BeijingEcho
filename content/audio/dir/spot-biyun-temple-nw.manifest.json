@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Diamond Throne Pagoda on the hillside is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "8059bf603217ce434a13ce9c802c9dd6ad816a37861d42820a6f30cef33e82ba",
+      "duration": 4.68
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "8059bf603217ce434a13ce9c802c9dd6ad816a37861d42820a6f30cef33e82ba",
+  "duration": 4.68
+}

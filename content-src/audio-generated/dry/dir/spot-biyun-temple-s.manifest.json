@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Diamond Throne Pagoda on the hillside is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "05a2c291e851548ad7cc5c75ef9c925a99fe3a212d37ad6e6f1fba8d3c99ed78",
+  "duration": 4.68
+}

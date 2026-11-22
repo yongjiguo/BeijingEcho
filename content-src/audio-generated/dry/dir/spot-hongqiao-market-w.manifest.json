@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the Hongqiao Market building by the Temple of Heaven's east gate.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "61f024122ce6ca6e60e31e339750313a8bce20e409ab89162660e4a01e626248",
+  "duration": 5.4
+}

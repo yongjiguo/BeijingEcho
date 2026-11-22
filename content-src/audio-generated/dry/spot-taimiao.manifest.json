@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Immediately right of the Forbidden City's gate — behind the red wall most visitors walk straight past — hides the Imperial Ancestral Temple, Taimiao: where Ming and Qing emperors worshipped their ancestors. Built in fourteen twenty with the palace itself, under the ancient rule that a capital must have \"the ancestral temple on the left, the altars of soil and grain on the right.\" Emperors came here for every coronation, wedding, and victory to report to the imperial dead. Its three great timber halls — the largest cluster of ancient hall architecture outside the palace itself — still stand in a forest of ancient cypresses, some said to be planted by early Ming hands. In nineteen twenty-four it became the Working People's Cultural Palace, but the cypresses don't care about names. Come here when the Forbidden City tickets sell out — same red walls, none of the crowds — and walk the avenue of thousand-year-old-looking trees.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "1447fd7326e56efa91106a8ecfe62e818e644172f58464e4f93757c7bc6eeba1",
+  "duration": 66.576
+}

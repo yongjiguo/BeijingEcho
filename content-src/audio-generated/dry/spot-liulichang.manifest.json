@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You've slipped into Liulichang — the quietest famous street in Beijing, and its most literate. For five hundred years this has been the haunt of scholars: in Qing dynasty times, examination candidates flooded the city and lodged nearby, and booksellers, calligraphers, and antique dealers set up shop here to feed the hungry minds. The name means \"Colored Glaze Factory\", from the Ming dynasty kilns that once fired imperial roof tiles on this very ground. Today it's a street of art: brushes ground by hand, ink stones, rubbings, seals carved while you wait, and silk-mounted paintings. Its crown jewel is Rongbaozhai — the \"Studio of Glorious Treasures\" — a three-hundred-year-old workshop where artists still produce woodblock prints using techniques passed down for generations; each print may take months and dozens of carvings. Come early, watch a seal-cutter work, and leave with a brush made the old way. This is Beijing's slow, scholarly soul — hiding in plain sight.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "cf820ac56692fe83a589aca66ab0b33e4593f328245f703393856f558b4b24fd",
+  "duration": 71.4
+}

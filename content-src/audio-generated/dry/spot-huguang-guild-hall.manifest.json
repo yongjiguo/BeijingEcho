@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Off the streets south of Tiananmen hides a perfect wooden opera house from imperial times: Huguang Guild Hall. Guild halls were hometown clubs for merchants and scholars away from home — this one served merchants from Hubei and Hunan, founded in eighteen oh seven — and its courtyard stage hosted the greatest names of Peking opera's golden age; the acoustics of its all-wood, nail-free structure were part of the show. Today the hall is the Beijing Opera Museum — costumes, scripts, masks, and the stories of the art's two-century rise — and its stage still performs: on scheduled evenings, real Peking opera plays here to a modest, lucky audience. For first-timers, this small hall beats the grand theaters: every seat close, every gesture visible, tea served as it was a century ago. Combine with the nearby Liulichang cultural street for one old-Peking evening. The dynasty is gone; the show, happily, is not.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "7e711e61d0ddbca498fe767584d1e500843107f4ff4f75b00117fc8945d85d9d",
+  "duration": 66.936
+}

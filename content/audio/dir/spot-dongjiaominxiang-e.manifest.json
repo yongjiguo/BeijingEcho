@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the former French post office building.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "95377d0bdb321d676c26adb4f58d7a179574c096ced1e936b2261a891ef15995",
+      "duration": 3.624
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "95377d0bdb321d676c26adb4f58d7a179574c096ced1e936b2261a891ef15995",
+  "duration": 3.624
+}

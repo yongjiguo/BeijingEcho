@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You've chosen the connoisseur's Great Wall: Mutianyu. Same Ming-dynasty wall, same mountain-spine engineering — but wrapped in forest instead of the city crowds. This section guarded the northeast approach to Beijing for centuries, and its builders showed personality here: it boasts more watchtowers than most sections, including a rare pair of towers built as one triple-height giant, and the crenellations come in both rectangular and sawtooth patterns — a detail found almost nowhere else. For centuries this wall slept under vines and pines; restoration in the nineteen eighties reopened it, and today a cable car lifts you up, and — if your inner child insists — a toboggan slide brings you down. Walk east toward tower twenty-three and you'll feel what most visitors never do: silence, wind, and the wall stretching on beyond sight. Come in October, and the mountains burn red with maple and smoke-tree leaves. This is the Great Wall at its most beautiful.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "71a551d20178b978a947ba61e07848e27e0a7dce8cdcd838290719118e64be02",
+  "duration": 69.072
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the great ancient ordination altar is right behind you.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "2a89a73eefc7c734e89391187c673ee5750deaaff2f57b88b3f46e1d97c13883",
+      "duration": 4.176
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "2a89a73eefc7c734e89391187c673ee5750deaaff2f57b88b3f46e1d97c13883",
+  "duration": 4.176
+}

@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You've found one of the most unlikely survivals in Beijing: a working astronomical observatory from the Ming dynasty, standing beside the second ring road since fourteen forty-two. For nearly five hundred years, astronomers climbed this platform nightly to track the heavens for the emperor — because in imperial China, the sky was politics: eclipses and comets were omens, and the calendar was the throne's business. The bronze instruments on the roof are the stars of the show — armillary spheres, sextants, and a celestial globe, cast in the late sixteen hundreds under the direction of Ferdinand Verbiest, a Flemish Jesuit priest who served the Kangxi Emperor as court astronomer. Look closely: European engineering wrapped in Chinese dragons and clouds — East and West collaborating three centuries before \"globalization\". Few visitors find this place; those who do, climb a medieval tower and touch the instruments that once mapped the sky for an empire. Astronomy, diplomacy, and survival — all in one rooftop.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "82e1a1aa6a5c6b17d45f0b5bfcc0310dc544581620e98253ca7b5d5679712fa4",
+      "duration": 75.72
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "6b2a40fc94af6dc46c8a3e02a81f216f97084420894eecfaf1bcc6fe1c8938f7",
+  "duration": 75.768
+}

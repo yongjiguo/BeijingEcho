@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your left stands the main factory gallery with Bauhaus sawtooth roofs.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "756097c223d6eb74cf77874fd325966cd71a2dd61bc65b8f30247314b7f22511",
+      "duration": 5.16
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "756097c223d6eb74cf77874fd325966cd71a2dd61bc65b8f30247314b7f22511",
+  "duration": 5.16
+}

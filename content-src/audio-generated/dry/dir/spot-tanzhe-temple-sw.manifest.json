@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the ancient ginkgo known as the Emperor Tree.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "dd9ed40ea8396eaba7ac0203fd8e8256f7fbe249a2a793e34eac53ab92a3ccaa",
+  "duration": 6.0
+}

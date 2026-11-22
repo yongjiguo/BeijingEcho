@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the temple's clay Buddha hall under the magnolias.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d3a7149cc2fc35e1aa70cd9bfbb3e53581b9de0741e948728eb53af5041ece2a",
+      "duration": 4.872
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d3a7149cc2fc35e1aa70cd9bfbb3e53581b9de0741e948728eb53af5041ece2a",
+  "duration": 4.872
+}

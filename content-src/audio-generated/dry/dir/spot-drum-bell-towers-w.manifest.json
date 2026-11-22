@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the Drum Tower's great timekeeping drums.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "4c614b5dea3f8a4689d5eb8f66485413065a294a639a363e8972574eb95876ac",
+  "duration": 4.512
+}

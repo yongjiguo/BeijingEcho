@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the south entrance gate of Nanluoguxiang.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "25719f32c4ed6b57cb3d71f109a3b14b7ba0a2a3bf720bf66cebdf135abc9502",
+  "duration": 4.464
+}

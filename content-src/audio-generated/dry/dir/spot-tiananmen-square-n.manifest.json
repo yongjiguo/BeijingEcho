@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the Gate of Heavenly Peace.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "11057f54669ee35f3ab40a3511fdfe3dd4cb7a2c523fcf88a300d775db519b82",
+  "duration": 4.512
+}

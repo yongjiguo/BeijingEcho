@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Beside the railway station stands something remarkable: the last living piece of Beijing's medieval city wall. For five centuries, a wall of rammed earth and brick, with gates and towers, enclosed the Ming capital. When the city modernized, nearly all of it came down — but this section survived, and the park before you preserves it as a quiet, climbable ruin. At its east end rises the Corner Tower — a vast two-roofed watchtower from the fourteen hundreds, one of the largest surviving watchtowers of any Chinese city wall — its arrow slits still staring down the tracks where the trains now run. Inside the tower, a small museum shows old Beijing's gates and defenses. In early spring, the plum garden below blooms into the city's favorite flower scene. Walk the wall's grassy base at dusk — Beijing, five hundred years ago and five hundred meters from the subway.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "39bdec7b8e84cb35aab2cdac9908d47808e67a0150d5b75844320eaef2379312",
+      "duration": 64.224
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-3-gymnopedie.mp3",
+    "bgm_sha256": "8cba6bb3da51066ad39520ec218a327bb6222d8fb32bc52f28a1e90b67756f70",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "66c892916a8d192f1678175e2350fb352bdc062226b19791b8fff06639c42e1e",
+  "duration": 64.272
+}

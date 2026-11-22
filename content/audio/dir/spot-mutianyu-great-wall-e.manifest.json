@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the watchtower cluster at Mutianyu ridge.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "6b53ca9e75a04cf342807e473155815a7e1465d0508b19c8f0ecfbf7659495d6",
+      "duration": 4.44
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "6b53ca9e75a04cf342807e473155815a7e1465d0508b19c8f0ecfbf7659495d6",
+  "duration": 4.44
+}

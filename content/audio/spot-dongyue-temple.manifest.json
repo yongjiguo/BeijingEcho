@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Across from the CBD's glass towers stands Dongyue Temple — dedicated to the god of Mount Tai, the emperor of all China's sacred peaks, and judge of souls. Founded in the Yuan dynasty, completed in the thirteen twenties, its fame is a strange and wonderful corridor: seventy-six side halls once held hundreds of clay figures showing what happens after death — the seventy-six departments of the underworld, where every sin had its office and every good deed its record. When the figures were destroyed in the twentieth century, the temple's endless written pleadings to the god survived — visitors can read real prayers, complaints, and thank-you notes from centuries past. Now the Beijing Folk Museum, the temple still bustles with worshippers at New Year, and its stone tablets — more than a hundred — crowd the courtyards like a stone library. Hell has never been so interesting, or so well documented.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "6f940854df38af07f2b9c202fe9f2ef940ef338c6716e04434c28f0ab3e73b8d",
+      "duration": 63.192
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-5-meditation.mp3",
+    "bgm_sha256": "4e7ead76cfdda0979ff7d771fbbc3dbb312ca80ce25b78f3cdcaef07fcc7c2da",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "311d119a1ad1f861b1b8d5233af9ae1400640a7f60d93f9561e734a1b519a794",
+  "duration": 63.24
+}

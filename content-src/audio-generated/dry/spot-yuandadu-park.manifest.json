@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "This long, green line across the city's north is a ghost: the earthen wall of Kublai Khan's capital. In twelve sixty-seven, the Mongol emperor built Dadu — \"the Great Capital\" — the planned metropolis that Beijing has been ever since; its walls ran for miles in rammed earth. When later dynasties rebuilt the city smaller, the northern wall was left outside, and centuries of weather softened it into the long hill you can walk today. The park along it stretches for kilometers: cypress walks, bike paths, and a famous spring scene — the Crabapple Blossom Creek, where thousands of crabapple trees flower along a waterway each April and half the city arrives to picnic under them. Look closely at the grassy mounds: this is the thirteenth century, in earth form. Seven hundred years of history, at jogging height — the most accessible ruin in Beijing, and free.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "bf1499fec3cdbb07b88cfb46f096ca1188dbc9663fbfff4ddced68598346f097",
+  "duration": 63.144
+}

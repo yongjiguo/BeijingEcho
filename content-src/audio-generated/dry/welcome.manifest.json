@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Welcome — and thank you for opening Beijing Echo, your personal audio guide to China's capital. Here's how it works. With your permission, this page uses your location on your device to find nearby places in the guide. As you explore, stories can play automatically when you come within range of a listed stop — imperial palaces, ancient temples, hutong alleys, and the Great Wall itself — like a local friend walking beside you. When a usable heading is available, a story can begin by telling you which way to look. Without it, we skip that direction cue. Street too noisy to hear every word? Tap Show transcript to expand the English text and read at your own pace. No accounts, no fees, no sign-up — just walk. Keep this page open and your screen on, and allow location access; playback also depends on your signal and browser. Now — head toward anything that looks interesting. Enjoy Beijing.",
+    "kind": "welcome",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "3214c890a1fe91ef6ca5fcbe2a156977e630efeae02f52c16764ce9a34e18969",
+  "duration": 64.344
+}

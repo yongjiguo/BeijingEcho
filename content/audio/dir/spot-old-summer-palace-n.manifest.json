@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the Great Fountain ruins, Dashuifa.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "6245f8a95dbf01dc062a5ecee602cd6f5d2a7dbb9346359e93470e938f1a5f98",
+      "duration": 4.776
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "6245f8a95dbf01dc062a5ecee602cd6f5d2a7dbb9346359e93470e938f1a5f98",
+  "duration": 4.776
+}

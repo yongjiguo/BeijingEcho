@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the great bronze reclining Buddha is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "e40c98d09592e9db5c0b53d9fb0199bc439b82e3294748a393de643c4c6906ec",
+  "duration": 4.08
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You are standing on Tiananmen Square — one of the largest public squares on Earth, covering about four hundred and forty thousand square meters. For centuries this was the front courtyard of the imperial city, closed to ordinary people. Today it belongs to everyone. To the north rises the Gate of Heavenly Peace, from which Mao Zedong proclaimed the founding of the People's Republic of China in 1949 — his portrait still hangs there today. Around you: the Great Hall of the People on the west, the National Museum of China on the east, the Monument to the People's Heroes at the center, and the Mausoleum of Mao Zedong to the south. Every sunrise, crowds gather for the flag-raising ceremony, timed to the moment the sun breaks the horizon. Walk north toward the gate, and behind it waits the Forbidden City — the next chapter of your walk.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "e7fd1b7cab75ebf9d6299409bc6cf12bf2e80fd3998a220774d02cb0220ebb4e",
+  "duration": 56.784
+}

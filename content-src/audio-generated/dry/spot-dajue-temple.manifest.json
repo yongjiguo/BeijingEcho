@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "High in the Western Hills sits Dajue, the Temple of Enlightenment — founded in the Liao dynasty over nine hundred and fifty years ago and loved ever since for its water, its silence, and its flowers. Emperors came here to escape the capital's heat; poets came for the spring. The temple's fame is botanical: its magnolias — planted, tradition says, in the Qing dynasty — bloom each April into the most famous white blossoms in Beijing, drawing crowds for a festival that is essentially perfume and awe. Its clear spring still runs through the garden, feeding the ponds where emperors dabbled; the library hall keeps a Qing-dynasty set of scriptures; the main hall keeps serene Liao-and-Ming-era clay Buddhas. Less than an hour from the city, Dajue makes the perfect half-day: temple in the morning, hillside lunch, and Beijing left far below. Spring for the magnolias; autumn for the ginkgo; winter for having the mountain almost to yourself.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "201e6081c1d57a227dcb5f419a4a036c53a1a54b0a9441355f6df9d5d9dc0d67",
+  "duration": 69.072
+}

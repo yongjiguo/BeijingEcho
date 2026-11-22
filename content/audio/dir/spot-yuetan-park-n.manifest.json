@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the moon altar platform.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "5379631fd4a3c5754879146efb4be698cd761d91cc56a12f59d3e9712d1a173d",
+      "duration": 4.104
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5379631fd4a3c5754879146efb4be698cd761d91cc56a12f59d3e9712d1a173d",
+  "duration": 4.104
+}

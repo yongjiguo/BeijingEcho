@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the Tower of Buddhist Incense on Longevity Hill.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "22e6bd00c961219c90e306c708506672a2a3b958678cdf10b2a2f435e223356b",
+      "duration": 5.88
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "22e6bd00c961219c90e306c708506672a2a3b958678cdf10b2a2f435e223356b",
+  "duration": 5.88
+}

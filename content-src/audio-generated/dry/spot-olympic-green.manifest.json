@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Welcome to Olympic Green — Beijing's monument to its two Olympic Games, two thousand eight and two thousand twenty-two — the only city on Earth to host both the Summer and Winter editions. Before you rises the Bird's Nest — the National Stadium — its tangled steel lattice designed by architects Herzog & de Meuron with artist Ai Weiwei as consultant. It cost years of engineering to make randomness look effortless: every beam is placed, none is decor. Beside it, the glowing blue cube is the Water Cube — the National Aquatics Center, where swimming world records famously fell like dominoes in two thousand eight — and which was later transformed, astonishingly, into the \"Ice Cube\" curling venue for the Winter Games. At night the whole park lights up — the nest glows red, the cube shimmers blue, and families fly kites on the great axis between them. Come after sunset: this is Beijing's modern skyline of dreams, and it photographs best in the dark.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "4f386ec30303193974d2f4abea0fe96f0075a1d6f040f035603561837bbc6558",
+  "duration": 70.632
+}

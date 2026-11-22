@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the ancient ginkgo known as the Emperor Tree.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d8d885a99ecae5de91201f66ca901194dde3ac55134e990e45557091ca89c94a",
+  "duration": 5.472
+}

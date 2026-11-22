@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the great ancient ordination altar.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "fb640c4c102569ce28142e16101b39dc4f51e941cecb138f62d5bd6c51aeb7eb",
+  "duration": 4.44
+}

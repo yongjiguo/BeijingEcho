@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the temple's triple gateway under old pines is just ahead on your right.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "815147ad5f02e8b6ae572769ec8bb7db4716fba4bdc5a1396dea107ef2af5415",
+  "duration": 4.776
+}

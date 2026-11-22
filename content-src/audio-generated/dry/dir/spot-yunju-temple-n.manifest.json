@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the stone sutra slabs in the sutra vaults.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "2da7cbd943da758075afe53b0956b75a40c906f0f9080a25417fd43912269810",
+  "duration": 5.592
+}

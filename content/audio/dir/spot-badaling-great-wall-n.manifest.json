@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the highest watchtower of the Badaling section.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "4a26a087695f06bb59bbf00784519fdf3b3f9f2552baf8e70b6fccf64db98498",
+      "duration": 5.232
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "4a26a087695f06bb59bbf00784519fdf3b3f9f2552baf8e70b6fccf64db98498",
+  "duration": 5.232
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the lakeside bar street of Houhai's south shore is just ahead on your right.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "2662382d5f5833f8317f8d019cfdd1c814a92db77853ed14e876e31499e00631",
+      "duration": 4.8
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "2662382d5f5833f8317f8d019cfdd1c814a92db77853ed14e876e31499e00631",
+  "duration": 4.8
+}

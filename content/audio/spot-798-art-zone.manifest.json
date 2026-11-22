@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Welcome to 798 — where a cold-war electronics factory became China's contemporary art capital. These vast halls were built in the nineteen fifties with East German assistance, in genuine Bauhaus style: look up at the sawtooth roofs, angled north so uniform, soft light would pour into the workshops — a factory designed like a photographer's studio. The plant made military electronics for decades, then fell silent. In the early two-thousands, starving artists discovered what collectors now pay fortunes for: those chimneys, pipes, and red propaganda slogans painted on factory walls became the raw aesthetic of Chinese contemporary art. Galleries moved in, then museums, then the world — today 798 hosts hundreds of galleries and design shops, and its exhibitions range from ink painting to digital art. No ticket needed to wander. Grab a coffee in a former workshop, and let the factory walls surprise you — this is where today's China argues with its own history, in paint and steel.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "9642c45dd6525878e50383965110d43298e580fa035280b2d59138f2675c5958",
+      "duration": 72.48
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "917839108245004de0ec2954ab39447c463944e0257d553df6441cb6c1ad9235",
+  "duration": 72.528
+}

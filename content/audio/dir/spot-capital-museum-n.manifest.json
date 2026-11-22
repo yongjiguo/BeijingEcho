@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the Capital Museum's bronze-ribbed main hall.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "040b3b71e3c3567e8f08c4b540a8f19c527b8b141ab19bfb16d0975d3b00c8ac",
+      "duration": 5.424
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "040b3b71e3c3567e8f08c4b540a8f19c527b8b141ab19bfb16d0975d3b00c8ac",
+  "duration": 5.424
+}

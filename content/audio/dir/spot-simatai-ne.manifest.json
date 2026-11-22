@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Fairy Maiden Tower on the Simatai ridge is just ahead on your right.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "87c059234d64807cbe4d28ca28bbad75163908be10c1f3d369653bb08363a3d4",
+      "duration": 5.184
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "87c059234d64807cbe4d28ca28bbad75163908be10c1f3d369653bb08363a3d4",
+  "duration": 5.184
+}

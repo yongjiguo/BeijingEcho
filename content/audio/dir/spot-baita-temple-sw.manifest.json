@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your left is the great White Dagoba.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "0b5243f851ca546ba7dd9a452bb87f7e851770b7891a7f03de87467bc643ba4f",
+      "duration": 4.056
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "0b5243f851ca546ba7dd9a452bb87f7e851770b7891a7f03de87467bc643ba4f",
+  "duration": 4.056
+}

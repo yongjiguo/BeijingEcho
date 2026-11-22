@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Zhihua Temple is a Ming dynasty time capsule with a soundtrack. It was built in fourteen forty-four by Wang Zhen, the most powerful court eunuch of his age — ostensibly a family temple, built, some said, in defiance of rules that eunuchs should build none. Its roofs wear black glazed tiles — a color rank reserved for special favor — and its halls survive almost untouched, one of the most complete Ming wooden temple complexes in the city. Its greater treasure is heard, not seen: Zhihua Temple's Music, the Beijing \"jing music\" performed by monk lineages for over five hundred years, passed mouth-to-ear across generations and now listed as national intangible heritage. Short recitals are still played here on selected days — sit in a fifteenth-century hall and hear Ming-dynasty sound. Hutong-quiet, crowd-free, and unforgettable: this is old Beijing's most scholarly secret.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "45396968b39e1258c0b6f7a9ccdffefdf33295ecf16b55274e0c0c07bf4f03dd",
+  "duration": 66.528
+}

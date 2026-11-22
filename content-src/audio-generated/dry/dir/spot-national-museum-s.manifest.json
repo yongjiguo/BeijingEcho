@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the National Museum's colonnade on the square's east side is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "9e9460a85349ada0bb18bce872eb41c8384c32776c804c2be97b5e7187ad68b2",
+  "duration": 4.92
+}

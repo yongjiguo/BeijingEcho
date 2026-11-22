@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your right is the great hall's triple roofline among ancient cypresses.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "3ff5978c6e24a26a024c9fab6b8059f1d8abefa6b31ffa83a639edddbb1d4aae",
+      "duration": 6.744
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "3ff5978c6e24a26a024c9fab6b8059f1d8abefa6b31ffa83a639edddbb1d4aae",
+  "duration": 6.744
+}

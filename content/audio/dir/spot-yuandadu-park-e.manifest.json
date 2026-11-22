@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the earthen wall remnant among the trees.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "17ed48ed40365baa7c0fda3d6373e2cd82435b0f1a5a7e130275c05519a8fa53",
+      "duration": 4.704
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "17ed48ed40365baa7c0fda3d6373e2cd82435b0f1a5a7e130275c05519a8fa53",
+  "duration": 4.704
+}

@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Deep in Fangshan district, southwest of Beijing, Yunju Temple guards one of the strangest and greatest undertakings in religious history: the stone sutras — Buddhist scriptures carved onto stone slabs, generation after generation, for a thousand years. A monk named Jingwan began the project in the Sui era, fearing the faith's texts would burn as others had; his successors continued until the Ming, carving more than fourteen thousand stone slabs and storing them in mountain vaults and a tower of buried scriptures. The result: the world's largest library carved in stone, sometimes called \"the Dunhuang of Beijing.\" The temple also keeps relics said to include Buddhist sarira. It's two hours from the city — the farthest spot in this guide — but scripture-readers, print-lovers, and pilgrims of persistence call it Beijing's most moving museum. The stones have outlasted ten dynasties. Your train ride will feel brief.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "0efabe55a6bf94f2ff697a1b3dff53a423888ad3a2269bb0b9e073f99b28bebc",
+      "duration": 66.408
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "c90d890179d2f0eff9e14bcdd9e61b1c71c91eb82c5b2d8c3d8158f899012554",
+  "duration": 66.456
+}

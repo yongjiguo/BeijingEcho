@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the earthen wall remnant among the trees is just ahead on your right.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "da7e26bb16d2f82b435f635fedc1b0da140600a0377186d8a01873be684b3f5f",
+      "duration": 5.424
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "da7e26bb16d2f82b435f635fedc1b0da140600a0377186d8a01873be684b3f5f",
+  "duration": 5.424
+}

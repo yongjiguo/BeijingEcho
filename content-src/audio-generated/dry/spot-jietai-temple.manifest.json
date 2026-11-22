@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Jietai, the Ordination Temple, holds one of Chinese Buddhism's most solemn objects: its great ordination altar — a marble platform where, for over a thousand years, monks and nuns took their full vows. Tradition ranks it among the three greatest ordination platforms in China — and the temple that holds it, founded in the Tang dynasty in the seven hundreds, was long the licensing authority of the northern Buddhist world: no proper monk north of the Yangtze, the saying went, without Jietai's certificate. The temple sits in hillside quiet west of the city, its courtyards famous for ancient pines with names as good as their shapes — the Free Activity Pine, said to sway when a branch is touched anywhere; the Pine That Embraces the Pagoda, grown around stone. Come in combination with nearby Tanzhe Temple — two ancient temples, one valley, one unhurried afternoon. The incense here burns for discipline, not wishes; you'll feel the difference.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "99cc110085efbbbafaf5b33e42edbf95d758384ecb0f4bce33d29934789c9277",
+  "duration": 70.272
+}

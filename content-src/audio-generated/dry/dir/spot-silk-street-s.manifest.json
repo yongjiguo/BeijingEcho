@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Silk Street market's main entrance atrium is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "691cf31dbf21f480846447b81432c4ff9516ff3b1632a8aa8c6b3cecf13743b6",
+  "duration": 4.272
+}

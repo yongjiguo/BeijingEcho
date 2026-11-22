@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your left stands the stone village rising up the hillside, seen from the viewing platform.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "79f80588cf2c175c8114f1cec43f8159266efc4f453e02572347a0a7d06163e6",
+      "duration": 6.384
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "79f80588cf2c175c8114f1cec43f8159266efc4f453e02572347a0a7d06163e6",
+  "duration": 6.384
+}

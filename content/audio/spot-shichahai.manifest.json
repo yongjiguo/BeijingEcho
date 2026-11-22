@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You've arrived at Shichahai — three linked lakes that have been the soul of old Beijing for seven hundred years. The name means \"ten temple lake\", for the ten Buddhist and Taoist temples that once lined these shores. This is where the Grand Canal once ended: in the Yuan dynasty, barges unloaded silk and grain right here, making this the busiest harbor of the empire's capital. Today the lakes are Beijing's favorite escape — willow-lined shores, hutong lanes, and in winter, locals skating across the frozen water on traditional ice sledges. Cross the little arched Yinding Bridge — the \"Silver Ingot Bridge\" — one of the most photographed corners of the city, where old men fish in the morning and young people gather at dusk. All around you, the hutong neighborhoods that grew up around the lakes are among the best preserved in Beijing. Slow down here. This is the Beijing people fall in love with.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "966fa7d94e72a066bf63cbaae7a6c638b7e549f88547075b458abfe60f297ca1",
+      "duration": 63.864
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-1-guzheng-loop.mp3",
+    "bgm_sha256": "7060ad7755b95afe5f7afa677667a5c7de393b938ccd3255a6c0a20296f5c5bd",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "8a68289b8b384c8798b74e8f1d78fcb4f096da586b450f952307b279f77cea5d",
+  "duration": 63.912
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Hongqiao Market building by the Temple of Heaven's east gate is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "63ee39be4101721c803710a5317c372ce489ab0bfc5d30e86ef06792113275ba",
+      "duration": 5.544
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "63ee39be4101721c803710a5317c372ce489ab0bfc5d30e86ef06792113275ba",
+  "duration": 5.544
+}

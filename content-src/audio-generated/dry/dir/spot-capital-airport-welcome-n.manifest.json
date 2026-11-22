@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises Terminal Three's sweeping dragon-form roof.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "568630aa6c3e77cb5fd3f095e3c093b0e16103a5bb94a12f2f2ea54f25aa75d6",
+  "duration": 5.688
+}

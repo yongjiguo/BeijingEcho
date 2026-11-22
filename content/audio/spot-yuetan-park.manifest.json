@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Yuetan is the moon's address in Beijing — the Temple of the Moon, built in the fifteen thirties in the same great program of imperial altars that gave the city its Temple of Heaven and Earth. Each autumn equinox, the emperor came here at dusk to sacrifice to the moon as the harvest moon rose. The ritual is gone; the atmosphere remains — and it fits the theme. This is the quietest of Beijing's altar-parks: a deep, green, low-key place of old trees and wide paths, where the city noise fades early and evening light does its best work. Locals come to play chess, practice instruments, and walk off dinner. Astronomy-minded visitors like the symmetry: heaven to the south, earth to the north, sun east, moon west — the altars once mapped the cosmos onto Beijing's map. Stand here at dusk and the design still makes sense.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "c400ca3b14c9173867a6dc4b1510d4098437f3a3f84bf25f3c57509d82dbe5f0",
+      "duration": 62.304
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-3-gymnopedie.mp3",
+    "bgm_sha256": "8cba6bb3da51066ad39520ec218a327bb6222d8fb32bc52f28a1e90b67756f70",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "78797117818b86efa93c8221486ddd0b98b3579fcde16ab2475bc721f3843a70",
+  "duration": 62.352
+}

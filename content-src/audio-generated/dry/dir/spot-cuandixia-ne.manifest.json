@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the stone village rising up the hillside, seen from the viewing platform is just ahead on your right.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "a9d1cc136eb2b6abd21b1609996abf42d8ad9bdff1affc01ab50726739f7f058",
+  "duration": 6.648
+}

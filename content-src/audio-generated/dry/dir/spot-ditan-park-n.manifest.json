@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the square altar terrace of the Temple of Earth.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "e0a44bbf9908131c527c6f075b6376f0386809d2da30ec84f3cf3c5ceddee815",
+  "duration": 5.76
+}

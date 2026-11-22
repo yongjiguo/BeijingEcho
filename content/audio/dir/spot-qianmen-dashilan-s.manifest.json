@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Zhengyangmen Archery Tower is right behind you.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "61653e72e89ba2e764f776c5c29c2fe6238e836a8c04fe66f11f68b32df8bf49",
+      "duration": 3.552
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "61653e72e89ba2e764f776c5c29c2fe6238e836a8c04fe66f11f68b32df8bf49",
+  "duration": 3.552
+}

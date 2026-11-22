@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your right is the Great Fountain ruins, Dashuifa.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "91532f9fac885e2c08b135d08a22adb019c08db1adc901c291c3ddfff6c6979b",
+  "duration": 4.584
+}

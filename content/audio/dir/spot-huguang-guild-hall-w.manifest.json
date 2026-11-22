@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your left stands the opera stage inside Huguang Guild Hall's courtyard.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "9cda9a24ef890b4c540cdc31dddd3963af531bb099c5b69184c42d47fa2ca78b",
+      "duration": 5.256
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "9cda9a24ef890b4c540cdc31dddd3963af531bb099c5b69184c42d47fa2ca78b",
+  "duration": 5.256
+}

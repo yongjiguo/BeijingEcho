@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Gate of Heavenly Peace is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "dad284084b23a2f722ce91eb33aaab2b08e24283697b622c066d0103ca1021dd",
+  "duration": 3.672
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Cloud Platform with marble carvings is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "ec6caaf6d30492bb9a75cc0ee18815b9a408256e6fd1e4cbc6e45b63abb8ac49",
+  "duration": 4.08
+}

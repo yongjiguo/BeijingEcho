@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Hall of Harmony and Peace is just ahead on your left.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "8a75f745f25d55d5d62a757eeec70f2b8e16b1d4e5e984fc64c3e5ce1d6cc519",
+  "duration": 4.32
+}

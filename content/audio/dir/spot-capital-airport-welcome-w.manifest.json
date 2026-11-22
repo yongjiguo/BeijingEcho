@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your left stands Terminal Three's sweeping dragon-form roof.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "e8d34e9879207516bb6b28bf5d17e4775d4557162a895963c78e097b51f691a7",
+      "duration": 5.16
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "e8d34e9879207516bb6b28bf5d17e4775d4557162a895963c78e097b51f691a7",
+  "duration": 5.16
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the stone sutra slabs in the sutra vaults.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5f02fa3e780eef05cfa9db73f5a85cfdcc42ce054743567c0efa8a40ae66a257",
+  "duration": 5.112
+}

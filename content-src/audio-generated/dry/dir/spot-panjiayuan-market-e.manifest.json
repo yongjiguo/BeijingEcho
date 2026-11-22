@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the main gate arch of Panjiayuan Market.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "9cd9928427942097a713b6574d98e1c11b43d367ad5bcda7e5328b96db22f57f",
+  "duration": 4.224
+}

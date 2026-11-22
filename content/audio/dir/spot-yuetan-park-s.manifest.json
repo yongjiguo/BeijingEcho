@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the moon altar platform is right behind you.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d53a11fd57a03a9908750521abc04426102bebb3ad01b5f56c25711d90ab3853",
+      "duration": 3.096
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d53a11fd57a03a9908750521abc04426102bebb3ad01b5f56c25711d90ab3853",
+  "duration": 3.096
+}

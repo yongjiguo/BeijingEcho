@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Hall of Prayer for Good Harvests is right behind you.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "af188ea7c22870ba5dae6521482297195e20c666c3d9b6a6a618acb329520572",
+      "duration": 3.528
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "af188ea7c22870ba5dae6521482297195e20c666c3d9b6a6a618acb329520572",
+  "duration": 3.528
+}

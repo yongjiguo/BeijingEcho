@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the great ancient ordination altar.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "7ada0ae46ba2a3b474dcb128efa4bdecfd7d82ea32d1478845961f423c29e8c5",
+  "duration": 4.992
+}

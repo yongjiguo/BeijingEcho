@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the Cloud Platform with marble carvings.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "44a25e5e3df15fa28484bc5c3ad5cb7b4d86ee462c30fd1fc749b92ec5b28e79",
+  "duration": 5.112
+}

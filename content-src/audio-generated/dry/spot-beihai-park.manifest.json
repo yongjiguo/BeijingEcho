@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Welcome to Beihai Park — one of the oldest imperial gardens in China, over a thousand years in the making. Right in front of you, across the water, rises its icon: the White Dagoba, a Tibetan-style stupa built in 1651 by the first Qing emperor to honor a visit by the Dalai Lama. The lake itself — Beihai means \"Northern Sea\" — was the playground of emperors for centuries: they boated in summer and skated across the ice in winter. This garden perfected a Chinese art: recreating an entire imaginary world in miniature — islands as immortal mountains, water as the sea. Look for the Nine-Dragon Wall near the north shore, one of the finest glazed-brick walls in China, its nine dragons each a different color. locals come here at dawn to dance, sing opera, and practice calligraphy with water brushes on the stone paths. Join the morning; it's magical.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "dfaf3edbbfd677476f9c6cb419a9ce57e6c3f2eecf853186a8143ce6fbc8ac90",
+  "duration": 65.376
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "This is Nanluoguxiang — an eight-hundred-year-old hutong from the Yuan dynasty, and one of the oldest alleys still standing in Beijing. Its name means \"South Luogu Alley\", and its layout is remarkable: the main alley runs about eight hundred meters north to south, with sixteen side hutongs branching out like the legs of a centipede — locals have called it \"the Centipede Street\" for centuries. This chessboard plan dates to the founding of Yuan-dynasty Dadu, the city that became modern Beijing. What makes it special is the mix: gray-brick courtyard homes — siheyuan — standing beside cafés, bakeries, and design shops. Each side hutong hides its own stories: former residences of generals, painters, and playwrights are marked with plaques as you wander. Go at a quiet hour if you can, and step into the side alleys — that's where the eight hundred years actually live.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "b7d6d22205873a9e373fee6ee7122a14a5b42f2ddacca37a9ecd85daf29371d2",
+  "duration": 60.6
+}

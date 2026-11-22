@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the earthen wall remnant among the trees.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "1586949eaefd00b80af94bacbcbb3db10e0731d9cabc8099a0dbcd469eac3f19",
+      "duration": 5.328
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "1586949eaefd00b80af94bacbcbb3db10e0731d9cabc8099a0dbcd469eac3f19",
+  "duration": 5.328
+}

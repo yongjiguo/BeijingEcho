@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the Panda House.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "7efc53e3934abbd51df621fd584bb1040485fb7aa8991de75195a896486f6732",
+      "duration": 2.64
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "7efc53e3934abbd51df621fd584bb1040485fb7aa8991de75195a896486f6732",
+  "duration": 2.64
+}

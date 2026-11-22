@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the lakeside main hall of the former Prince Chun's garden.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "74f83144ab3275d7260c919c401aced96d22d68915b4d63baefe8288ec9e7138",
+      "duration": 6.216
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "74f83144ab3275d7260c919c401aced96d22d68915b4d63baefe8288ec9e7138",
+  "duration": 6.216
+}

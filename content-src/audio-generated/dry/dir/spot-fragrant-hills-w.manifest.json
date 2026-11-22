@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the Incense Burner Peak temple ruins at the summit.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "291ba4d5b959ba305cffcce9132826e6d84dabc5a754a2f702458ef8f45cf497",
+  "duration": 5.16
+}

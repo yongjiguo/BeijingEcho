@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the temple's clay Buddha hall under the magnolias is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "92724e4aac1195f51d764940afe98e4b8fd4109b4f44d213505db18c6bcdca71",
+  "duration": 4.536
+}

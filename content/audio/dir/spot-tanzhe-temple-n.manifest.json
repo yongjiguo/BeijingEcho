@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the ancient ginkgo known as the Emperor Tree.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "4ecc8c2de20d52df2dc932a4774ce2d124245e4167ff6c3283ff53680d44eaa9",
+      "duration": 5.856
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "4ecc8c2de20d52df2dc932a4774ce2d124245e4167ff6c3283ff53680d44eaa9",
+  "duration": 5.856
+}

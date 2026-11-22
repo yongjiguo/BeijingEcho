@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the lakeside main hall of the former Prince Chun's garden.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "116f7deeae706eb91bc8554d11dafd6ee7a461a8d594a94348ade87529e9b4e4",
+  "duration": 6.456
+}

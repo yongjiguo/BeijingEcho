@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You've just stepped into the Forbidden City — a vast imperial palace complex, and for nearly five hundred years, a place where access was strictly controlled. Built by the Yongle Emperor of the Ming dynasty and completed in 1420, it was home to twenty-four emperors of the Ming and Qing dynasties. Its old name says it all: the Purple Forbidden City — a palace set apart from the city around it. Behind its walls: thousands of rooms in halls and courtyards, with gardens and a central north-south axis that runs through the heart of Beijing. Since 1987 it has been a UNESCO World Heritage Site, and the Palace Museum inside holds over a million treasures. Walk up the central axis: the Hall of Supreme Harmony — the throne hall used for enthronements and major state ceremonies — is one of the palace's grandest sights. Give it at least two hours. You'll only see a fraction.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "4c0f42b83bebda5d8a76db74c4b5de81a483c3099ff26d0472ccf73a479c5772",
+  "duration": 62.184
+}

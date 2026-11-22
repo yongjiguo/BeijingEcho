@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On the east side of Tiananmen Square stands the National Museum of China — one of the largest museum buildings on the planet, and by visitor numbers, among the most visited on Earth. It was born in nineteen fifty-nine as one of the \"Ten Great Buildings\" raised for the tenth anniversary of the People's Republic. Inside: over a million and a half objects spanning five thousand years. Seek out the Houmuwu ding — the heaviest surviving bronze vessel of the ancient world, cast three thousand years ago for a royal mother. From oracle bones to Tang dynastic paintings to the exhibits tracing modern China's own story, this museum narrates the civilization end to end. Entry is free, but reserve ahead and bring your passport. Give it half a day — even a rushed highlight tour takes two hours — and start early, before the school groups arrive.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "cd69e458b9764312fb05a29a79dd3a95bfff65ccbaabbde95974c0fa62b43fca",
+      "duration": 59.544
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-2-erhu.mp3",
+    "bgm_sha256": "5c4cf193a7e5049e5946f16a3d2db9800dd3b7366f2368bd6168dd1e25705412",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "eefa357d8e64f778b10c339b64bb919441b767a4c2900a9c01e9b138594a3590",
+  "duration": 59.592
+}

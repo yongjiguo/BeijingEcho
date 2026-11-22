@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the Hall of Prayer for Good Harvests.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "3b048d4b6fa5f5ec90e5b602c64a44f4a508c7766daf61d0c6438b5159355481",
+  "duration": 3.888
+}

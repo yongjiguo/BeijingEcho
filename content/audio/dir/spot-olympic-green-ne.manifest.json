@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Bird's Nest National Stadium is just ahead on your right.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "2af3cdbfaa8152ef31519dc1e1af83788f1ce96bcdb0300a8b9519de7893c991",
+      "duration": 4.272
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "2af3cdbfaa8152ef31519dc1e1af83788f1ce96bcdb0300a8b9519de7893c991",
+  "duration": 4.272
+}

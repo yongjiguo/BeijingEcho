@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Biyong Hall is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d1e460438c88dcb396c9b966e45178c1a5c72a235db468cced9b3c10c8aff9ce",
+      "duration": 3.024
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d1e460438c88dcb396c9b966e45178c1a5c72a235db468cced9b3c10c8aff9ce",
+  "duration": 3.024
+}

@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "The bridge beneath your feet is eight hundred years old — built by the Jin dynasty, completed around eleven ninety-two — and famed twice over. First, beauty: Marco Polo described it in wonder, saying no bridge on earth matched it, and so the West named it after him. Its balustrades carry hundreds of stone lions, no two alike — a Chinese tradition says they are too many to count, and visitors have argued the exact number for centuries. Second, history: just beyond its western gate, shots fired on the night of July seventh, nineteen thirty-seven, began the full-scale war between China and Japan — the Marco Polo Bridge Incident, the opening of the Second World War in Asia. The Wanping fortress beside it preserves that night; the Museum of the War of Chinese People's Resistance inside its walls tells the eight years that followed, soberly and powerfully. Walk the bridge at dawn — the lions in morning light, the river valley quiet — and let one small bridge hold both the silk-road wonder and the war that changed the world.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "10df51daf29f96e62bfdfb16058311b84290dad805472235c712d5ccae9aa5ec",
+      "duration": 75.432
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-1-guzheng-loop.mp3",
+    "bgm_sha256": "7060ad7755b95afe5f7afa677667a5c7de393b938ccd3255a6c0a20296f5c5bd",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "fa497c91aadd3515d485de17bf1054d1a5106cf4f4246b3999b854b30cd51731",
+  "duration": 75.48
+}

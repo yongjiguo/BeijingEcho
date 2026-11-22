@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Zhihua Temple's black-glazed roof and main gate is just ahead on your right.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "481afd9266de0065ba38e184ec21b5f7f9a89d63ca81272fd439092b14ddaf71",
+      "duration": 5.904
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "481afd9266de0065ba38e184ec21b5f7f9a89d63ca81272fd439092b14ddaf71",
+  "duration": 5.904
+}

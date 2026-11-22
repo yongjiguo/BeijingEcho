@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the Bird's Nest National Stadium.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "2f84cdda62b127547b58b7fc9c4821420aebfd0c87f784fe3a3a7f900a279fb7",
+  "duration": 3.576
+}

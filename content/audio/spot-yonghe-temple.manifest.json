@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You've reached the Yonghe Temple — Beijing's most vibrant Tibetan Buddhist temple, still thick with incense smoke and prayer. Its story begins as a royal residence: built in 1694 for the prince who would become the Yongzheng Emperor. When he took the throne, the palace could no longer be a home — so in 1744 it was converted into a monastery of the Gelug school, the \"Yellow Hat\" tradition of Tibetan Buddhism. That's why it looks like a palace: golden roofs and red walls, Han Chinese and Tibetan styles fused into one. Inside, don't miss the Guinness-record giant: an eighteen-meter statue of the Maitreya Buddha, carved from a single sandalwood trunk — it took three years to transport the log to Beijing. Come early, breathe the sandalwood air, and spin a prayer wheel as you go — locals will show you how.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "f196427f59f6fe28577f825dead6d3e85776eb74b8746181d3544b621fedd77e",
+      "duration": 59.568
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-5-meditation.mp3",
+    "bgm_sha256": "4e7ead76cfdda0979ff7d771fbbc3dbb312ca80ce25b78f3cdcaef07fcc7c2da",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "1ccc9c8fa0300b4dc1f126c9380126d38d5b34822bb621dce0266afe64d007d1",
+  "duration": 59.616
+}

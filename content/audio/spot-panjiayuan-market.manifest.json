@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Welcome to Panjiayuan — Beijing's greatest treasure hunt, and the largest antique and crafts market of its kind in China. What began as a spontaneous \"dirt market\" — vendors spreading their wares on the ground before dawn — is now a city block of thousands of stalls: Mao-era memorabilia, porcelain, jade, seals, faded family photos, Buddhist statues, lamps, lacquer, and things no category can hold. The unwritten rule: much of what you'll see is old-styled rather than old — so browse for beauty, bargain with humor, and never buy what you can't afford to love as a replica. The market's soul is the weekend: vendors arrive before sunrise, and serious hunters come with flashlights. Prices start high and drop with a smile and a walk-away — halving the first quote is normal. Bring cash-sized patience and small bills, keep your valuables front, and give yourself two hours. Everything here has a story — and half the fun is the vendor telling it.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d315f56355e0763d260f29ebca759c561af097a41c6727e38f5d6c8b43e3ccc7",
+      "duration": 69.816
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-1-guzheng-loop.mp3",
+    "bgm_sha256": "7060ad7755b95afe5f7afa677667a5c7de393b938ccd3255a6c0a20296f5c5bd",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "dfd4c767aa4562a97a42640e89e7587576863b9a22d1d8b8f10bc9b17e9da6b7",
+  "duration": 69.864
+}

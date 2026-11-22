@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your left stands the Silk Street market's main entrance atrium.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "bcc3e1c5bb93d4bd63ddbd593b1c3a4e1157f76cbd9f11dc69d529ae8329beb5",
+      "duration": 5.04
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "bcc3e1c5bb93d4bd63ddbd593b1c3a4e1157f76cbd9f11dc69d529ae8329beb5",
+  "duration": 5.04
+}

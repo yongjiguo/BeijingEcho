@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Capital Museum's bronze-ribbed main hall is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "a57ed6d0c0783ed08a9ad197ef0e1957e03f512fc612b0dfd266d15cf26f4492",
+  "duration": 4.368
+}

@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the great hall's triple roofline among ancient cypresses.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "493bc7d617d4733cdeede785fcebf61be3a5504c86deb95e489c16fccd52b36f",
+      "duration": 6.888
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "493bc7d617d4733cdeede785fcebf61be3a5504c86deb95e489c16fccd52b36f",
+  "duration": 6.888
+}

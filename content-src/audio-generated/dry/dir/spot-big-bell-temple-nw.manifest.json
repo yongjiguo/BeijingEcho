@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Yongle Great Bell hanging in the bell gallery is just ahead on your left.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "96c8412e06878d844ac480d812ce4f9be05c578ae74a7fa0501744b7ea21190e",
+  "duration": 5.136
+}

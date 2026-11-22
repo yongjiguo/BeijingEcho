@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the temple's riverside gate on the Long River.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "6df2fc20a6f7a15e7ad16fbfc3059a16f3279681a803de3b1b7c4e7b6c2868ee",
+  "duration": 5.16
+}

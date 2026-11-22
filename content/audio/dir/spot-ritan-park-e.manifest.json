@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the sun altar terrace under the cypresses.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "952f95caee597b2c9818f25b8828d30c9c50b42a85647c37815c84ae641dcac9",
+      "duration": 4.92
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "952f95caee597b2c9818f25b8828d30c9c50b42a85647c37815c84ae641dcac9",
+  "duration": 4.92
+}

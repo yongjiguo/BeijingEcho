@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your right stands the square altar terrace of the Temple of Earth.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "d4312cb07b0f4c6d3882e32baa570dfa06ba7b7c442d40cc5f68761bea836a7a",
+      "duration": 5.208
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "d4312cb07b0f4c6d3882e32baa570dfa06ba7b7c442d40cc5f68761bea836a7a",
+  "duration": 5.208
+}

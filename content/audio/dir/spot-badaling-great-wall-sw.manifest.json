@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your left is the highest watchtower of the Badaling section.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "1d93117220c84b3501e22dce88d92656b7a0a064309c32a7cfcbdd889bdd9cfd",
+      "duration": 5.04
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "1d93117220c84b3501e22dce88d92656b7a0a064309c32a7cfcbdd889bdd9cfd",
+  "duration": 5.04
+}

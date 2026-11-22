@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the five-colored earth altar.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "68f9b6a5ca9037465e778dc00779fb2114b1d0d1a6c5c57366fc3ddc665c784e",
+  "duration": 3.984
+}

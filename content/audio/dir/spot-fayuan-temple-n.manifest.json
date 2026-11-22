@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the Fayuan Temple's main gate and bell tower.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "95fd6b0e7bb320cbd86851dcc056f221fcba3f7f88057a3cf88525b9e37426e9",
+      "duration": 5.376
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "95fd6b0e7bb320cbd86851dcc056f221fcba3f7f88057a3cf88525b9e37426e9",
+  "duration": 5.376
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "This quiet street of European facades was once the most politically charged address in Asia. Dongjiaominxiang — its name began as \"Rice Lane\" — became the legation quarter where foreign powers set up embassies after the eighteen sixty treaties, then fortified itself into a state-within-a-state after the Boxer Uprising of nineteen hundred: banks, post offices, hospitals, and garrisons behind their own walls, foreign territory threaded through China's capital. The buildings you pass — former bank halls, a French post office, Gothic and classical facades — stayed when the era ended, and today the lane is a peaceful, plane-tree-shaded walk through that strange chapter, minutes from Tiananmen and Qianmen. Photographers love the silence; history readers love the walls. Walk it end to end, then slip south into the hutongs. It's a fifteen-minute stroll — and one of the most surprising streets in the city.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "0785d3d943d2a15f891dd01761f5d32adefeb1ad74634f7b61eeec443ba8f857",
+  "duration": 65.088
+}

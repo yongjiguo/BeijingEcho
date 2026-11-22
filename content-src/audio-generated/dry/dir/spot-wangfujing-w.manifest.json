@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the Wangfujing pedestrian street clock tower.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "f6218dd58c3dfe248834f384ac8a4815ea40baeeb9d88c4ca64c6cc8b93666a9",
+  "duration": 4.584
+}

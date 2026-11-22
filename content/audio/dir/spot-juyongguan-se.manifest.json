@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your right is the Cloud Platform with marble carvings.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "f4cfddc310d382da070957745fdb8dfa2f101e1ee1225ea56ef82b1b7117419e",
+      "duration": 4.704
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "f4cfddc310d382da070957745fdb8dfa2f101e1ee1225ea56ef82b1b7117419e",
+  "duration": 4.704
+}

@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Tucked on the north shore of Shichahai lies one of Beijing's most graceful hidden gardens — the former garden of Prince Chun's mansion, and for the last decades of her life, the home of Soong Ching-ling. To understand her, hold this in mind: she married Sun Yat-sen, father of modern China, and after his death became a founding figure of the People's Republic — honored as its Honorary President until her death in nineteen eighty-one. She lived here from nineteen sixty-three: a lakeside hall where she worked, entertained, and raised doves — the dovecote still stands. The rooms keep her furniture, her books, her simple desk; the garden keeps the old aristocratic bones — rockeries, ancient trees, water. Few foreign visitors find this place, which is exactly its charm. Pair it with the Drum and Bell Towers nearby, and let the quiet of the garden explain the person better than any plaque.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "235497dcfdd7641e0c805ee60c965773e9abcd8c62b91bf035794b463af9ad0e",
+      "duration": 63.96
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-1-guzheng-loop.mp3",
+    "bgm_sha256": "7060ad7755b95afe5f7afa677667a5c7de393b938ccd3255a6c0a20296f5c5bd",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "3078d7fb8b8ed6cfb8e25746f8d769a44e024af885cde34af71ee916d661d37d",
+  "duration": 64.008
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Straight ahead rises the stone village rising up the hillside, seen from the viewing platform.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "b8810a91fc55bfd778874b91c4d47d753e7a3087c533ec6ebd5d231a4503e43e",
+  "duration": 7.104
+}

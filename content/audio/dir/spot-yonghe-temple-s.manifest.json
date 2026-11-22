@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Hall of Harmony and Peace is right behind you.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "885c68871d7da4a6dc5895140e270f60dd5339da3afcb905af3e953cbd9f743c",
+      "duration": 3.744
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "885c68871d7da4a6dc5895140e270f60dd5339da3afcb905af3e953cbd9f743c",
+  "duration": 3.744
+}

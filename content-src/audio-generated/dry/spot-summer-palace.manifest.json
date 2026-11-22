@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Welcome to the Summer Palace — the greatest imperial garden that survives on Earth, and Beijing's masterpiece of water and hills. Covering nearly three square kilometers — three-quarters of it water — this was the summer retreat of the Qing court, who fled the heat of the Forbidden City for the breezes of Kunming Lake. Everything here is deliberate: the lake was expanded by hand, and the earth dug from it was piled into Longevity Hill before you. Walk the Long Corridor — seven hundred meters of painted walkway, its beams holding thousands of classical scenes — said to be the longest painted corridor in the world. At its end, the Marble Boat waits: a stone vessel where the Empress Dowager Cixi famously lounged — paid for, critics said, with money meant for the imperial navy. And the story ended as critics warned. Come at golden hour, rent a boat, and see what emperors saw.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "568b8919996c4ef8f6e9d7c6f88bfd3d43a39e2deb68c0bbb5896c2fbff1957b",
+  "duration": 63.312
+}

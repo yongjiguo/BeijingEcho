@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the White Dagoba on Jade Flower Island is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "b26f5ca3d05288d1c00415ce6eeb1c5c68cb4a30fa589ef4fa3bf1f5667b9778",
+  "duration": 4.608
+}

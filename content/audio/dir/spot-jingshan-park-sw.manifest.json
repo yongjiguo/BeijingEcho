@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Just behind you on your left is the Wanchun Pavilion at the hilltop.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "dfed8e44aa09f12ae36be4dabff22f1cce468bb5e00973d680a9bac8af639fb3",
+      "duration": 4.92
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "dfed8e44aa09f12ae36be4dabff22f1cce468bb5e00973d680a9bac8af639fb3",
+  "duration": 4.92
+}

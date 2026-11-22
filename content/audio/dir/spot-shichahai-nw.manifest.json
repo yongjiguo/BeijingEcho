@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the Yinding Bridge, the Silver Ingot Bridge is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "31c1f8958fc6ecbc8b06a7fc7f8a6ca6891bd5709d84b55b111cee632f7aeb3f",
+      "duration": 5.136
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "31c1f8958fc6ecbc8b06a7fc7f8a6ca6891bd5709d84b55b111cee632f7aeb3f",
+  "duration": 5.136
+}

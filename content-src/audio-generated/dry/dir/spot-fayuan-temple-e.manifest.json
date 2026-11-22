@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the Fayuan Temple's main gate and bell tower.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "388490bb0847e85efba5e5d5886c84634833704b6e2dd8b6c23a1b393e13c456",
+  "duration": 4.704
+}

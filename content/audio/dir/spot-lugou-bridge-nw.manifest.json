@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the stone lions on Lugou Bridge's balustrades is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "f23cfc27e418a26ddf5b012c91b2f5096ae2a94544a10b68edfbc01692dc75d0",
+      "duration": 5.472
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "f23cfc27e418a26ddf5b012c91b2f5096ae2a94544a10b68edfbc01692dc75d0",
+  "duration": 5.472
+}

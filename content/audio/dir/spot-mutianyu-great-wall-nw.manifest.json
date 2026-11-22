@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "the watchtower cluster at Mutianyu ridge is just ahead on your left.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "23d10230dce6257ddb9ab3b3591bba6a298090bb98802b5c6140008294d2f15a",
+      "duration": 4.704
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "23d10230dce6257ddb9ab3b3591bba6a298090bb98802b5c6140008294d2f15a",
+  "duration": 4.704
+}

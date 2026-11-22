@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You are standing on Tiananmen Square — one of the largest public squares on Earth, covering about four hundred and forty thousand square meters. For centuries this was the front courtyard of the imperial city, closed to ordinary people. Today it belongs to everyone. To the north rises the Gate of Heavenly Peace, from which Mao Zedong proclaimed the founding of the People's Republic of China in 1949 — his portrait still hangs there today. Around you: the Great Hall of the People on the west, the National Museum of China on the east, the Monument to the People's Heroes at the center, and the Mausoleum of Mao Zedong to the south. Every sunrise, crowds gather for the flag-raising ceremony, timed to the moment the sun breaks the horizon. Walk north toward the gate, and behind it waits the Forbidden City — the next chapter of your walk.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "e7fd1b7cab75ebf9d6299409bc6cf12bf2e80fd3998a220774d02cb0220ebb4e",
+      "duration": 56.784
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-1-guzheng-loop.mp3",
+    "bgm_sha256": "7060ad7755b95afe5f7afa677667a5c7de393b938ccd3255a6c0a20296f5c5bd",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "92721e02b3cebd939e1c34a0338675b59f8e784e3934a8daf5e2470ed5921625",
+  "duration": 56.832
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Sacred Way stone animal statues is just ahead on your left.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "9ff9a6c17c356c73bb4954078dd68bac745116862768527bfcf5d8b33dab47b7",
+  "duration": 5.304
+}

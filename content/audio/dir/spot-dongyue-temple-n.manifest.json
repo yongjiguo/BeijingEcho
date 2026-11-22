@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the Temple of the God of Mount Tai's entrance screen wall.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "b4e68a59c7214394b48554f778cb00c19fc3627c4e87f0e63644c48663b8ea11",
+      "duration": 5.832
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "b4e68a59c7214394b48554f778cb00c19fc3627c4e87f0e63644c48663b8ea11",
+  "duration": 5.832
+}

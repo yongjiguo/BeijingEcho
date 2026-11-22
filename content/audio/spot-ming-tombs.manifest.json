@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You've arrived at the Ming Tombs — the valley where thirteen emperors of the Ming dynasty sleep beneath the mountains. The site was chosen by feng shui masters: mountains arc around it like dragon wings, and a river winds through — an emperor's paradise. Every visitor walks the Sacred Way first: a several-kilometer avenue lined with colossal stone statues — two rows of creatures, from camels and elephants to mythical qilin and xiezhi, each carved from single blocks five centuries ago. They stand guard in pairs: one kneeling, one standing — so that even a tired spirit guard never sleeps on duty. At the end, the archway and the dragon-phoenix gates frame your approach to the tomb valleys. Only one tomb has ever been opened: Dingling, the Underground Palace, excavated in the nineteen fifties — step down into the vaulted chamber of stone and stand where the Wanli Emperor was laid to rest with his two empresses. The mountains hold the rest — thirteen emperors, one valley, five hundred years of silence.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "439b8afc80bcf7e30a4dfc683fc193c23905297b2509d7c8720a85e7a1426f0a",
+      "duration": 74.52
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-1-guzheng-loop.mp3",
+    "bgm_sha256": "7060ad7755b95afe5f7afa677667a5c7de393b938ccd3255a6c0a20296f5c5bd",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "6dd468976b8d73a1f4d74f4cee0a56917f6cc2b5455aee172146354f5dd628d7",
+  "duration": 74.568
+}

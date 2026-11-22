@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the stone sutra slabs in the sutra vaults.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "b7be59fc3f61e8f85129808929c9d26c68725ea31cc1c2a019a034ff31331914",
+  "duration": 5.592
+}

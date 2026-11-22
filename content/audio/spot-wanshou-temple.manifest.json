@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Wanshou Temple, the \"Temple of Longevity,\" sits on the Long River — the waterway Ming and Qing emperors sailed between the Forbidden City and the Summer Palace. Built in fifteen seventy-seven, it became the imperial rest stop on that voyage: emperors would land here, burn incense, and take tea before continuing upstream to their gardens. That river link left it serene and graceful — pagoda, halls, gardens, and centuries of imperial gifts. Today it houses the Beijing Art Museum, its exhibits rotating through bronzes, paintings, porcelain, and Buddhist art from the city's collections; the courtyard gardens reward slow walkers year-round, and the old stage once rang with opera for imperial birthdays. Its neighborhood, Suzhou Street, ties into the river walk toward the Summer Palace — one quiet hour here, then the water onward: you'd be repeating the emperor's afternoon, at a fraction of the budget.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "9f5ba0fa06c61c7277fecbec2c6a4d2eb4700f768a4c05a9cd7c4682ac367249",
+      "duration": 67.248
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-4-dreams.mp3",
+    "bgm_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "966e60149972c69fe094bc79bcc65ca20402caa081db98e741de83ad16bbc9e9",
+  "duration": 67.296
+}

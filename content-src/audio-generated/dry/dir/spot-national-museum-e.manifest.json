@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your right stands the National Museum's colonnade on the square's east side.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "34f4f13d1aa2b57c5225c58a24138d9773cedeb2cbf0c0d2b569b015e17bb6e3",
+  "duration": 5.016
+}

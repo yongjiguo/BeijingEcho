@@ -1,0 +1,26 @@
+{
+  "input": {
+    "stage": "mix-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "You've entered Prince Gong's Mansion — the most complete princely residence surviving in Beijing, and the most dramatic biography of any house in the city. It began as the estate of Heshen, the most corrupt — and richest — official of the Qing empire: his private fortune, the story goes, exceeded the imperial treasury itself. When the emperor's son took the throne, Heshen was forced to take his own life, and the mansion passed to Prince Gong — its name ever since. Walk the front halls, then slip through to the surprise behind: a vast private garden of rockeries, ponds, and pavilions — including a Western-style gate, rare for its time — and a hidden stone that legend ties to imperial misfortune. Don't miss the courtyard opera house — all-wood acoustics, no nails in its hollow frames — where performances still play today. One mansion, two dynasties, one spectacular downfall. Beijing history, condensed into a single walled garden.",
+        "kind": "main",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "4fe96d9c0ee16268f05dce0788a1c31ad080d8b267784003c1a876345a0d870b",
+      "duration": 70.992
+    },
+    "reviewStatus": "pending-review-development-only",
+    "bgm": "bgm-5-meditation.mp3",
+    "bgm_sha256": "4e7ead76cfdda0979ff7d771fbbc3dbb312ca80ce25b78f3cdcaef07fcc7c2da",
+    "filter": "[1:a]volume=0.3981,afade=t=in:st=0:d=2[bg];[0:a][bg]amix=inputs=2:duration=first:normalize=0[out]",
+    "seed": 2026,
+    "bitrate": "128k"
+  },
+  "sha256": "c5b91c84691500b1cebf987a5fe1b2f27751baa987232921a5116ad88708cfe2",
+  "duration": 71.04
+}

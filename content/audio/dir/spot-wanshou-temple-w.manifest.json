@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "On your left stands the temple's riverside gate on the Long River.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "43a5cf3c04924c98e8a232112db96d327557c92bb3cc28891ae769c91f4c5a6f",
+      "duration": 4.44
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "43a5cf3c04924c98e8a232112db96d327557c92bb3cc28891ae769c91f4c5a6f",
+  "duration": 4.44
+}

@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Behind the Forbidden City's other side waits Zhongshan Park — and its heart is the strangest altar in Beijing: a square terrace filled with soil of five colors — red, black, white, green, yellow — one for each direction of the empire plus the center. This was the Altar of Land and Grain, built in fourteen twenty-one, where emperors sacrificed for the realm's harvests; the five-colored earth was brought from every province, making this small platform the empire in miniature. When the empire fell, the park renamed itself for Sun Yat-sen — Zhongshan — and opened to the public. Today it's Beijing's most civilized park: cypress alleys, peony beds in late April, pavilion teahouses, and elderly choruses whose repertoire spans revolutionary songs and love ballads. Enter from the Tiananmen side; you'll be inside the walls of imperial Beijing in one minute — and holding the empire's soil in one glance.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "abe34b42cf205e2046f0e017678fb6caa8a06bee4d6ea77a0b782a1782db87c0",
+  "duration": 66.792
+}

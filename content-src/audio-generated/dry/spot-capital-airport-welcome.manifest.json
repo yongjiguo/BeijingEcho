@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Welcome to Beijing Capital International Airport and the start of your visit to China's capital. One of the airport's architectural highlights is Terminal Three, designed by Foster + Partners. Its sweeping roof and dragon-like form draw on traditional Chinese colors and symbols — a memorable gateway to the city, whether or not your flight uses this terminal. A few practical words for your arrival: if you are arriving from abroad, have your passport and entry documents ready for immigration. Follow the signs in your terminal for rail connections, official taxi ranks, and other ground transport, and check the current routes and operating hours before choosing your journey. If you need currency exchange or help finding a pickup point, ask at an airport information desk. Beyond the airport, this guide can play stories near listed stops when location and playback conditions allow. Keep the page open and your screen on as you explore. 北京欢迎你 — welcome to Beijing. Your tour starts now.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "a8aef57c590578a623559b693b4f2881fc652f0aaae9a4752b7d5709d192b122",
+  "duration": 68.184
+}

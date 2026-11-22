@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "Just behind you on your left is the main factory gallery with Bauhaus sawtooth roofs.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "f3748cb300169778f3f4a01b1f83a6754f4824d669878c7e61bb022e3f57785c",
+  "duration": 5.976
+}

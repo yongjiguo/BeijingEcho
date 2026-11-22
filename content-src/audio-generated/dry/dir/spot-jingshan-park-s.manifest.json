@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "the Wanchun Pavilion at the hilltop is right behind you.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "02643442a348f10f6eb9dd2fc5b48bee5bb8ca955981d79f80f1d352e445e088",
+  "duration": 4.248
+}

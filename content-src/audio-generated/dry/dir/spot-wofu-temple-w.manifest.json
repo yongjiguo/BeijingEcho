@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "On your left stands the great bronze reclining Buddha.",
+    "kind": "dir",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "c15f424f8d776f6419ab7005f1b9e252f997a3580323f8ffd4cbbffbdeea1840",
+  "duration": 3.96
+}

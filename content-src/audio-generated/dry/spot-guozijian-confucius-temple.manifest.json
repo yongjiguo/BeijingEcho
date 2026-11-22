@@ -1,0 +1,13 @@
+{
+  "input": {
+    "stage": "tts-dry-v1",
+    "text": "You're walking along Chengxian Street — Beijing's only surviving ancient board-and-plate paved lane — toward two treasures sharing one wall: the Confucius Temple and the Imperial College, the Guozijian. On your way in, pass under the Archway of Superior Learning — one of the only wooden archways in Beijing not painted in imperial yellow. The Confucius Temple, founded in 1302, honors China's great teacher: look for the nearly two hundred stone steles engraved with the names of more than fifty thousand scholars who passed the imperial examinations over five centuries — the largest honor roll you'll ever see. Beside it, the Imperial College was the empire's highest school, where the sons of nobility studied for those very exams. At its center stands the Biyong, a square hall on an island of water, where the emperor himself lectured — the \"hall of learning surrounded by a moat\". Ancient cypresses, some over seven hundred years old, shade it all.",
+    "kind": "main",
+    "provider": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-10%",
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "5013136faee262c4946e03da86009ed2d3dcec349943eec394dc9b6a5b82203e",
+  "duration": 69.648
+}

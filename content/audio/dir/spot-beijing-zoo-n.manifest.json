@@ -1,0 +1,21 @@
+{
+  "input": {
+    "stage": "copy-dry-v1",
+    "source": {
+      "input": {
+        "stage": "tts-dry-v1",
+        "text": "Straight ahead rises the Panda House.",
+        "kind": "dir",
+        "provider": "edge",
+        "voice": "en-US-AndrewMultilingualNeural",
+        "rate": "-10%",
+        "reviewStatus": "pending-review-development-only"
+      },
+      "sha256": "6f94848fab1b2ab9a05c072040e266f493ae6efa9b553e55210adc517ef856bd",
+      "duration": 3.336
+    },
+    "reviewStatus": "pending-review-development-only"
+  },
+  "sha256": "6f94848fab1b2ab9a05c072040e266f493ae6efa9b553e55210adc517ef856bd",
+  "duration": 3.336
+}
