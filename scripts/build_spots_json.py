@@ -103,7 +103,7 @@ def valid_coords(value):
     return isinstance(value, dict) and all(type(value.get(k)) in (int, float) and math.isfinite(value[k]) for k in ('lat', 'lng'))
 
 
-def merge_data(drafts, meta, titles):
+def merge_data(drafts, meta, titles, images_by_id=None):
     ids = set(drafts) - {'app-welcome'}
     if len(ids) != 61 or 'app-welcome' not in drafts or ids != set(meta) or ids != {r['id'] for r in titles} or len(titles) != 61:
         raise ValueError('expected matching 61 spot ids plus app-welcome')
@@ -124,7 +124,8 @@ def merge_data(drafts, meta, titles):
             raise ValueError(f'{sid}: invalid landmark coordinates')
         spots.append({'id': sid, 'name': draft['name'], 'summary': ' '.join(draft['transcript'].split()[:12]) + '…',
                       'lat': entry['lat'], 'lng': entry['lng'], 'radiusMeters': radii[sid],
-                      'audio': f'audio/spot-{sid}.mp3', 'transcript': draft['transcript'], 'images': [],
+                      'audio': f'audio/spot-{sid}.mp3', 'transcript': draft['transcript'],
+                      'images': (images_by_id or {}).get(sid, []),
                       'landmark': {'name': draft['landmark'], 'lat': landmark['lat'], 'lng': landmark['lng']}})
     return {'version': 1, 'reviewStatus': 'pending-review-development-only',
             'welcome': {'audio': 'audio/welcome.mp3', 'transcript': drafts['app-welcome']['transcript']}, 'spots': spots}, warnings
@@ -132,8 +133,16 @@ def merge_data(drafts, meta, titles):
 
 def build_data(root=ROOT):
     drafts = parse_drafts([root / 'content-src/narrations-draft.md', root / 'content-src/narrations-draft-2.md'])
+    images_by_id = {}
+    spots_path = root / 'content/spots.json'
+    if spots_path.is_file():
+        try:
+            prev = json.loads(spots_path.read_text())
+            images_by_id = {s['id']: s['images'] for s in prev.get('spots', []) if s.get('images')}
+        except (ValueError, KeyError):
+            pass  # unreadable previous file: rebuild without images (fetch_images can repopulate)
     return merge_data(drafts, json.loads((root / 'content/spot-meta.json').read_text()),
-                      json.loads((root / 'content/wikipedia-titles.json').read_text()))
+                      json.loads((root / 'content/wikipedia-titles.json').read_text()), images_by_id)
 
 
 def main():

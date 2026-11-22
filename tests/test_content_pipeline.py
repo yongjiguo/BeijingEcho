@@ -46,7 +46,9 @@ class BuildTests(unittest.TestCase):
             text = item['transcript']
             self.assertNotRegex(text, r'⚠|⚡|核实|审校|本轮|通行说法|[a-z][.!?][A-Z]')
             self.assertGreater(len(text.split()), 100)
-        self.assertTrue(all(s['images'] == [] for s in data['spots']))
+        prev_images = {s['id']: s['images'] for s in json.loads((ROOT / 'content/spots.json').read_text())['spots'] if s.get('images')}
+        for s in data['spots']:
+            self.assertEqual(s['images'], prev_images.get(s['id'], []))
 
     def test_cleaning_preserves_english_and_rejects_ambiguity(self):
         clean = self.build.clean_transcript
