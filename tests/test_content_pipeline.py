@@ -26,9 +26,9 @@ class BuildTests(unittest.TestCase):
         before = [p.read_bytes() for p in paths]
         data, warnings = self.build.build_data(ROOT)
         ids = {r['id'] for r in json.loads((ROOT / 'content/wikipedia-titles.json').read_text())}
-        self.assertEqual(len(data['spots']), 61)
+        self.assertEqual(len(data['spots']), 60)
         self.assertEqual({s['id'] for s in data['spots']}, ids)
-        self.assertEqual(len(self.build.parse_drafts(paths)), 62)
+        self.assertEqual(len(self.build.parse_drafts(paths)), 61)
         self.assertEqual(before, [p.read_bytes() for p in paths])
         spots = {s['id']: s for s in data['spots']}
         self.assertIn('北京欢迎你', spots['capital-airport-welcome']['transcript'])
@@ -94,7 +94,9 @@ class ValidationTests(unittest.TestCase):
         # radii/center fix); none of these ids may regress to a fence error.
         for sid in ['tiananmen-square', 'drum-bell-towers', 'olympic-green', 'lugou-bridge']:
             self.assertFalse(any(sid in e and 'fence' in e for e in errors))
-        self.assertTrue(any('image' in p for p in pending))
+        # Images are complete (60/60 after wuta-temple removal); nothing pending may
+        # reference images or audio anymore.
+        self.assertFalse(any('image' in p for p in pending))
         # Audio pipeline is complete: every spot must have main + 8 direction assets,
         # so nothing pending may reference audio anymore.
         self.assertFalse(any('audio/' in p for p in pending))

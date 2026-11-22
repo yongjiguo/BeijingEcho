@@ -20,7 +20,6 @@ EXACT_NOTES = {
     'taimiao': ['⚠ 年份表述请核实（1924/1950年改名两说，请核实）'],
     'zhongshan-park': ['⚠ 牡丹花期4月下旬表述请核实'],
     'baiyun-guan': ['⚠ 丘处机1220-1223年西行与成吉思汗赐居白云观表述请核实'],
-    'wuta-temple': ['⚠ 明成化九年1473建成与印度高僧献型制背景为通行说法，请核实'],
     'tanzhe-temple': ['⚠ 建于西晋"1700余年"为景区通行说法，学术上有争议，请核实表述口径', '⚠ 帝王树树龄约千年为通行说法，请核实'],
     'jietai-temple': ['⚠ "三大戒坛"通行说法请核实，其余两处（泉州开元寺等）表述请核实'],
     'dajue-temple': ['⚠ 辽咸雍四年1068年建为通行说法，请核实'],
@@ -105,8 +104,8 @@ def valid_coords(value):
 
 def merge_data(drafts, meta, titles, images_by_id=None):
     ids = set(drafts) - {'app-welcome'}
-    if len(ids) != 61 or 'app-welcome' not in drafts or ids != set(meta) or ids != {r['id'] for r in titles} or len(titles) != 61:
-        raise ValueError('expected matching 61 spot ids plus app-welcome')
+    if len(ids) != 60 or 'app-welcome' not in drafts or ids != set(meta) or ids != {r['id'] for r in titles} or len(titles) != 60:
+        raise ValueError('expected matching 60 spot ids plus app-welcome')
     missing = [sid for sid in ids if not valid_coords(meta[sid])]
     if missing:
         raise ValueError('missing/invalid coordinates: ' + ', '.join(sorted(missing)))
@@ -153,7 +152,7 @@ def main():
         parser.error('drafts remain unreviewed; development builds require --allow-unreviewed')
     data, warnings = build_data()
     (ROOT / 'content/spots.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print('DEVELOPMENT ONLY: 61 spots + 1 welcome; review pending; images deferred')
+    print('DEVELOPMENT ONLY: 60 spots + 1 welcome; review pending; images deferred')
     print('\n'.join(warnings))
 
 

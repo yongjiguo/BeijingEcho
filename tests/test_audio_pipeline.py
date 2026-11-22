@@ -21,8 +21,8 @@ class AudioTests(unittest.TestCase):
     def test_templates_and_counts(self):
         data = json.loads((ROOT / 'content/spots.json').read_text())
         jobs = self.tts.jobs(data)
-        self.assertEqual(len(jobs), 550)
-        self.assertEqual(sum(j['kind'] == 'dir' for j in jobs), 488)
+        self.assertEqual(len(jobs), 541)
+        self.assertEqual(sum(j['kind'] == 'dir' for j in jobs), 480)
         self.assertEqual(list(self.tts.TEMPLATES), ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'])
         expected = ['Straight ahead rises X.', 'X is just ahead on your right.', 'On your right stands X.', 'Just behind you on your right is X.', 'X is right behind you.', 'Just behind you on your left is X.', 'On your left stands X.', 'X is just ahead on your left.']
         self.assertEqual([s.format(landmark='X') for s in self.tts.TEMPLATES.values()], expected)
@@ -82,7 +82,7 @@ class AudioTests(unittest.TestCase):
         tracks = sorted((ROOT / 'content/audio/bgm').glob('*.mp3'))
         assignments = self.mix.assignments(data, tracks)
         self.assertEqual(assignments, self.mix.assignments(data, tracks))
-        self.assertEqual(len(assignments), 61)
+        self.assertEqual(len(assignments), 60)
         self.assertEqual(len(set(assignments.values())), 5)
 
     def test_real_ffmpeg_mix_is_idempotent_and_dry_stays_unchanged(self):

@@ -36,8 +36,8 @@ def validate(data, content, check_assets=True):
         pending.append('content review: development-only, not approved for publication')
     spots = data.get('spots', [])
     ids = [s.get('id') for s in spots]
-    if len(spots) != 61 or len(set(ids)) != 61:
-        errors.append('expected 61 unique spot ids')
+    if len(spots) != 60 or len(set(ids)) != 60:
+        errors.append('expected 60 unique spot ids')
 
     def local_file(url):
         if not isinstance(url, str) or not url:

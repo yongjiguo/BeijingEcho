@@ -973,22 +973,6 @@
       }
     },
     {
-      "id": "wuta-temple",
-      "name": "Five Pagoda Temple (Stone Carving Museum)",
-      "summary": "Behind a Beijing street market hides a pagoda that shouldn't exist here:…",
-      "lat": 39.944916,
-      "lng": 116.33035,
-      "radiusMeters": 120,
-      "audio": "audio/spot-wuta-temple.mp3",
-      "transcript": "Behind a Beijing street market hides a pagoda that shouldn't exist here: the Five Pagoda Temple, a fourteenth-century Indian temple design transplanted to China. In fourteen seventy-three, the Ming court built this Vajrasana-style shrine — a square throne carrying five small spires, after the design a visiting Indian monk presented to the court — echoing the great Mahabodhi temple of Bodh Gaya itself. The pagoda survived fire, war, and the temple's own disappearance: today it stands as the Beijing Stone Carving Museum, and the surrounding halls gather steles, sarcophagi, and carved stones from two thousand years of the capital's history. The autumn ginkgo beside the pagoda is a photographer's legend — golden leaves against five ancient spires. Find it in the zoo-adjacent backstreets; climb nothing, miss nothing — this is Beijing's most photogenic small museum, and almost nobody you know has been.",
-      "images": [],
-      "landmark": {
-        "name": "the five spires of the Vajrasana pagoda",
-        "lat": 39.944916,
-        "lng": 116.33035
-      }
-    },
-    {
       "id": "wanshou-temple",
       "name": "Wanshou Temple (Beijing Art Museum)",
       "summary": "Wanshou Temple, the \"Temple of Longevity,\" sits on the Long River —…",
