@@ -99,7 +99,12 @@
       "radiusMeters": 300,
       "audio": "audio/spot-shichahai.mp3",
       "transcript": "You've arrived at Shichahai — three linked lakes that have been the soul of old Beijing for seven hundred years. The name means \"ten temple lake\", for the ten Buddhist and Taoist temples that once lined these shores. This is where the Grand Canal once ended: in the Yuan dynasty, barges unloaded silk and grain right here, making this the busiest harbor of the empire's capital. Today the lakes are Beijing's favorite escape — willow-lined shores, hutong lanes, and in winter, locals skating across the frozen water on traditional ice sledges. Cross the little arched Yinding Bridge — the \"Silver Ingot Bridge\" — one of the most photographed corners of the city, where old men fish in the morning and young people gather at dusk. All around you, the hutong neighborhoods that grew up around the lakes are among the best preserved in Beijing. Slow down here. This is the Beijing people fall in love with.",
-      "images": [],
+      "images": [
+        {
+          "url": "images/spot-shichahai.jpg",
+          "credit": "Photo: Kyla Duhamel, CC BY 2.0 · via Flickr"
+        }
+      ],
       "landmark": {
         "name": "the Yinding Bridge, the Silver Ingot Bridge",
         "lat": 39.93802,
@@ -745,7 +750,12 @@
       "radiusMeters": 150,
       "audio": "audio/spot-hongqiao-market.mp3",
       "transcript": "Across from the Temple of Heaven's east gate stands an eight-floor building with a glittering specialty: Hongqiao Market — known worldwide as Beijing's Pearl Market, and called by China's own gem trade \"the First House of Pearls in the Capital.\" Floors three to five are wall-to-wall pearls — freshwater strands from a few dollars, saltwater specimens in velvet cases, plus gold, jade, and silk on the other floors. The truth-in-shopping rules of Beijing markets apply doubly for pearls: trust your eyes, ask for certificates on the big purchases, and know that bargaining is expected from the very first quote. Even if you buy nothing, come at mid-morning when the traders are cheerful and the aisles perform their orchestra of offers. Then walk straight into the Temple of Heaven opposite — prayer first, pearls after — the most Beijing pairing of the sacred and the retail.",
-      "images": [],
+      "images": [
+        {
+          "url": "images/spot-hongqiao-market.jpg",
+          "credit": "Photo: AndreyFilippov.com, CC BY 2.0 · via Flickr"
+        }
+      ],
       "landmark": {
         "name": "the Hongqiao Market building by the Temple of Heaven's east gate",
         "lat": 39.88513,
@@ -782,7 +792,12 @@
       "radiusMeters": 250,
       "audio": "audio/spot-ritan-park.mp3",
       "transcript": "Ritan, the Temple of the Sun, is the smallest and calmest of Beijing's imperial altars — built in the fifteen thirties, when the Ming court institutionalized worship of sun, moon, earth, and heaven across the city. Each spring equinox, the emperor traveled here to greet the rising sun from the white stone altar that still sits under the cypresses today. Its imperial job long gone, Ritan became one of Beijing's favorite neighborhood parks: a rock garden, a lotus pond, pavilions gifted by sister cities, and at dawn, its legendary community — retirees practicing tai chi, sword dancing, and ballroom steps with total commitment. Business travelers from the nearby embassy district jog here at lunch. If you want to see daily Beijing life at its most graceful, come at seven in the morning: the altar of the sun is now, quite literally, a stage for the people.",
-      "images": [],
+      "images": [
+        {
+          "url": "images/spot-ritan-park.jpg",
+          "credit": "Photo: ernop, CC BY 2.0 · via Flickr"
+        }
+      ],
       "landmark": {
         "name": "the sun altar terrace under the cypresses",
         "lat": 39.914417,
