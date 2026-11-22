@@ -26,16 +26,49 @@ let overlay: HTMLElement | null = null;
 let currentData: SpotsData | null = null;
 let currentPlayer: AudioPlayer | null = null;
 
+/** history.state payload marking our entries — browser Back pops them instead of leaving the site. */
+interface EchoState {
+  echo: 'browse' | 'detail';
+  id?: string;
+}
+
 export function isBrowseOpen(): boolean {
   return overlay != null;
 }
 
-export function closeBrowse(): void {
+function closeBrowseInternal(): void {
   currentPlayer?.stop();
   overlay?.remove();
   overlay = null;
   currentData = null;
   currentPlayer = null;
+  window.removeEventListener('popstate', onPopState);
+}
+
+export function closeBrowse(): void {
+  if (!overlay) return;
+  history.back(); // popstate → closeBrowseInternal; single teardown path for button AND browser back
+}
+
+function onPopState(): void {
+  if (!overlay) {
+    window.removeEventListener('popstate', onPopState);
+    return;
+  }
+  const st = window.history.state as EchoState | null;
+  if (st?.echo === 'browse') {
+    showList();
+  } else if (st?.echo === 'detail' && st.id) {
+    const spot = currentData?.spots.find((s) => s.id === st.id);
+    if (spot) renderSpotDetail(overlay, spot, currentPlayer!, backToList);
+    else showList();
+  } else {
+    closeBrowseInternal();
+  }
+}
+
+function backToList(): void {
+  history.back();
 }
 
 /** Opens the browse overlay. The auto-tour UI beneath stays intact (listening handle etc.). */
@@ -45,6 +78,8 @@ export function openBrowse(data: SpotsData, player: AudioPlayer): void {
   currentPlayer = player;
   overlay = el('div', 'browse-overlay');
   document.body.appendChild(overlay);
+  window.addEventListener('popstate', onPopState);
+  history.pushState({ echo: 'browse' }, '', '#/browse');
   showList();
 }
 
@@ -52,7 +87,10 @@ function showList(): void {
   if (!overlay || !currentData) return;
   renderBrowseList(overlay, currentData, (id) => {
     const spot = currentData?.spots.find((s) => s.id === id);
-    if (spot && overlay) renderSpotDetail(overlay, spot, currentPlayer!, showList);
+    if (spot && overlay) {
+      history.pushState({ echo: 'detail', id }, '', `#/browse/${id}`);
+      renderSpotDetail(overlay, spot, currentPlayer!, backToList);
+    }
   });
 }
 
