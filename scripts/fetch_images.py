@@ -12,6 +12,7 @@ import html
 import json
 import random
 import re
+import socket
 import subprocess
 import time
 from pathlib import Path
@@ -26,7 +27,33 @@ IMAGES_DIR = ROOT / "content" / "images"
 UA = {"User-Agent": "BeijingEchoContentBot/0.1 (local content pipeline; one-off fetch)"}
 API = "https://commons.wikimedia.org/w/api.php"
 MAX_WIDTH = 1600
-RPS_DELAY = 125.0  # Wikimedia token-bucket refills ~1 req/2min; 429 Retry-After=120 confirms
+RPS_DELAY = 20.0  # bucket recovery observed ~seconds; stay polite but not sluggish
+
+
+def _force_ipv6_if_works() -> bool:
+    """Pin all DNS resolution to IPv6 when the v6 route to Wikimedia is healthy.
+
+    This network's IPv4 path to Wikimedia times out during TLS handshake while IPv6
+    works — dual-stack address selection made ~half of all requests fail.
+    """
+    orig = socket.getaddrinfo
+    try:
+        infos = orig("upload.wikimedia.org", 443, socket.AF_INET6)
+        sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+        sock.settimeout(6)
+        sock.connect(infos[0][4])  # sockaddr tuple already includes port 443
+        sock.close()
+    except OSError:
+        return False
+
+    def ipv6_only_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+        return orig(host, port, socket.AF_INET6, type, proto, flags)
+
+    socket.getaddrinfo = ipv6_only_getaddrinfo
+    return True
+
+
+IPV6_FORCED = _force_ipv6_if_works()
 
 
 def thumbify(image_url: str, width: int) -> str:
@@ -102,26 +129,29 @@ def credits_for_many(wiki_files: list[str]) -> dict[str, str]:
 
 
 def download(url_candidates: list[str], target: Path) -> None:
-    """Try each candidate URL (thumb first, original as fallback) with backoff on 429."""
+    """Try each candidate URL (thumb first, original as fallback) with backoff on 429.
+
+    Downloads shell out to curl: Wikimedia's Varnish edge throttles the python-requests
+    TLS fingerprint much more aggressively (verified: same URL+moment via IPv6 —
+    curl 200, requests 429). The Commons API still uses requests (that host is fine).
+    """
     last_error: Exception | None = None
+    raw = target.with_suffix(".bin")  # ffmpeg probes content, extension irrelevant
     for url in url_candidates:
-        for attempt, backoff in ((1, 0), (2, 120), (3, 120)):
+        for attempt, backoff in ((1, 0), (2, 15), (3, 30), (4, 45)):
             if backoff:
-                wait = backoff
-                ra = getattr(last_error, "retry_after", None)
-                if ra and ra > backoff:
-                    wait = ra
-                print(f"  retry {attempt} after {wait}s …", flush=True)
-                time.sleep(wait)
+                print(f"  retry {attempt} after {backoff}s …", flush=True)
+                time.sleep(backoff)
             try:
-                resp = requests.get(url, headers=UA, timeout=180)
-                if resp.status_code == 429:
-                    err = requests.HTTPError("429 rate-limited")
-                    err.retry_after = int(resp.headers.get("Retry-After", "0") or 0)
-                    raise err
-                resp.raise_for_status()
-                raw = target.with_suffix(".bin")  # ffmpeg probes content, extension irrelevant
-                raw.write_bytes(resp.content)
+                proc = subprocess.run(
+                    ["curl", "-6", "-sS", "-L", "--max-time", "180",
+                     "-A", UA["User-Agent"], "-o", str(raw), "-w", "%{http_code}", url],
+                    capture_output=True, text=True, timeout=200)
+                code = proc.stdout.strip()
+                if code == "429":
+                    raise requests.HTTPError("429 rate-limited (curl)")
+                if code != "200":
+                    raise requests.HTTPError(f"HTTP {code or '?'}: {proc.stderr.strip()[:100]}")
                 # normalize to jpg, cap width at 1600px (no-op scale if smaller)
                 subprocess.run(
                     ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error", "-y",
@@ -133,7 +163,7 @@ def download(url_candidates: list[str], target: Path) -> None:
                 return
             except Exception as exc:
                 last_error = exc
-                print(f"  download attempt {attempt} failed: {type(exc).__name__}", flush=True)
+                print(f"  download attempt {attempt} failed: {type(exc).__name__}: {exc}", flush=True)
     raise RuntimeError(f"download failed: {url_candidates} ({type(last_error).__name__})")
 
 
@@ -143,6 +173,7 @@ def main() -> None:
     parser.add_argument("--only", help="single spot id")
     parser.add_argument("--credits-only", action="store_true", help="refresh credit strings without downloading")
     args = parser.parse_args()
+    print(f"ipv6-forced: {IPV6_FORCED}", flush=True)
 
     meta = json.loads(META_PATH.read_text(encoding="utf-8"))
     spots_doc = json.loads(SPOTS_PATH.read_text(encoding="utf-8"))
@@ -200,7 +231,7 @@ def main() -> None:
         except Exception as exc:
             failed.append(sid)
             print(f"  FAIL {sid}: {exc}", flush=True)
-        time.sleep(RPS_DELAY + random.uniform(0, 30))
+        time.sleep(RPS_DELAY + random.uniform(0, 15))
 
     SPOTS_PATH.write_text(json.dumps(spots_doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"\ndone: {done} downloaded, {skipped} skipped, {len(failed)} failed: {failed or 'none'}")
