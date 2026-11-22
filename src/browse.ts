@@ -4,7 +4,6 @@ import { el } from './ui';
 
 const BASE = import.meta.env.BASE_URL;
 const asset = (p: string) => `${BASE}${p}`;
-const CHIME_URL = asset('audio/chime.mp3');
 const MUSIC_CREDIT = 'Music: Kevin MacLeod, incompetech, CC-BY 4.0';
 
 export interface ListItem {
@@ -146,7 +145,9 @@ export function renderSpotDetail(
   const playBtn = el('button', 'btn btn-primary', '▶ Play this story');
   playBtn.addEventListener('click', () => {
     player.stop();
-    void player.playSequence([CHIME_URL, asset(spot.audio)]);
+    // Browse-mode playback is narration only — the chime is reserved for GPS-triggered
+    // tour transitions (per user decision 2026-11-22).
+    void player.playSequence([asset(spot.audio)]);
   });
   screen.append(playBtn);
 
