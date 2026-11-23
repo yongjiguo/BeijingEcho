@@ -137,6 +137,47 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
 
   const buildPanel = (): HTMLElement => {
     const panel = el('div', 'testmode-panel');
+
+    // Draggable top edge — drag to resize panel height, double-click to reset.
+    const resize = el('div', 'testmode-resize');
+    const HEIGHT_KEY = 'testmode-height';
+    const savedHeight = Number(localStorage.getItem(HEIGHT_KEY));
+    if (savedHeight >= 120) {
+      panel.style.height = `${savedHeight}px`;
+      panel.style.maxHeight = '92vh';
+    } else {
+      panel.style.maxHeight = '48vh'; // default cap until the user resizes
+    }
+    let dragStartY = 0;
+    let dragStartH = 0;
+    resize.addEventListener('pointerdown', (ev) => {
+      dragStartY = ev.clientY;
+      dragStartH = panel.getBoundingClientRect().height;
+      resize.setPointerCapture(ev.pointerId);
+      document.body.style.userSelect = 'none';
+    });
+    resize.addEventListener('pointermove', (ev) => {
+      if (!resize.hasPointerCapture(ev.pointerId)) return;
+      const max = Math.round(window.innerHeight * 0.92);
+      const h = Math.min(Math.max(dragStartH + (dragStartY - ev.clientY), 120), max);
+      panel.style.maxHeight = '92vh';
+      panel.style.height = `${h}px`;
+    });
+    const endDrag = (ev: PointerEvent) => {
+      if (!resize.hasPointerCapture(ev.pointerId)) return;
+      resize.releasePointerCapture(ev.pointerId);
+      document.body.style.userSelect = '';
+      localStorage.setItem(HEIGHT_KEY, String(Math.round(panel.getBoundingClientRect().height)));
+    };
+    resize.addEventListener('pointerup', endDrag);
+    resize.addEventListener('pointercancel', endDrag);
+    resize.addEventListener('dblclick', () => {
+      localStorage.removeItem(HEIGHT_KEY);
+      panel.style.height = '';
+      panel.style.maxHeight = '48vh';
+    });
+    panel.append(resize);
+
     const header = el('div', 'testmode-header');
     header.append(el('span', 'testmode-title', 'TEST MODE'));
     const realBtn = el('button', 'testmode-btn', 'Real sensors');

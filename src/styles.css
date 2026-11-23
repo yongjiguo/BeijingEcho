@@ -597,10 +597,37 @@ body::before {
   background: #221d16f2;
   border-top: 2px solid var(--cinnabar);
   padding: 10px 12px;
-  max-height: 48vh;
   overflow-y: auto;
   font-size: 0.82rem;
   color: #e8e0cd;
+}
+
+/* draggable top edge: drag to resize, double-click to reset (visual hint = grip bar) */
+.testmode-resize {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.testmode-resize::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(232, 224, 205, 0.35);
+  transition: background 0.15s;
+}
+
+.testmode-resize:hover::after {
+  background: var(--cinnabar);
 }
 
 .testmode-header {
