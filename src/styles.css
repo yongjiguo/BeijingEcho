@@ -309,12 +309,40 @@ body::before {
   margin: 2px 0 10px;
 }
 
+.status-nearest-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 6px;
+}
+
 .status-nearest {
   color: var(--ink-soft);
   font-size: 1.04rem;
   font-weight: 600;
-  margin: 0 0 6px;
   min-height: 1.2em;
+}
+
+/* five-pointed star favorite toggle (detail page header + nearest row) */
+.fav-star {
+  background: none;
+  border: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: var(--ink-faint);
+  flex-shrink: 0;
+  transition: color 0.15s, transform 0.15s;
+}
+
+.fav-star:hover {
+  transform: scale(1.15);
+}
+
+.fav-star-on {
+  color: var(--gold);
 }
 
 .status-hint {

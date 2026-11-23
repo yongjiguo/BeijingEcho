@@ -4,7 +4,7 @@ import { CompassWatcher, GpsTrackHeading, HeadingResolver } from './compass';
 import { initialBearing, octantFor } from './direction';
 import { AudioPlayer, HtmlAudioGateway } from './player';
 import { TourStateMachine } from './state';
-import { openBrowse, openSpotDetail, isBrowseOpen } from './browse';
+import { openBrowse, openFavorites, openSpotDetail, isBrowseOpen } from './browse';
 import { createTourMap, type TourMapHandle } from './mapview';
 import { initTestMode } from './testmode';
 import { renderLanding, renderListening, renderDenied, renderPlaying, renderRequesting } from './ui';
@@ -83,7 +83,10 @@ function nearestSpot(lat: number, lng: number): { spot: Spot; dist: number } | n
 function updateNearestStatus(lat: number, lng: number): void {
   if (!listening) return;
   const best = nearestSpot(lat, lng);
-  listening.setNearest(best ? `Nearest: ${best.spot.name} · ${formatDistance(best.dist)}` : null);
+  listening.setNearest(
+    best ? `Nearest: ${best.spot.name} · ${formatDistance(best.dist)}` : null,
+    best?.spot.id ?? null,
+  );
 }
 
 // ---- playback ----
@@ -156,11 +159,16 @@ const openBrowseView = (): void => {
   if (spotsData) openBrowse(spotsData, player);
 };
 
+const openFavoritesView = (): void => {
+  if (spotsData) openFavorites(spotsData, player);
+};
+
 // ---- states ----
 function showLanding(): void {
   renderLanding(app, {
     onStart: startTour,
     onBrowse: openBrowseView,
+    onFavorites: openFavoritesView,
     insecure: typeof window !== 'undefined' && window.isSecureContext === false,
   });
 }

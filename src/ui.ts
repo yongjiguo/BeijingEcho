@@ -1,4 +1,5 @@
 import type { Spot } from './types';
+import { isFavorite, toggleFavorite } from './favorites';
 
 const BASE = import.meta.env.BASE_URL;
 const asset = (p: string) => `${BASE}${p}`;
@@ -29,6 +30,7 @@ function ornament(): HTMLDivElement {
 export interface LandingOptions {
   onStart: () => void;
   onBrowse: () => void;
+  onFavorites: () => void;
   insecure: boolean;
 }
 
@@ -70,7 +72,9 @@ export function renderLanding(root: HTMLElement, opts: LandingOptions): void {
   start.addEventListener('click', opts.onStart);
   const browse = el('button', 'btn btn-secondary rise d6', 'Browse all spots');
   browse.addEventListener('click', opts.onBrowse);
-  screen.append(start, browse);
+  const favorites = el('button', 'btn btn-secondary rise d6', '★ Favorites');
+  favorites.addEventListener('click', opts.onFavorites);
+  screen.append(start, browse, favorites);
 
   screen.append(el('p', 'landing-foot rise d6', '古都 · 回声 · 足下'));
   root.append(screen);
@@ -96,8 +100,9 @@ export function renderRequesting(root: HTMLElement): RequestingHandle {
 }
 
 export interface ListeningHandle {
-  /** null → default "Listening" copy; otherwise e.g. "Nearest: Temple of Heaven · 400m" */
-  setNearest(line: string | null): void;
+  /** null → default "Listening" copy; otherwise e.g. "Nearest: Temple of Heaven · 400m".
+   *  spotId (when known) powers the ★ favorite toggle shown next to it. */
+  setNearest(line: string | null, spotId?: string | null): void;
   /** Transient problem hint (GPS weak / retrying). null clears. */
   setHint(line: string | null): void;
   /** Container for the Beijing tour map (mounted by main.ts). */
@@ -116,7 +121,28 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
 
   const card = el('section', 'card rise');
   const headline = el('p', 'status-headline', 'Listening — walk near a spot to hear its story');
-  const nearest = el('p', 'status-nearest');
+  const nearestRow = el('div', 'status-nearest-row');
+  const nearest = el('span', 'status-nearest');
+  // ★ favorite toggle for the nearest spot — solid gold = saved, hollow = not
+  let nearestSpotId: string | null = null;
+  const nearStar = el('button', 'fav-star') as HTMLButtonElement;
+  nearStar.hidden = true;
+  const syncNearStar = (): void => {
+    if (!nearestSpotId) {
+      nearStar.hidden = true;
+      return;
+    }
+    nearStar.hidden = false;
+    nearStar.textContent = isFavorite(nearestSpotId) ? '★' : '☆';
+    nearStar.classList.toggle('fav-star-on', isFavorite(nearestSpotId));
+    nearStar.title = isFavorite(nearestSpotId) ? 'Remove from favorites' : 'Save to favorites';
+  };
+  nearStar.addEventListener('click', () => {
+    if (!nearestSpotId) return;
+    toggleFavorite(nearestSpotId);
+    syncNearStar();
+  });
+  nearestRow.append(nearest, nearStar);
   const hint = el('p', 'status-hint');
   hint.hidden = true;
   const guide = el('ul', 'listening-guide');
@@ -125,14 +151,16 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
     el('li', null, 'Tap a red pin on the map to open that spot anytime.'),
     el('li', null, 'Browse (top right) lists every spot — no walking required.'),
   );
-  card.append(headline, nearest, hint, guide);
+  card.append(headline, nearestRow, hint, guide);
 
   const mapEl = el('div', 'tour-map rise');
   screen.append(header, card, mapEl);
   root.append(screen);
   return {
-    setNearest(line) {
+    setNearest(line, spotId) {
       nearest.textContent = line ?? '';
+      nearestSpotId = spotId ?? null;
+      syncNearStar();
     },
     setHint(line) {
       hint.textContent = line ?? '';
