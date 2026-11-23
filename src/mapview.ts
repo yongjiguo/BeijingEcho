@@ -13,10 +13,10 @@ import { wgs84ToGcj02 } from './gcj02';
 const TILE_URL = 'https://webrd0{s}.is.autonavi.com/appmaptile?lang=en&size=1&scale=1&style=8&x={x}&y={y}&z={z}';
 const TILE_SUBDOMAINS = '1234';
 
-/** Degrees spanned by an 8 km radius (used for the initial user-centered view). */
-function eightKmBounds(lng: number, lat: number): L.LatLngBoundsExpression {
-  const dLat = 8 / 111;
-  const dLng = 8 / (111 * Math.cos((lat * Math.PI) / 180));
+/** Degrees spanned by a radius in km (initial user-centered view = 6 km). */
+function radiusBounds(lng: number, lat: number, radiusKm: number): L.LatLngBoundsExpression {
+  const dLat = radiusKm / 111;
+  const dLng = radiusKm / (111 * Math.cos((lat * Math.PI) / 180));
   return [
     [lat - dLat, lng - dLng],
     [lat + dLat, lng + dLng],
@@ -71,7 +71,7 @@ export function createTourMap(
   let centered = false;
   if (initialFix) {
     const [glng, glat] = wgs84ToGcj02(initialFix.lng, initialFix.lat);
-    map.fitBounds(eightKmBounds(glng, glat));
+    map.fitBounds(radiusBounds(glng, glat, 6));
     centered = true;
   } else if (bounds.isValid()) {
     map.fitBounds(bounds.pad(0.15));
@@ -97,7 +97,7 @@ export function createTourMap(
         // view is already user-centered. Later fixes only move the dot —
         // never fight the user's own pan/zoom.
         if (!centered) {
-          map.fitBounds(eightKmBounds(glng, glat));
+          map.fitBounds(radiusBounds(glng, glat, 6));
           centered = true;
         }
       } else {
