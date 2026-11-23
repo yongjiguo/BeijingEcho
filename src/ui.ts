@@ -1,5 +1,8 @@
 import type { Spot } from './types';
 
+const BASE = import.meta.env.BASE_URL;
+const asset = (p: string) => `${BASE}${p}`;
+
 export function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
   className?: string | null,
@@ -169,6 +172,28 @@ export function renderPlaying(root: HTMLElement, opts: PlayingOptions): PlayingH
   const div = ornament();
   card.append(kicker, name, div);
 
+  // photo area — same treatment as the browse detail page (reuse its styles)
+  if (opts.spot.images.length > 0) {
+    const mainImg = el('img', 'browse-photo') as HTMLImageElement;
+    mainImg.src = asset(opts.spot.images[0].url);
+    mainImg.alt = opts.spot.name;
+    card.append(mainImg);
+    if (opts.spot.images.length > 1) {
+      const strip = el('div', 'browse-strip');
+      for (const image of opts.spot.images) {
+        const thumb = el('img', 'browse-strip-thumb') as HTMLImageElement;
+        thumb.src = asset(image.url);
+        thumb.alt = opts.spot.name;
+        thumb.addEventListener('click', () => {
+          mainImg.src = asset(image.url);
+        });
+        strip.append(thumb);
+      }
+      card.append(strip);
+    }
+    card.append(el('p', 'browse-credits', opts.spot.images.map((i) => i.credit).join(' · ')));
+  }
+
   const badge = el('p', 'direction-badge', opts.badgeText);
   badge.hidden = true;
   card.append(badge);
@@ -188,7 +213,8 @@ export function renderPlaying(root: HTMLElement, opts: PlayingOptions): PlayingH
   controls.append(pauseBtn, replayBtn);
 
   const transcript = el('details', 'transcript');
-  transcript.append(el('summary', null, 'Show transcript'), el('p', null, opts.spot.transcript));
+  transcript.open = true; // auto-expanded while narrating — user can still collapse via summary
+  transcript.append(el('summary', null, 'Transcript'), el('p', null, opts.spot.transcript));
 
   card.append(progress, controls, transcript);
   screen.append(header, card);
