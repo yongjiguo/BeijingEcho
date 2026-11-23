@@ -68,6 +68,23 @@ body::before {
   z-index: 1; /* above the paper-noise layer so tile pan/zoom gestures work */
 }
 
+/* Floating spot names on the tour map (permanent tooltips). */
+.spot-tooltip {
+  background: rgba(246, 239, 221, 0.92); /* parchment, slightly translucent */
+  color: #38251a;
+  border: 1px solid rgba(140, 31, 40, 0.55); /* cinnabar hairline */
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(38, 32, 25, 0.25);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+.spot-tooltip::before {
+  border-top-color: rgba(140, 31, 40, 0.55); /* match the hairline on the arrow */
+}
+
 /* ---------- shared ornaments ---------- */
 
 .seal {

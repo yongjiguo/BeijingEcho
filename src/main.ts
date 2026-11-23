@@ -164,7 +164,7 @@ function showListening(): void {
   if (spotsData && listening.mapEl) {
     tourMap = createTourMap(listening.mapEl, spots, (spot) => {
       if (spotsData) openSpotDetail(spotsData, spot, player);
-    });
+    }, fixForTrigger);
     if (fixForTrigger) tourMap.updateUser(fixForTrigger.lat, fixForTrigger.lng);
   }
   if (fixForTrigger && spots.length > 0) updateNearestStatus(fixForTrigger.lat, fixForTrigger.lng);
