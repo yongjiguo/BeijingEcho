@@ -140,6 +140,8 @@ export interface PlayingOptions {
   onResume: () => void;
   onReplay: () => void;
   onBrowse: () => void;
+  /** Back to the map (listening screen) — narration keeps playing in the background. */
+  onMap: () => void;
 }
 
 export interface PlayingHandle {
@@ -155,9 +157,11 @@ export function renderPlaying(root: HTMLElement, opts: PlayingOptions): PlayingH
   const header = el('header', 'app-header');
   const brand = el('h1', 'app-title-small');
   brand.append(seal('sm'), document.createTextNode('Beijing Echo'));
+  const mapBtn = el('button', 'btn btn-small', 'Map');
+  mapBtn.addEventListener('click', opts.onMap);
   const browseBtn = el('button', 'btn btn-small', 'Browse');
   browseBtn.addEventListener('click', opts.onBrowse);
-  header.append(brand, browseBtn);
+  header.append(brand, mapBtn, browseBtn);
 
   const card = el('section', 'card rise');
   const kicker = el('p', 'spot-kicker', '正在讲述 · NOW NARRATING');

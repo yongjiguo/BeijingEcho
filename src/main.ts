@@ -124,6 +124,12 @@ function beginSpotPlayback(spot: Spot): void {
       player.stop();
       void runSequence(urls, playbackGen);
     },
+    onMap: () => {
+      // Back to the listening screen (map) — narration keeps playing; when it
+      // ends, runSequence re-renders listening (a no-op refresh at worst).
+      playing = null;
+      showListening();
+    },
     onBrowse: openBrowseView,
   });
   const gen = ++playbackGen;
@@ -161,6 +167,8 @@ function showLanding(): void {
 
 function showListening(): void {
   listening = renderListening(app, openBrowseView);
+  tourMap?.destroy(); // release the previous instance before the DOM is replaced
+  tourMap = null;
   if (spotsData && listening.mapEl) {
     tourMap = createTourMap(listening.mapEl, spots, (spot) => {
       if (spotsData) openSpotDetail(spotsData, spot, player);
