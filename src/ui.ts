@@ -1,5 +1,6 @@
 import type { Spot } from './types';
 import { isFavorite, toggleFavorite } from './favorites';
+import { createPopularityBadge } from './popularity';
 
 const BASE = import.meta.env.BASE_URL;
 const asset = (p: string) => `${BASE}${p}`;
@@ -151,7 +152,8 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
     el('li', null, 'Tap a red pin on the map to open that spot anytime.'),
     el('li', null, 'Browse (top right) lists every spot — no walking required.'),
   );
-  card.append(headline, nearestRow, hint, guide);
+  const heatSlot = el('div', 'nearest-popularity');
+  card.append(headline, nearestRow, heatSlot, hint, guide);
 
   const mapEl = el('div', 'tour-map rise');
   screen.append(header, card, mapEl);
@@ -159,6 +161,11 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
   return {
     setNearest(line, spotId) {
       nearest.textContent = line ?? '';
+      if (nearestSpotId !== (spotId ?? null)) {
+        heatSlot.replaceChildren();
+        const heat = spotId ? createPopularityBadge(spotId) : null;
+        if (heat) heatSlot.append(heat);
+      }
       nearestSpotId = spotId ?? null;
       syncNearStar();
     },
@@ -204,7 +211,10 @@ export function renderPlaying(root: HTMLElement, opts: PlayingOptions): PlayingH
   const kicker = el('p', 'spot-kicker', '正在讲述 · NOW NARRATING');
   const name = el('h2', 'spot-name', opts.spot.name);
   const div = ornament();
-  card.append(kicker, name, div);
+  card.append(kicker, name);
+  const heat = createPopularityBadge(opts.spot.id);
+  if (heat) card.append(heat);
+  card.append(div);
 
   // photo area — same treatment as the browse detail page (reuse its styles)
   if (opts.spot.images.length > 0) {

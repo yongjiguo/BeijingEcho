@@ -16,3 +16,31 @@ const scores = new Map(Object.entries(tiers).flatMap(([score, ids]) =>
 export function popularityScore(id: string): number | null {
   return scores.get(id) ?? null;
 }
+
+// 各页面共用同一热度标志，未评级内容不生成标志。
+export function createPopularityBadge(id: string): HTMLSpanElement | null {
+  const score = popularityScore(id);
+  if (score == null) return null;
+  const count = score / 10 - 3;
+  const badge = document.createElement('span');
+  badge.className = 'popularity-badge';
+  badge.setAttribute('role', 'img');
+  badge.setAttribute('aria-label', `Popularity: ${count} flames out of 7 — editorial rating`);
+  badge.title = `Editorial popularity: ${count} / 7 — not live visitor data`;
+  const label = document.createElement('span');
+  label.textContent = 'Popularity';
+  label.setAttribute('aria-hidden', 'true');
+  badge.append(label);
+  for (let i = 0; i < count; i++) {
+    const flame = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    flame.setAttribute('viewBox', '0 0 24 26');
+    flame.setAttribute('class', 'popularity-flame');
+    flame.setAttribute('aria-hidden', 'true');
+    flame.setAttribute('focusable', 'false');
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M12 2C13 6 8 8 8 12c-2-1-2-3-2-3s-3 4-3 7a9 9 0 0 0 18 0c0-5-4-9-9-14Z');
+    flame.append(path);
+    badge.append(flame);
+  }
+  return badge;
+}

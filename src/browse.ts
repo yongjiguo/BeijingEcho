@@ -2,7 +2,7 @@ import type { AudioPlayer } from './player';
 import type { SpotsData, Spot } from './types';
 import { getFavorites, isFavorite, toggleFavorite } from './favorites';
 import { el } from './ui';
-import { popularityScore } from './popularity';
+import { popularityScore, createPopularityBadge } from './popularity';
 
 const BASE = import.meta.env.BASE_URL;
 const asset = (p: string) => `${BASE}${p}`;
@@ -183,6 +183,8 @@ export function renderBrowseList(
     }
     const text = el('div', 'browse-item-text');
     text.append(el('p', 'browse-item-name', item.name), el('p', 'browse-item-summary', item.summary));
+    const heat = createPopularityBadge(item.id);
+    if (heat) text.append(heat);
     row.append(text);
     row.addEventListener('click', () => onOpen(item.id));
     list.append(row);
@@ -294,10 +296,10 @@ export function renderSpotDetail(
   }
 
   screen.append(el('h2', 'spot-name', spot.name));
-  const score = popularityScore(spot.id);
-  if (score != null) {
+  const badge = createPopularityBadge(spot.id);
+  if (badge) {
     screen.append(
-      el('span', 'popularity-badge', `Popularity · ${score}/100`),
+      badge,
       el('p', 'browse-credits', 'Editorial reference score based on landmark prominence — not live visitor data.'),
     );
   }

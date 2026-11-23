@@ -615,7 +615,9 @@ body::before {
 }
 
 .popularity-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   padding: 5px 12px;
   margin-bottom: 8px;
   border: 1px solid var(--gold);
@@ -623,6 +625,21 @@ body::before {
   color: var(--ink-soft);
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.browse-item .popularity-badge {
+  zoom: 0.72;
+}
+
+.popularity-badge > span {
+  margin-right: 5px;
+}
+
+.popularity-flame {
+  width: 18px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: var(--cinnabar);
 }
 
 .browse-credits {
