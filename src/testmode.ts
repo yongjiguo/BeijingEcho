@@ -1,4 +1,5 @@
 import type { CompassWatcher } from './compass';
+import type { GpsTrackHeading } from './compass';
 import type { GeoWatcher } from './geo';
 import { OCTANT_ORDER } from './direction';
 import type { DirOctant, Spot } from './types';
@@ -7,6 +8,7 @@ import { el } from './ui';
 export interface TestModeHooks {
   geo: GeoWatcher;
   compass: CompassWatcher;
+  track: GpsTrackHeading;
 }
 
 export interface TestModeHandle {
@@ -47,6 +49,7 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
   let walkStatus: HTMLElement | null = null;
   let walkFrom: { lat: number; lng: number } | null = null;
   let walkTimer: number | null = null;
+  let lastSet: { lat: number; lng: number } | null = null; // last teleport/manual/map-set position
 
   const STEP_METERS = 4; // per tick
   const TICK_MS = 250; // → 16 m/s accelerated walk
@@ -68,6 +71,12 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
   };
 
   const startWalk = (headingDeg: number, distanceM: number): void => {
+    if (!walkFrom && lastSet) {
+      // No map-picked origin — default to the current simulated position.
+      walkFrom = lastSet;
+      if (walkFromLine) walkFromLine.textContent = `${walkFrom.lat.toFixed(6)}, ${walkFrom.lng.toFixed(6)} (current position)`;
+      log('walk sim: origin = current simulated position');
+    }
     if (!walkFrom) {
       log('walk sim: pick a start point first (Map click → Walk from)');
       return;
@@ -122,6 +131,7 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
 
   const teleport = (name: string, lat: number, lng: number): void => {
     hooks.geo.setMock({ lat, lng, accuracy: 5 });
+    lastSet = { lat, lng };
     log(`teleport → ${name} (${lat.toFixed(5)}, ${lng.toFixed(5)})`);
   };
 
@@ -133,6 +143,7 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
     realBtn.addEventListener('click', () => {
       hooks.geo.setMock(null);
       hooks.compass.setMock(null);
+      hooks.track.setMock(null);
       log('mocks cleared → real GPS + compass');
     });
     const collapseBtn = el('button', 'testmode-btn', '–');
@@ -205,6 +216,22 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
     });
     headSection.append(faceRow, angleInput, setBtn);
     body.append(headSection);
+
+    // mock walking direction (GPS track heading) section
+    const trackSection = el('div', 'testmode-section');
+    trackSection.append(el('h4', null, 'Walk direction (GPS track)'));
+    const trackRow = el('div', 'testmode-faces');
+    for (const oct of OCTANT_ORDER) {
+      const btn = el('button', 'testmode-btn', `Walk ${oct.toUpperCase()}`);
+      btn.addEventListener('click', () => {
+        hooks.compass.setMock(null); // track applies only when compass is unset (fallback chain)
+        hooks.track.setMock(FACE_DEG[oct]);
+        log(`track heading mock → ${FACE_DEG[oct]}° (${oct}); compass mock cleared`);
+      });
+      trackRow.append(btn);
+    }
+    trackSection.append(trackRow);
+    body.append(trackSection);
 
     // map click modes (tour map only — coordinates are WGS-84 after inverse GCJ-02)
     const clickSection = el('div', 'testmode-section');
