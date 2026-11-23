@@ -614,6 +614,17 @@ body::before {
   opacity: 1;
 }
 
+.popularity-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .browse-credits {
   color: var(--ink-faint);
   font-size: 0.8rem;

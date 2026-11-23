@@ -2,6 +2,7 @@ import type { AudioPlayer } from './player';
 import type { SpotsData, Spot } from './types';
 import { getFavorites, isFavorite, toggleFavorite } from './favorites';
 import { el } from './ui';
+import { popularityScore } from './popularity';
 
 const BASE = import.meta.env.BASE_URL;
 const asset = (p: string) => `${BASE}${p}`;
@@ -15,7 +16,9 @@ export interface ListItem {
 }
 
 export function buildListItems(data: SpotsData): ListItem[] {
-  return data.spots.map((s) => ({
+  return [...data.spots]
+    .sort((a, b) => (popularityScore(b.id) ?? -1) - (popularityScore(a.id) ?? -1))
+    .map((s) => ({
     id: s.id,
     name: s.name,
     summary: s.summary,
@@ -157,6 +160,7 @@ export function renderBrowseList(
   closeBtn.addEventListener('click', closeBrowse);
   header.append(el('h1', 'app-title-small', `Beijing Spots (${data.spots.length})`), closeBtn);
   screen.append(header);
+  screen.append(el('p', 'browse-credits', 'Sorted by editorial popularity score · not live visitor data.'));
 
   if (data.spots.length === 0) {
     screen.append(el('p', 'muted', 'No spots available yet.'));
@@ -290,6 +294,13 @@ export function renderSpotDetail(
   }
 
   screen.append(el('h2', 'spot-name', spot.name));
+  const score = popularityScore(spot.id);
+  if (score != null) {
+    screen.append(
+      el('span', 'popularity-badge', `Popularity · ${score}/100`),
+      el('p', 'browse-credits', 'Editorial reference score based on landmark prominence — not live visitor data.'),
+    );
+  }
   const div = el('div', 'ornament');
   div.append(el('span', 'diamond'), el('span', 'line'), el('span', 'diamond'));
   screen.append(div);
