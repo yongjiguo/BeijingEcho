@@ -26,6 +26,8 @@ export function buildListItems(data: SpotsData): ListItem[] {
 let overlay: HTMLElement | null = null;
 let currentData: SpotsData | null = null;
 let currentPlayer: AudioPlayer | null = null;
+// last detail page opened from a list — returning to any list scrolls back near it
+let lastViewedSpotId: string | null = null;
 
 /** history.state payload marking our entries — browser Back pops them instead of leaving the site. */
 interface EchoState {
@@ -113,6 +115,7 @@ export function openFavorites(data: SpotsData, player: AudioPlayer): void {
 }
 
 function openDetailFromOverlay(id: string): void {
+  lastViewedSpotId = id;
   const spot = currentData?.spots.find((s) => s.id === id);
   if (spot && overlay) {
     history.pushState({ echo: 'detail', id }, '', `#/browse/${id}`);
@@ -120,9 +123,16 @@ function openDetailFromOverlay(id: string): void {
   }
 }
 
+function scrollToLastViewed(): void {
+  if (!lastViewedSpotId) return;
+  const row = overlay?.querySelector(`.browse-item[data-spot-id="${CSS.escape(lastViewedSpotId)}"]`);
+  row?.scrollIntoView({ block: 'center' });
+}
+
 function showList(): void {
   if (!overlay || !currentData) return;
   renderBrowseList(overlay, currentData, openDetailFromOverlay);
+  scrollToLastViewed();
 }
 
 function showFavorites(): void {
@@ -132,6 +142,7 @@ function showFavorites(): void {
     .map((id) => currentData!.spots.find((s) => s.id === id))
     .filter((s): s is Spot => s != null);
   renderFavoritesList(overlay, favSpots, openDetailFromOverlay);
+  scrollToLastViewed();
 }
 
 export function renderBrowseList(
@@ -156,6 +167,7 @@ export function renderBrowseList(
   const list = el('div', 'browse-list');
   for (const item of buildListItems(data)) {
     const row = el('button', 'browse-item');
+    row.dataset.spotId = item.id;
     if (item.thumbnail) {
       const img = el('img', 'browse-thumb') as HTMLImageElement;
       img.src = asset(item.thumbnail);
@@ -204,6 +216,7 @@ function renderFavoritesList(
   const list = el('div', 'browse-list');
   for (const spot of favSpots) {
     const row = el('button', 'browse-item');
+    row.dataset.spotId = spot.id;
     const thumbUrl = spot.images?.[0]?.url ?? null;
     if (thumbUrl) {
       const img = el('img', 'browse-thumb') as HTMLImageElement;
@@ -282,11 +295,33 @@ export function renderSpotDetail(
   screen.append(div);
 
   const playBtn = el('button', 'btn btn-primary', '▶ Play this story');
+  // button shape tracks playback: ▶ Play → ⏸ Pause → ▶ Resume → back to ▶ when ended
+  let playing = false;
+  let paused = false;
+  const syncPlayBtn = (): void => {
+    playBtn.textContent = !playing ? '▶ Play this story' : paused ? '▶ Resume' : '⏸ Pause';
+  };
   playBtn.addEventListener('click', () => {
-    player.stop();
-    // Browse-mode playback is narration only — the chime is reserved for GPS-triggered
-    // tour transitions (per user decision 2026-11-22).
-    void player.playSequence([asset(spot.audio)]);
+    if (!playing) {
+      player.stop();
+      playing = true;
+      paused = false;
+      syncPlayBtn();
+      void player.playSequence([asset(spot.audio)]).finally(() => {
+        playing = false;
+        paused = false;
+        syncPlayBtn();
+      });
+      return;
+    }
+    if (paused) {
+      player.resume();
+      paused = false;
+    } else {
+      player.pause();
+      paused = true;
+    }
+    syncPlayBtn();
   });
   screen.append(playBtn);
 
