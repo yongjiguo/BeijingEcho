@@ -83,6 +83,19 @@ export function openBrowse(data: SpotsData, player: AudioPlayer): void {
   showList();
 }
 
+/** Skips the list: opens the overlay straight onto one spot's detail page
+ *  (used by tour-map pins). Back button / ← Back leads to the list as usual. */
+export function openSpotDetail(data: SpotsData, spot: Spot, player: AudioPlayer): void {
+  if (overlay) return;
+  currentData = data;
+  currentPlayer = player;
+  overlay = el('div', 'browse-overlay');
+  document.body.appendChild(overlay);
+  window.addEventListener('popstate', onPopState);
+  history.pushState({ echo: 'detail', id: spot.id }, '', `#/browse/${spot.id}`);
+  renderSpotDetail(overlay, spot, player, backToList);
+}
+
 function showList(): void {
   if (!overlay || !currentData) return;
   renderBrowseList(overlay, currentData, (id) => {

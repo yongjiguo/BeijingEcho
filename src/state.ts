@@ -6,19 +6,21 @@ export type TourEvent =
   | { type: 'AUTHORIZED' }
   | { type: 'WELCOME_ENDED' }
   | { type: 'FENCE_ENTER'; spotId: string }
-  | { type: 'AUDIO_ENDED' };
+  | { type: 'AUDIO_ENDED' }
+  | { type: 'RESET' };
 
 /**
  * Allowed transitions per spec §6. Absent mappings mean "illegal event → state unchanged"
  * (this covers welcome+FENCE_ENTER playback-mutex and permission-denied absorbing all).
+ * RESET (browser-back exit) returns to landing from any state.
  */
 const TRANSITIONS: Record<TourState, Partial<Record<TourEvent['type'], TourState>>> = {
-  landing: { START_CLICKED: 'requesting' },
-  requesting: { LOCATION_DENIED: 'permission-denied', AUTHORIZED: 'welcome' },
-  welcome: { WELCOME_ENDED: 'listening' },
-  listening: { FENCE_ENTER: 'playing' },
-  playing: { AUDIO_ENDED: 'listening' },
-  'permission-denied': {},
+  landing: { START_CLICKED: 'requesting', RESET: 'landing' },
+  requesting: { LOCATION_DENIED: 'permission-denied', AUTHORIZED: 'welcome', RESET: 'landing' },
+  welcome: { WELCOME_ENDED: 'listening', RESET: 'landing' },
+  listening: { FENCE_ENTER: 'playing', RESET: 'landing' },
+  playing: { AUDIO_ENDED: 'listening', RESET: 'landing' },
+  'permission-denied': { RESET: 'landing' },
 };
 
 export class TourStateMachine {

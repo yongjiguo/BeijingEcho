@@ -56,6 +56,18 @@ body::before {
   min-height: 100vh;
 }
 
+/* ---------- tour map (listening screen) ---------- */
+
+.tour-map {
+  height: min(52vh, 420px);
+  margin-top: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(38, 32, 25, 0.18);
+  box-shadow: 0 4px 16px rgba(38, 32, 25, 0.14);
+  overflow: hidden;
+  z-index: 1; /* above the paper-noise layer so tile pan/zoom gestures work */
+}
+
 /* ---------- shared ornaments ---------- */
 
 .seal {

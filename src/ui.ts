@@ -97,6 +97,8 @@ export interface ListeningHandle {
   setNearest(line: string | null): void;
   /** Transient problem hint (GPS weak / retrying). null clears. */
   setHint(line: string | null): void;
+  /** Container for the Beijing tour map (mounted by main.ts). */
+  mapEl: HTMLElement;
 }
 
 export function renderListening(root: HTMLElement, onBrowse: () => void): ListeningHandle {
@@ -115,7 +117,9 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
   const hint = el('p', 'status-hint');
   hint.hidden = true;
   card.append(headline, nearest, hint);
-  screen.append(header, card);
+
+  const mapEl = el('div', 'tour-map rise');
+  screen.append(header, card, mapEl);
   root.append(screen);
   return {
     setNearest(line) {
@@ -125,6 +129,7 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
       hint.textContent = line ?? '';
       hint.hidden = line == null;
     },
+    mapEl,
   };
 }
 

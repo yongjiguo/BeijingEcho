@@ -4,7 +4,8 @@ import { CompassWatcher, GpsTrackHeading, HeadingResolver } from './compass';
 import { initialBearing, octantFor } from './direction';
 import { AudioPlayer, HtmlAudioGateway } from './player';
 import { TourStateMachine } from './state';
-import { openBrowse } from './browse';
+import { openBrowse, openSpotDetail, isBrowseOpen } from './browse';
+import { createTourMap, type TourMapHandle } from './mapview';
 import { initTestMode } from './testmode';
 import { renderLanding, renderListening, renderDenied, renderPlaying, renderRequesting } from './ui';
 import type { DirOctant, SpotsData, Spot } from './types';
@@ -50,6 +51,7 @@ let spotsData: SpotsData | null = null;
 const testMode = initTestMode({ geo: geoWatcher, compass: compassWatcher });
 let listening: ReturnType<typeof renderListening> | null = null;
 let playing: ReturnType<typeof renderPlaying> | null = null;
+let tourMap: TourMapHandle | null = null;
 let playbackGen = 0;
 let fixForTrigger: { lat: number; lng: number } | null = null;
 
@@ -159,10 +161,19 @@ function showLanding(): void {
 
 function showListening(): void {
   listening = renderListening(app, openBrowseView);
+  if (spotsData && listening.mapEl) {
+    tourMap = createTourMap(listening.mapEl, spots, (spot) => {
+      if (spotsData) openSpotDetail(spotsData, spot, player);
+    });
+    if (fixForTrigger) tourMap.updateUser(fixForTrigger.lat, fixForTrigger.lng);
+  }
   if (fixForTrigger && spots.length > 0) updateNearestStatus(fixForTrigger.lat, fixForTrigger.lng);
 }
 
 function startTour(): void {
+  // Claim a history entry so the browser Back key exits the tour (to the landing
+  // screen) instead of leaving the site — same mechanism as the browse overlay.
+  history.pushState({ echo: 'tour' }, '', '#/tour');
   machine.transition({ type: 'START_CLICKED' }); // landing → requesting
   // Unlock the audio element within the same user gesture (iOS Safari requirement).
   void audioEl.play().catch(() => {});
@@ -248,6 +259,7 @@ function onFix(fix: { lat: number; lng: number; accuracy: number }): void {
   fixForTrigger = { lat: fix.lat, lng: fix.lng };
   trackHeading.update(fix);
   updateNearestStatus(fix.lat, fix.lng);
+  tourMap?.updateUser(fix.lat, fix.lng);
 
   const best = nearestSpot(fix.lat, fix.lng);
   testMode?.log(
@@ -265,6 +277,31 @@ function onFix(fix: { lat: number; lng: number; accuracy: number }): void {
   cooldowns.mark(inside.id);
   beginSpotPlayback(inside);
 }
+
+// ---- browser back exits the tour ----
+function stopTour(): void {
+  playbackGen += 1; // invalidate any in-flight audio sequence
+  player.stop();
+  geoWatcher.stop();
+  compassWatcher.stop();
+  tourMap?.destroy();
+  tourMap = null;
+  listening = null;
+  playing = null;
+  requesting = null;
+  fixForTrigger = null;
+  machine.transition({ type: 'RESET' });
+  showLanding();
+}
+
+window.addEventListener('popstate', () => {
+  // The browse overlay owns its own history layers (browse.ts handles those pops).
+  if (isBrowseOpen()) return;
+  const st = window.history.state as { echo?: string } | null;
+  if (st?.echo === 'browse' || st?.echo === 'detail') return;
+  // Popped the landing entry while a tour is running → user pressed Back in tour.
+  if (machine.current() !== 'landing') stopTour();
+});
 
 // ---- boot ----
 void loadSpots();
