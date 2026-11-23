@@ -150,27 +150,35 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
     }
     let dragStartY = 0;
     let dragStartH = 0;
+    let dragging = false;
     resize.addEventListener('pointerdown', (ev) => {
+      dragging = true;
       dragStartY = ev.clientY;
       dragStartH = panel.getBoundingClientRect().height;
-      resize.setPointerCapture(ev.pointerId);
+      try {
+        resize.setPointerCapture(ev.pointerId);
+      } catch {
+        // synthetic pointers can't capture — flag-based tracking still works
+      }
       document.body.style.userSelect = 'none';
+      ev.preventDefault();
     });
     resize.addEventListener('pointermove', (ev) => {
-      if (!resize.hasPointerCapture(ev.pointerId)) return;
+      if (!dragging) return;
       const max = Math.round(window.innerHeight * 0.92);
       const h = Math.min(Math.max(dragStartH + (dragStartY - ev.clientY), 120), max);
       panel.style.maxHeight = '92vh';
       panel.style.height = `${h}px`;
     });
-    const endDrag = (ev: PointerEvent) => {
-      if (!resize.hasPointerCapture(ev.pointerId)) return;
-      resize.releasePointerCapture(ev.pointerId);
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
       document.body.style.userSelect = '';
       localStorage.setItem(HEIGHT_KEY, String(Math.round(panel.getBoundingClientRect().height)));
     };
     resize.addEventListener('pointerup', endDrag);
     resize.addEventListener('pointercancel', endDrag);
+    window.addEventListener('pointerup', endDrag); // pointer may leave the handle mid-drag
     resize.addEventListener('dblclick', () => {
       localStorage.removeItem(HEIGHT_KEY);
       panel.style.height = '';
