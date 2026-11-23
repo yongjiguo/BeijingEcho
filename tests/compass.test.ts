@@ -94,6 +94,27 @@ describe('GpsTrackHeading', () => {
     const east = g.update({ lat: 39.9042, lng: 116.4174, accuracy: 5 });
     expect(Math.abs(east! - 142.5)).toBeLessThan(2); // last fix was the north point → SE bearing
   });
+
+  it('setMock overrides heading regardless of fixes; null clears and resumes real math', () => {
+    const g = new GpsTrackHeading();
+    g.setMock(90);
+    expect(g.update(A)).toBe(90); // first fix already yields mocked track heading
+    expect(g.heading()).toBe(90);
+
+    g.setMock(null);
+    expect(g.heading()).toBeNull(); // cleared — back to waiting for real geometry
+    expect(g.update(A)).toBeNull(); // same point <5m → still null
+    g.update({ lat: 39.9142, lng: 116.4074, accuracy: 5 });
+    const north = g.heading();
+    expect(north).not.toBeNull();
+    expect(Math.min(north!, 360 - north!)).toBeLessThan(2);
+  });
+
+  it('setMock normalizes negative angles', () => {
+    const g = new GpsTrackHeading();
+    g.setMock(-90);
+    expect(g.heading()).toBe(270);
+  });
 });
 
 describe('HeadingResolver', () => {

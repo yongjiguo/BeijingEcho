@@ -48,7 +48,7 @@ const cooldowns = new Cooldowns();
 
 let spots: Spot[] = [];
 let spotsData: SpotsData | null = null;
-const testMode = initTestMode({ geo: geoWatcher, compass: compassWatcher });
+const testMode = initTestMode({ geo: geoWatcher, compass: compassWatcher, track: trackHeading });
 let listening: ReturnType<typeof renderListening> | null = null;
 let playing: ReturnType<typeof renderPlaying> | null = null;
 let tourMap: TourMapHandle | null = null;

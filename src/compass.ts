@@ -97,8 +97,20 @@ export class CompassWatcher {
 export class GpsTrackHeading {
   private lastFix: Fix | null = null;
   private last: number | null = null;
+  private mock: number | null = null;
+
+  /** Test mode: inject a synthetic track heading (normalized). Pass null to resume real math. */
+  setMock(deg: number | null): void {
+    this.mock = deg == null ? null : normalizeAngle(deg);
+    this.last = this.mock;
+    if (this.mock == null) this.lastFix = null;
+  }
 
   update(fix: Fix): number | null {
+    if (this.mock != null) {
+      this.lastFix = fix;
+      return this.last;
+    }
     if (this.lastFix) {
       const d = haversineMeters(this.lastFix.lat, this.lastFix.lng, fix.lat, fix.lng);
       if (d >= TRACK_MIN_STEP_M) {
