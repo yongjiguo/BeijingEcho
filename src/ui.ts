@@ -119,7 +119,13 @@ export function renderListening(root: HTMLElement, onBrowse: () => void): Listen
   const nearest = el('p', 'status-nearest');
   const hint = el('p', 'status-hint');
   hint.hidden = true;
-  card.append(headline, nearest, hint);
+  const guide = el('ul', 'listening-guide');
+  guide.append(
+    el('li', null, 'Walk close to a spot — its story plays automatically in English.'),
+    el('li', null, 'Tap a red pin on the map to open that spot anytime.'),
+    el('li', null, 'Browse (top right) lists every spot — no walking required.'),
+  );
+  card.append(headline, nearest, hint, guide);
 
   const mapEl = el('div', 'tour-map rise');
   screen.append(header, card, mapEl);
