@@ -236,6 +236,7 @@ export function renderPlaying(root: HTMLElement, opts: PlayingOptions): PlayingH
 
 export interface DeniedOptions {
   onRetry: () => void;
+  onBrowse: () => void;
 }
 
 export function renderDenied(root: HTMLElement, opts: DeniedOptions): void {
@@ -254,10 +255,19 @@ export function renderDenied(root: HTMLElement, opts: DeniedOptions): void {
       'muted',
       'Automatic audio tours need your location — it stays on this device and is never stored. To enable it: open Settings → Privacy → Location Services (iOS), or tap the lock icon next to the address bar → Site settings → Location (Android), then retry.',
     ),
+    el(
+      'p',
+      'muted',
+      'No location? You can still browse every spot — photos, the full story text and its audio — no permission required.',
+    ),
   );
+  const actions = el('div', 'denied-actions');
   const retry = el('button', 'btn btn-primary', 'Try again');
   retry.addEventListener('click', opts.onRetry);
-  card.append(retry);
+  const browse = el('button', 'btn btn-secondary', 'Browse all spots');
+  browse.addEventListener('click', opts.onBrowse);
+  actions.append(retry, browse);
+  card.append(actions);
   screen.append(head, card);
   root.append(screen);
 }

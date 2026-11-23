@@ -207,10 +207,17 @@ function renderRequestingScreen(): void {
   requesting = renderRequesting(app);
 }
 
+function showDenied(): void {
+  // The tour entry (#/tour) was pushed when Start was clicked — denial never
+  // enters the tour, so clear the stale hash from the address bar.
+  history.replaceState({ echo: 'landing' }, '', location.pathname + location.search);
+  renderDenied(app, { onRetry: () => window.location.reload(), onBrowse: openBrowseView });
+}
+
 function probeLocation(attempt: number): void {
   if (typeof navigator === 'undefined' || !navigator.geolocation) {
     machine.transition({ type: 'LOCATION_DENIED' });
-    renderDenied(app, { onRetry: () => window.location.reload() });
+    showDenied();
     return;
   }
   navigator.geolocation.getCurrentPosition(
@@ -218,13 +225,13 @@ function probeLocation(attempt: number): void {
     (err) => {
       if (err.code === err.PERMISSION_DENIED) {
         machine.transition({ type: 'LOCATION_DENIED' });
-        renderDenied(app, { onRetry: () => window.location.reload() });
+        showDenied();
         return;
       }
       // timeout / position unavailable → hint + auto-retry (max 3), then manual retry
       if (attempt >= 2) {
         machine.transition({ type: 'LOCATION_DENIED' });
-        renderDenied(app, { onRetry: () => window.location.reload() });
+        showDenied();
         return;
       }
       requesting?.setHint(`Location unavailable (${err.message}) — retrying in 10s…`);

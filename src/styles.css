@@ -738,3 +738,10 @@ body::before {
 .denied-card {
   border-left-color: var(--cinnabar-deep);
 }
+
+.denied-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
