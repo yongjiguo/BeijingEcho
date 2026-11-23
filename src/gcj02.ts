@@ -46,3 +46,18 @@ export function wgs84ToGcj02(lng: number, lat: number): [number, number] {
   dLng = (dLng * 180.0) / (A / sqrtMagic * Math.cos(radLat) * PI);
   return [lng + dLng, lat + dLat];
 }
+
+/** Returns [lng, lat] in WGS-84. Input GCJ-02 [lng, lat] (e.g. a map click on
+ *  Gaode tiles). Iterative inversion of the forward transform — converges to
+ *  sub-meter accuracy in 3 rounds, plenty for a debug map picker. */
+export function gcj02ToWgs84(lng: number, lat: number): [number, number] {
+  if (outOfChina(lng, lat)) return [lng, lat];
+  let wLng = lng;
+  let wLat = lat;
+  for (let i = 0; i < 3; i++) {
+    const [glng, glat] = wgs84ToGcj02(wLng, wLat);
+    wLng += lng - glng;
+    wLat += lat - glat;
+  }
+  return [wLng, wLat];
+}

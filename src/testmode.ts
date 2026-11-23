@@ -14,6 +14,8 @@ export interface TestModeHandle {
   log(msg: string): void;
   /** Fill the teleport section once spots data has loaded. */
   setSpots(spots: Spot[]): void;
+  /** Tour-map click hook (WGS-84) — dispatched by main.ts when the map fires. */
+  onMapClick(lng: number, lat: number): void;
 }
 
 const FACE_DEG: Record<DirOctant, number> = {
@@ -35,6 +37,80 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
 
   let lines: HTMLElement | null = null;
   let spotRows: HTMLElement | null = null;
+
+  // ---- map-click tooling ----
+  type ClickMode = 'pick' | 'set' | 'walk';
+  let clickMode: ClickMode | null = null;
+  let modeButtons: Record<ClickMode, HTMLButtonElement> | null = null;
+  let pickedLine: HTMLElement | null = null;
+  let walkFromLine: HTMLElement | null = null;
+  let walkStatus: HTMLElement | null = null;
+  let walkFrom: { lat: number; lng: number } | null = null;
+  let walkTimer: number | null = null;
+
+  const STEP_METERS = 4; // per tick
+  const TICK_MS = 250; // → 16 m/s accelerated walk
+
+  const setClickMode = (mode: ClickMode): void => {
+    clickMode = clickMode === mode ? null : mode;
+    if (!modeButtons) return;
+    for (const [name, btn] of Object.entries(modeButtons) as [ClickMode, HTMLButtonElement][]) {
+      btn.style.borderColor = name === clickMode ? '#c2453f' : '';
+      btn.style.background = name === clickMode ? 'rgba(194, 69, 63, 0.18)' : '';
+    }
+  };
+
+  const stopWalk = (): boolean => {
+    if (walkTimer == null) return false;
+    window.clearInterval(walkTimer);
+    walkTimer = null;
+    return true;
+  };
+
+  const startWalk = (headingDeg: number, distanceM: number): void => {
+    if (!walkFrom) {
+      log('walk sim: pick a start point first (Map click → Walk from)');
+      return;
+    }
+    if (stopWalk()) log('walk sim: previous walk stopped');
+    const rad = (headingDeg * Math.PI) / 180;
+    const cosLat = Math.cos((walkFrom.lat * Math.PI) / 180);
+    let { lat, lng } = walkFrom;
+    let travelled = 0;
+    hooks.compass.setMock(headingDeg);
+    log(`walk sim: start (${lat.toFixed(5)}, ${lng.toFixed(5)}) → ${headingDeg}° for ${distanceM}m`);
+    walkTimer = window.setInterval(() => {
+      travelled += STEP_METERS;
+      lat += (STEP_METERS * Math.cos(rad)) / 111_000;
+      lng += (STEP_METERS * Math.sin(rad)) / (111_000 * cosLat);
+      hooks.geo.setMock({ lat, lng, accuracy: 5 });
+      if (walkStatus) walkStatus.textContent = `${Math.min(travelled, distanceM)}/${distanceM}m @ ${headingDeg}° (${lat.toFixed(5)}, ${lng.toFixed(5)})`;
+      if (travelled >= distanceM) {
+        stopWalk();
+        log(`walk sim: finished ${distanceM}m at (${lat.toFixed(5)}, ${lng.toFixed(5)})`);
+      }
+    }, TICK_MS);
+  };
+
+  const handleMapClick = (lng: number, lat: number): void => {
+    const coordText = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+    switch (clickMode) {
+      case 'pick':
+        if (pickedLine) pickedLine.textContent = coordText;
+        log(`picked (WGS-84): ${coordText}`);
+        break;
+      case 'set':
+        teleport('map click', lat, lng);
+        break;
+      case 'walk':
+        walkFrom = { lat, lng };
+        if (walkFromLine) walkFromLine.textContent = coordText;
+        log(`walk start set: ${coordText}`);
+        break;
+      default:
+        break; // no mode armed → plain map interaction, no debug action
+    }
+  };
 
   const log = (msg: string): void => {
     if (!lines) return;
@@ -130,6 +206,54 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
     headSection.append(faceRow, angleInput, setBtn);
     body.append(headSection);
 
+    // map click modes (tour map only — coordinates are WGS-84 after inverse GCJ-02)
+    const clickSection = el('div', 'testmode-section');
+    clickSection.append(el('h4', null, 'Map click (tour map)'));
+    const modeRow = el('div', 'testmode-faces');
+    modeButtons = {
+      pick: el('button', 'testmode-btn', 'Pick coord'),
+      set: el('button', 'testmode-btn', 'Set position'),
+      walk: el('button', 'testmode-btn', 'Walk from'),
+    };
+    for (const [name, btn] of Object.entries(modeButtons) as [ClickMode, HTMLButtonElement][]) {
+      btn.addEventListener('click', () => {
+        setClickMode(name);
+        log(`map click mode → ${name === clickMode ? name : 'off'}`);
+      });
+      modeRow.append(btn);
+    }
+    pickedLine = el('p', 'testmode-line', 'picked: —');
+    clickSection.append(modeRow, pickedLine);
+    body.append(clickSection);
+
+    // walk simulator: from point (map) + heading + distance → animated GPS walk
+    const walkSection = el('div', 'testmode-section');
+    walkSection.append(el('h4', null, 'Walk sim'));
+    walkFromLine = el('p', 'testmode-line', 'from: — (arm "Walk from", then click the map)');
+    const walkHeading = el('input', 'testmode-input') as HTMLInputElement;
+    walkHeading.placeholder = 'heading deg e.g. 88';
+    walkHeading.name = 'testmode-walk-heading';
+    const walkDist = el('input', 'testmode-input') as HTMLInputElement;
+    walkDist.placeholder = 'distance m e.g. 300';
+    walkDist.name = 'testmode-walk-dist';
+    const walkStartBtn = el('button', 'testmode-btn', 'Start walk');
+    walkStartBtn.addEventListener('click', () => {
+      const heading = Number.parseFloat(walkHeading.value);
+      const dist = Number.parseFloat(walkDist.value);
+      if (!Number.isFinite(heading) || !Number.isFinite(dist) || dist <= 0) {
+        log('walk sim: invalid heading/distance');
+        return;
+      }
+      startWalk(heading, dist);
+    });
+    const walkStopBtn = el('button', 'testmode-btn', 'Stop');
+    walkStopBtn.addEventListener('click', () => {
+      if (stopWalk()) log('walk sim: stopped');
+    });
+    walkStatus = el('p', 'testmode-line', 'status: idle');
+    walkSection.append(walkFromLine, walkHeading, walkDist, walkStartBtn, walkStopBtn, walkStatus);
+    body.append(walkSection);
+
     // log section
     const logSection = el('div', 'testmode-section');
     logSection.append(el('h4', null, 'Status log'));
@@ -161,5 +285,6 @@ export function initTestMode(hooks: TestModeHooks): TestModeHandle | null {
         spotRows.append(row);
       }
     },
+    onMapClick: handleMapClick,
   };
 }

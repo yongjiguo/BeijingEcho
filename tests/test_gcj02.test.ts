@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { wgs84ToGcj02 } from '../src/gcj02';
+import { wgs84ToGcj02, gcj02ToWgs84 } from '../src/gcj02';
 
 describe('wgs84ToGcj02', () => {
   it('shifts a central-Beijing coordinate by roughly 300-700m (typical GCJ-02 offset)', () => {
@@ -34,5 +34,22 @@ describe('wgs84ToGcj02', () => {
     const [lng, lat] = wgs84ToGcj02(116.397, 39.918);
     expect(Math.abs(lng - 116.397)).toBeLessThan(0.01);
     expect(Math.abs(lat - 39.918)).toBeLessThan(0.01);
+  });
+});
+
+describe('gcj02ToWgs84 (map-click inverse)', () => {
+  it('round-trips within 1 meter: wgs→gcj→wgs', () => {
+    const [glng, glat] = wgs84ToGcj02(116.391, 39.907);
+    const [blng, blat] = gcj02ToWgs84(glng, glat);
+    // 1e-5° ≈ 1.1m at Beijing latitude.
+    expect(Math.abs(blng - 116.391)).toBeLessThan(1e-5);
+    expect(Math.abs(blat - 39.907)).toBeLessThan(1e-5);
+  });
+
+  it('differentiates nearby GCJ-02 clicks (not a flat pass-through)', () => {
+    const a = gcj02ToWgs84(116.391, 39.907);
+    const b = gcj02ToWgs84(116.401, 39.917);
+    expect(b[0]).toBeGreaterThan(a[0]);
+    expect(b[1]).toBeGreaterThan(a[1]);
   });
 });

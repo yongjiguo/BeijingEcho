@@ -1,7 +1,7 @@
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import type { Spot } from './types';
-import { wgs84ToGcj02 } from './gcj02';
+import { wgs84ToGcj02, gcj02ToWgs84 } from './gcj02';
 
 /**
  * Beijing tour map for the Listening screen. Gaode raster tiles (fast inside
@@ -35,11 +35,21 @@ export function createTourMap(
   spots: Spot[],
   onSpotClick: (spot: Spot) => void,
   initialFix?: { lat: number; lng: number } | null,
+  /** Debug hook (test mode): WGS-84 coords of any bare map click. */
+  onMapClick?: (lng: number, lat: number) => void,
 ): TourMapHandle {
   const map = L.map(container, {
     zoomControl: true,
     attributionControl: false,
   });
+
+  if (onMapClick) {
+    map.on('click', (e: L.LeafletMouseEvent) => {
+      // e.latlng is on the GCJ-02 basemap; hand back true WGS-84.
+      const [wlng, wlat] = gcj02ToWgs84(e.latlng.lng, e.latlng.lat);
+      onMapClick(wlng, wlat);
+    });
+  }
 
   L.tileLayer(TILE_URL, { subdomains: TILE_SUBDOMAINS, maxZoom: 18 }).addTo(map);
 
